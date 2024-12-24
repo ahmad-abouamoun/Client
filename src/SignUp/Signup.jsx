@@ -5,31 +5,44 @@ import {useForm} from "react-hook-form";
 const Signup = () => {
     const {register, handleSubmit} = useForm({
         defaultValues: {
-            username: "",
+            name: "",
             email: "",
             password: "",
         },
     });
     const [file, setFile] = useState(null);
 
-    const onSubmit = async (data, e) => {
-        e.preventDefault();
+    const onSubmit = async (data) => {
+        if (!file) {
+            alert("Please upload a file before submitting.");
+            return;
+        }
+
         const formData = new FormData();
-        console.log(file.name);
+        console.log(file.name); // Only logs if file is defined
         console.log(file.size);
+
+        const diseases = {
+            diabetes: true,
+            highCholesterol: true,
+            hypertension: true,
+        };
+
         formData.append("file", file);
-        formData.append("name", data.username);
+        formData.append("name", data.name);
         formData.append("email", data.email);
         formData.append("password", data.password);
+        formData.append("type", "user");
+        formData.append("diseases", JSON.stringify(diseases));
 
         try {
-            const response = await fetch("http://localhost:8080/programs/demo", {
+            const response = await fetch("http://localhost:8080/users", {
                 method: "POST",
-
                 body: formData,
             });
 
-            const data = await response.json();
+            const responseData = await response.json();
+            console.log(responseData);
         } catch (error) {
             console.error("Error during registration:", error);
             alert("An error occurred. Please try again.");
@@ -37,22 +50,21 @@ const Signup = () => {
     };
 
     const fileChange = (e) => {
-        setFile(e.target.files[0]);
+        const selectedFile = e.target.files[0];
+        if (selectedFile) {
+            setFile(selectedFile);
+        } else {
+            alert("Please select a file.");
+        }
     };
 
     return (
         <div className="center">
-            <form className="form" onSubmit={handleSubmit((data, e) => onSubmit(data, e))}>
+            <form className="form" onSubmit={handleSubmit(onSubmit)}>
                 <p className="title">Register</p>
                 <p className="message">Signup now and get full access to our app.</p>
                 <label>
-                    <input
-                        {...register("username", {required: true})}
-                        className="input"
-                        type="text"
-                        placeholder
-                        required
-                    />
+                    <input {...register("name", {required: true})} className="input" type="text" placeholder required />
                     <span>Firstname</span>
                 </label>
                 <label>
@@ -78,14 +90,7 @@ const Signup = () => {
 
                 <button className="container-btn-file">
                     Upload File
-                    <input
-                        className="file"
-                        name="text"
-                        type="file"
-                        onChange={(e) => {
-                            fileChange(e);
-                        }}
-                    />
+                    <input className="file" name="text" type="file" onChange={(e) => fileChange(e)} />
                 </button>
 
                 <button className="submit" type="submit">
