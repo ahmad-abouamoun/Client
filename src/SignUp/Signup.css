@@ -17,3 +17,14 @@
     position: relative;
     margin: 0 auto;
 }
+
+.title {
+    font-size: 28px;
+    color: #ff6f61;
+    font-weight: 600;
+    letter-spacing: -1px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+}
