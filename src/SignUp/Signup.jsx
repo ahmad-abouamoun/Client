@@ -10,22 +10,24 @@ const Signup = () => {
             file: "",
         },
     });
-
+    const onSubmit = (data) => {
+        console.log(data);
+    };
     return (
         <div className="center">
-            <form className="form">
+            <form className="form" onSubmit={handleSubmit(onSubmit)}>
                 <p className="title">Register </p>
                 <p className="message">Signup now and get full access to our app. </p>
                 <label>
-                    <input className="input" type="text" placeholder required />
+                    <input {...register("username")} className="input" type="text" placeholder required />
                     <span>Firstname</span>
                 </label>
                 <label>
-                    <input className="input" type="text" placeholder required />
+                    <input {...register("email")} className="input" type="text" placeholder required />
                     <span>Email</span>
                 </label>
                 <label>
-                    <input className="input" type="password" placeholder required />
+                    <input {...register("password")} className="input" type="password" placeholder required />
                     <span>Password</span>
                 </label>
 
