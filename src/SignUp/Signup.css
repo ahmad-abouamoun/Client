@@ -39,3 +39,15 @@
     left: 0px;
     background-color: #ff6f61;
 }
+
+.title::before {
+    width: 18px;
+    height: 18px;
+    background-color: #ff6f61;
+}
+
+.title::after {
+    width: 18px;
+    height: 18px;
+    animation: pulse 1s linear infinite;
+}
