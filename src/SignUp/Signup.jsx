@@ -8,10 +8,21 @@ const Signup = () => {
                 <p className="message">Signup now and get full access to our app. </p>
                 <label>
                     <input className="input" type="text" placeholder required />
-                    <span>UserName</span>
+                    <span>Username</span>
+                </label>
+                <label>
+                    <input className="input" type="email" placeholder required />
+                    <span>Email</span>
+                </label>
+                <label>
+                    <input className="input" type="password" placeholder required />
+                    <span>Password</span>
                 </label>
 
                 <button className="submit">Submit</button>
+                <p className="signin">
+                    Already have an acount ? <a href="#">Signin</a>{" "}
+                </p>
             </form>
         </div>
     );
