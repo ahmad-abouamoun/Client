@@ -66,6 +66,21 @@
     font-size: 16px;
 }
 
+.form label .input + span {
+    position: absolute;
+    left: 10px;
+    top: 15px;
+    color: grey;
+    font-size: 0.9em;
+    cursor: text;
+    transition: 0.3s ease;
+}
+
+.form label .input:placeholder-shown + span {
+    top: 15px;
+    font-size: 0.9em;
+}
+
 @keyframes pulse {
     from {
         transform: scale(0.9);
