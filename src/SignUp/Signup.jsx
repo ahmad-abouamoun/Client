@@ -8,10 +8,10 @@ const Signup = () => {
                 <p className="message">Signup now and get full access to our app. </p>
                 <label>
                     <input className="input" type="text" placeholder required />
-                    <span>Username</span>
+                    <span>Firstname</span>
                 </label>
                 <label>
-                    <input className="input" type="email" placeholder required />
+                    <input className="input" type="text" placeholder required />
                     <span>Email</span>
                 </label>
                 <label>
@@ -19,9 +19,14 @@ const Signup = () => {
                     <span>Password</span>
                 </label>
 
+                <button class="container-btn-file">
+                    Upload File
+                    <input class="file" name="text" type="file" />
+                </button>
+
                 <button className="submit">Submit</button>
                 <p className="signin">
-                    Already have an acount ? <a href="#">Signin</a>{" "}
+                    Already have an acount ? <a href="#">Signin</a>
                 </p>
             </form>
         </div>
