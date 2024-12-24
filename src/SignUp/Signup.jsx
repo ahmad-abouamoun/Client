@@ -19,7 +19,7 @@ const Signup = () => {
         }
 
         const formData = new FormData();
-        console.log(file.name); // Only logs if file is defined
+        console.log(file.name);
         console.log(file.size);
 
         const diseases = {
