@@ -10,16 +10,41 @@ const Signup = () => {
             password: "",
         },
     });
-    const [file, setFile] = useState();
-    const onSubmit = (data) => {
-        console.log(data);
+    const [file, setFile] = useState(null);
+
+    const onSubmit = async (data, e) => {
+        e.preventDefault();
+        const formData = new FormData();
+        console.log(file.name);
+        console.log(file.size);
+        formData.append("file", file);
+        formData.append("name", data.username);
+        formData.append("email", data.email);
+        formData.append("password", data.password);
+
+        try {
+            const response = await fetch("http://localhost:8080/programs/demo", {
+                method: "POST",
+
+                body: formData,
+            });
+
+            const data = await response.json();
+        } catch (error) {
+            console.error("Error during registration:", error);
+            alert("An error occurred. Please try again.");
+        }
+    };
+
+    const fileChange = (e) => {
+        setFile(e.target.files[0]);
     };
 
     return (
         <div className="center">
-            <form className="form" onSubmit={handleSubmit(onSubmit)}>
-                <p className="title">Register </p>
-                <p className="message">Signup now and get full access to our app. </p>
+            <form className="form" onSubmit={handleSubmit((data, e) => onSubmit(data, e))}>
+                <p className="title">Register</p>
+                <p className="message">Signup now and get full access to our app.</p>
                 <label>
                     <input
                         {...register("username", {required: true})}
@@ -53,7 +78,14 @@ const Signup = () => {
 
                 <button className="container-btn-file">
                     Upload File
-                    <input className="file" name="text" type="file" />
+                    <input
+                        className="file"
+                        name="text"
+                        type="file"
+                        onChange={(e) => {
+                            fileChange(e);
+                        }}
+                    />
                 </button>
 
                 <button className="submit" type="submit">
