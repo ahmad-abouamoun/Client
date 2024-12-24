@@ -52,6 +52,20 @@
     animation: pulse 1s linear infinite;
 }
 
+.form label {
+    position: relative;
+    width: 100%;
+}
+
+.form label .input {
+    width: 94%;
+    padding: 10px;
+    outline: 0;
+    border: 1px solid rgba(105, 105, 105, 0.397);
+    border-radius: 10px;
+    font-size: 16px;
+}
+
 @keyframes pulse {
     from {
         transform: scale(0.9);
