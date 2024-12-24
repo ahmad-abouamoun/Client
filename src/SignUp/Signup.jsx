@@ -8,7 +8,7 @@ const Signup = () => {
                 <p className="message">Signup now and get full access to our app. </p>
                 <label>
                     <input className="input" type="text" placeholder required />
-                    <span>Firstname</span>
+                    <span>UserName</span>
                 </label>
 
                 <button className="submit">Submit</button>
