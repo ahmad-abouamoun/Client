@@ -1,5 +1,13 @@
+import {Route, Router} from "react-router";
+
 function App() {
-    return <div className="App"></div>;
+    return (
+        <div>
+            <Router>
+                <Route path="/signup" />
+            </Router>
+        </div>
+    );
 }
 
 export default App;
