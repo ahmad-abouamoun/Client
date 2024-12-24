@@ -6,6 +6,12 @@ const Signup = () => {
             <form className="form">
                 <p className="title">Register </p>
                 <p className="message">Signup now and get full access to our app. </p>
+                <label>
+                    <input className="input" type="text" placeholder required />
+                    <span>Firstname</span>
+                </label>
+
+                <button className="submit">Submit</button>
             </form>
         </div>
     );
