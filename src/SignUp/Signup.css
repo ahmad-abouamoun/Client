@@ -109,6 +109,24 @@
     background-color: rgb(255, 95, 93);
 }
 
+.message,
+.signin {
+    color: rgba(88, 87, 87, 0.822);
+    font-size: 14px;
+}
+
+.signin {
+    text-align: center;
+}
+
+.signin a {
+    color: #ff6f61;
+}
+
+.signin a:hover {
+    text-decoration: underline #ff6f61;
+}
+
 @keyframes pulse {
     from {
         transform: scale(0.9);
