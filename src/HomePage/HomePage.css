@@ -4,3 +4,44 @@
     border: 0;
     box-sizing: border-box;
 }
+.backGround {
+    height: 90vh;
+    width: 100%;
+    color: brown;
+}
+.blackBox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    background-color: black;
+    opacity: 0.6;
+    color: white;
+    padding: 20px 40px;
+    height: 30%;
+    border-radius: 8px;
+    text-align: center;
+    width: 40%;
+}
+
+.blackBox h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.blackBox p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.blackBox button {
+    padding: 10px 20px;
+    opacity: 1;
+
+    font-size: 1rem;
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
