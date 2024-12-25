@@ -30,7 +30,10 @@ const AdminPage = () => {
     ];
 
     return (
-       
+        <div style={{width: "90%", margin: "0 auto"}}>
+            <h1>Admin Dashboard</h1>
+            <DataTable title="User Management" columns={columns} data={data} highlightOnHover />
+        </div>
     );
 };
 
