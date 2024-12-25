@@ -16,6 +16,9 @@ const NavBar = () => {
                     <li>
                         <span>Mental Health</span>
                     </li>
+                    <li>
+                        <span>Meetings</span>
+                    </li>
                 </ul>
 
                 <button>Login</button>

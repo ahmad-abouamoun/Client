@@ -3,7 +3,9 @@ import NavBar from "../Re-usableComponents/NavBar/NavBar";
 const HomePage = () => {
     return (
         <div>
-            <NavBar />
+            <div>
+                <NavBar />
+            </div>
         </div>
     );
 };
