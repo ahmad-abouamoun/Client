@@ -87,7 +87,7 @@ const AdminPage = () => {
                 </ul>
                 <h3>Welcome Admin</h3>
             </NavBar>
-            <div className="width">
+            <div className="table-container">
                 {output === "users" ? (
                     <DataTable title="User Management" columns={columnsUsers} data={dataUsers} highlightOnHover />
                 ) : (
