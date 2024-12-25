@@ -8,13 +8,13 @@ const HomePage = () => {
 
                 <ul>
                     <li>
-                        <span>Home</span>
+                        <span>Trainning</span>
                     </li>
                     <li>
-                        <span>About Us</span>
+                        <span>Diet</span>
                     </li>
                     <li>
-                        <span>Profile</span>
+                        <span>Mental Health</span>
                     </li>
                 </ul>
 
