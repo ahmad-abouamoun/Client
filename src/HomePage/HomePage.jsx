@@ -1,7 +1,9 @@
+import "./HomePage.css";
+
 const HomePage = () => {
     return (
         <div>
-            <nav>
+            <nav class="navbar">
                 <h3>Website Name</h3>
 
                 <ul>
@@ -16,7 +18,7 @@ const HomePage = () => {
                     </li>
                 </ul>
 
-                <button>Login</button>
+                <button class="primary-bg">Login</button>
             </nav>
         </div>
     );
