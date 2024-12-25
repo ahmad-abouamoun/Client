@@ -5,9 +5,11 @@
     box-sizing: border-box;
 }
 .backGround {
-    height: 90vh;
+    height: 100vh;
     width: 100%;
-    color: brown;
+    background-size: cover;
+    background-position: center;
+    position: relative;
 }
 .blackBox {
     position: absolute;
