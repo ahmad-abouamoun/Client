@@ -1,0 +1,57 @@
+.blackBox {
+    position: absolute;
+    z-index: 2;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 80%;
+    max-width: 500px;
+    height: auto;
+}
+
+.blackBox h1 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.blackBox p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.blackBox button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+    .blackBox {
+        width: 60%;
+        padding: 20px 40px;
+    }
+
+    .blackBox h1 {
+        font-size: 2rem;
+    }
+
+    .blackBox p {
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .blackBox {
+        width: 40%;
+    }
+}

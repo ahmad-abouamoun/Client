@@ -1,22 +1,31 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import NavBar from "../Re-usableComponents/NavBar/NavBar";
 import image1 from "../Assets/dietBackground.jpg";
 import image2 from "../Assets/gymBackground.webp";
+import image3 from "../Assets/mentalHealthBackground.jpeg";
 
 import "./HomePage.css";
+import BlackBox from "../Re-usableComponents/BlackBox/BlackBox";
 const HomePage = () => {
     const [image, setImage] = useState("");
-    console.log(image1);
+    const images = [image1, image2, image3];
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setImage((prevIndex) => (prevIndex + 1) % images.length);
+        }, 3000);
+
+        return () => clearInterval(interval);
+    }, [images.length]);
     return (
         <div>
             <div>
-                <div className="backGround" style={{backgroundImage: `url(${image2})`}}>
+                <div className="backGround" style={{backgroundImage: `url(${images[image]})`}}>
                     <NavBar />
-                    <div className="blackBox">
+                    <BlackBox>
                         <h1>Welcome to Balance Beacon</h1>
                         <p>Book a meeting now with one of our specialists</p>
                         <button>Book Now</button>
-                    </div>
+                    </BlackBox>
                 </div>
             </div>
         </div>
