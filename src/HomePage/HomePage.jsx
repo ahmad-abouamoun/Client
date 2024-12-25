@@ -27,6 +27,9 @@ const HomePage = () => {
                         <button>Book Now</button>
                     </BlackBox>
                 </div>
+                <div className="sections">
+                    <div className="section"></div>
+                </div>
             </div>
         </div>
     );
