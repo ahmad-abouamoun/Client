@@ -20,7 +20,23 @@ const HomePage = () => {
         <div>
             <div>
                 <div className="backGround" style={{backgroundImage: `url(${images[image]})`}}>
-                    <NavBar />
+                    <NavBar>
+                        <ul>
+                            <li>
+                                <span>Trainning</span>
+                            </li>
+                            <li>
+                                <span>Diet</span>
+                            </li>
+                            <li>
+                                <span>Mental Health</span>
+                            </li>
+                            <li>
+                                <span>Meetings</span>
+                            </li>
+                        </ul>
+                        x{" "}
+                    </NavBar>
                     <BlackBox>
                         <h1>Welcome to Balance Beacon</h1>
                         <p>Book a meeting now with one of our specialists</p>

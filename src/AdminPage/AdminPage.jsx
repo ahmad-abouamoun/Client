@@ -1,6 +1,7 @@
 import React from "react";
 import DataTable from "react-data-table-component";
-
+import NavBar from "../Re-usableComponents/NavBar/NavBar";
+import "./AdminPage.css";
 const AdminPage = () => {
     const columns = [
         {
@@ -30,9 +31,21 @@ const AdminPage = () => {
     ];
 
     return (
-        <div style={{width: "90%", margin: "0 auto"}}>
-            <h1>Admin Dashboard</h1>
-            <DataTable title="User Management" columns={columns} data={data} highlightOnHover />
+        <div>
+            <NavBar>
+                <ul>
+                    <li>
+                        <span>Users</span>
+                    </li>
+                    <li>
+                        <span>Specialists</span>
+                    </li>
+                </ul>
+                <h3>Welcome Admin</h3>
+            </NavBar>
+            <div>
+                <DataTable title="User Management" columns={columns} data={data} highlightOnHover />
+            </div>
         </div>
     );
 };
