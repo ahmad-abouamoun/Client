@@ -9,7 +9,27 @@ const Login = () => {
             password: "",
         },
     });
-
+    const onSubmit = async (data) => {
+        const input = {
+            email: data.email,
+            password: data.password,
+        };
+        console.log(input);
+        try {
+            const response = await fetch("http://localhost:8080/users/signin", {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                method: "POST",
+                body: JSON.stringify(input),
+            });
+            const responseData = await response.json();
+            console.log(responseData);
+        } catch (error) {
+            console.error("Error during registration:", error);
+            alert("An error occurred. Please try again.");
+        }
+    };
     return (
         <div className="center">
             <form className="form" onSubmit={handleSubmit(onSubmit)}>
