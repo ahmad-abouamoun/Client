@@ -1,8 +1,10 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import DataTable from "react-data-table-component";
 import NavBar from "../Re-usableComponents/NavBar/NavBar";
 import "./AdminPage.css";
 const AdminPage = () => {
+    const [output, setOutput] = useState("users");
+
     const columns = [
         {
             name: "Name",
@@ -35,10 +37,22 @@ const AdminPage = () => {
             <NavBar>
                 <ul>
                     <li>
-                        <span>Users</span>
+                        <span
+                            onClick={() => {
+                                setOutput("users");
+                            }}
+                        >
+                            Users
+                        </span>
                     </li>
                     <li>
-                        <span>Specialists</span>
+                        <span
+                            onClick={() => {
+                                setOutput("specialists");
+                            }}
+                        >
+                            Specialists
+                        </span>
                     </li>
                 </ul>
                 <h3>Welcome Admin</h3>
