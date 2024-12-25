@@ -5,7 +5,7 @@ import "./AdminPage.css";
 const AdminPage = () => {
     const [output, setOutput] = useState("users");
 
-    const columns = [
+    const columnsUsers = [
         {
             name: "Name",
             selector: (row) => row.name,
@@ -26,10 +26,40 @@ const AdminPage = () => {
         },
     ];
 
-    const data = [
+    const columnsSpecialists = [
+        {
+            name: "Name",
+            selector: (row) => row.name,
+            sortable: true,
+        },
+        {
+            name: "Email",
+            selector: (row) => row.email,
+            sortable: true,
+        },
+        {
+            name: "Type",
+            selector: (row) => row.type,
+            sortable: true,
+        },
+        {
+            name: "Banned",
+            selector: (row) => (row.banned ? "Yes" : "No"),
+        },
+        {
+            name: "Actions",
+            cell: (row) => <button>Click Me</button>,
+        },
+    ];
+    const dataUsers = [
         {id: 1, name: "John Doe", email: "john@example.com", banned: false},
         {id: 2, name: "Jane Smith", email: "jane@example.com", banned: true},
         {id: 3, name: "Alice Johnson", email: "alice@example.com", banned: false},
+    ];
+    const dataSpecialists = [
+        {id: 1, name: "John Doe", email: "john@example.com", type: "coach", banned: false},
+        {id: 2, name: "Jane Smith", email: "jane@example.com", type: "coach", banned: true},
+        {id: 3, name: "Alice Johnson", email: "alice@example.com", type: "coach", banned: false},
     ];
 
     return (
@@ -57,8 +87,17 @@ const AdminPage = () => {
                 </ul>
                 <h3>Welcome Admin</h3>
             </NavBar>
-            <div>
-                <DataTable title="User Management" columns={columns} data={data} highlightOnHover />
+            <div className="width">
+                {output === "users" ? (
+                    <DataTable title="User Management" columns={columnsUsers} data={dataUsers} highlightOnHover />
+                ) : (
+                    <DataTable
+                        title="Specialist Management"
+                        columns={columnsSpecialists}
+                        data={dataSpecialists}
+                        highlightOnHover
+                    />
+                )}
             </div>
         </div>
     );
