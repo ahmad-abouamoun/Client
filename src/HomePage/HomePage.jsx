@@ -59,6 +59,20 @@ const HomePage = () => {
                         </a>
                     </div>
                 </div>
+
+                <div className="training-section">
+                    <div className="training-content">
+                        <h2>Diet</h2>
+                        <p>
+                            You are what you eat.Use our program to help you decide what is healthy and beneficial to
+                            you
+                        </p>
+                        <a href="#" className="start-link-diet">
+                            Start Now →
+                        </a>
+                    </div>
+                    <img src={dietImage} alt="Training 2" className="training-image" />
+                </div>
             </div>
         </div>
     );

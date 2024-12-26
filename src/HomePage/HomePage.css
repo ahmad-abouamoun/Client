@@ -23,7 +23,10 @@
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1;
 }
-
+.section {
+    height: 100vh;
+    width: 100%;
+}
 .training-section {
     display: flex;
     align-items: center;
@@ -60,6 +63,18 @@
 
 .start-link-training {
     color: #ff5a5f;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+.start-link-diet {
+    color: #46bc29;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+.start-link-mental {
+    color: #3bbdb7;
     text-decoration: none;
     font-weight: bold;
     font-size: 1.1em;
