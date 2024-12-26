@@ -3,6 +3,9 @@ import NavBar from "../Re-usableComponents/NavBar/NavBar";
 import image1 from "../Assets/dietBackground.jpg";
 import image2 from "../Assets/gymBackground.webp";
 import image3 from "../Assets/mentalHealthBackground.jpeg";
+import trainingImage from "../Assets/training.jpg";
+import dietImage from "../Assets/foodImage.jpg";
+import mentalImage from "../Assets/mental.jpg";
 
 import "./HomePage.css";
 import BlackBox from "../Re-usableComponents/BlackBox/BlackBox";
@@ -35,7 +38,7 @@ const HomePage = () => {
                                 <span>Meetings</span>
                             </li>
                         </ul>
-                        x{" "}
+                        <button>Login</button>
                     </NavBar>
                     <BlackBox>
                         <h1>Welcome to Balance Beacon</h1>
@@ -43,8 +46,9 @@ const HomePage = () => {
                         <button>Book Now</button>
                     </BlackBox>
                 </div>
-                <div className="sections">
-                    <div className="section"></div>
+                <div className="training-section">
+                    <img src={trainingImage} alt="Training 1" className="training-image" />
+                    <div className="training-content"></div>
                 </div>
             </div>
         </div>
