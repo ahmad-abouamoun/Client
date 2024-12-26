@@ -102,3 +102,21 @@
         font-size: 1em;
     }
 }
+
+@media (max-width: 480px) {
+    .training-section {
+        padding: 15px;
+    }
+
+    .training-content h2 {
+        font-size: 1.5em;
+    }
+
+    .training-content p {
+        font-size: 0.9em;
+    }
+
+    .start-link {
+        font-size: 1em;
+    }
+}
