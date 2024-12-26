@@ -48,7 +48,16 @@ const HomePage = () => {
                 </div>
                 <div className="training-section">
                     <img src={trainingImage} alt="Training 1" className="training-image" />
-                    <div className="training-content"></div>
+                    <div className="training-content">
+                        <h2>Training</h2>
+                        <p>
+                            A sound mind in a sound body. Use our trainings and 3D model so that you get the best
+                            results. Our programs are tailored to your needs to ensure steady progress.
+                        </p>
+                        <a href="#" className="start-link-training">
+                            Start Now →
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
