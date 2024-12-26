@@ -23,7 +23,11 @@
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1;
 }
-
+.backGround img {
+    height: 50px;
+    width: 50px;
+    border-radius: 30px;
+}
 .section {
     display: flex;
     align-items: center;

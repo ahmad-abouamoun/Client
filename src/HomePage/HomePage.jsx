@@ -11,6 +11,7 @@ import "./HomePage.css";
 import BlackBox from "../Re-usableComponents/BlackBox/BlackBox";
 const HomePage = () => {
     const [image, setImage] = useState("");
+    const [logged, setLogged] = useState(false);
     const images = [image1, image2, image3];
     useEffect(() => {
         const interval = setInterval(() => {
@@ -38,7 +39,7 @@ const HomePage = () => {
                                 <span>Meetings</span>
                             </li>
                         </ul>
-                        <button>Login</button>
+                        {logged ? <button>Login</button> : <img src={image1} alt="" className="profile" />}
                     </NavBar>
                     <BlackBox>
                         <h1>Welcome to Balance Beacon</h1>
