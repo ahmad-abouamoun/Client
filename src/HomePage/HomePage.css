@@ -79,3 +79,26 @@
     font-weight: bold;
     font-size: 1.1em;
 }
+
+@media (max-width: 768px) {
+    .training-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .training-image {
+        width: 100%;
+    }
+
+    .training-content {
+        text-align: center;
+    }
+
+    .training-content h2 {
+        font-size: 1.8em;
+    }
+
+    .training-content p {
+        font-size: 1em;
+    }
+}
