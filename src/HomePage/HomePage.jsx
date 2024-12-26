@@ -46,9 +46,9 @@ const HomePage = () => {
                         <button>Book Now</button>
                     </BlackBox>
                 </div>
-                <div className="training-section">
-                    <img src={trainingImage} alt="Training 1" className="training-image" />
-                    <div className="training-content">
+                <div className="section">
+                    <img src={trainingImage} alt="Training 1" className="image" />
+                    <div className="content">
                         <h2>Training</h2>
                         <p>
                             A sound mind in a sound body. Use our trainings and 3D model so that you get the best
@@ -60,8 +60,8 @@ const HomePage = () => {
                     </div>
                 </div>
 
-                <div className="training-section">
-                    <div className="training-content">
+                <div className="section">
+                    <div className="content">
                         <h2>Diet</h2>
                         <p>
                             You are what you eat.Use our program to help you decide what is healthy and beneficial to
@@ -71,12 +71,12 @@ const HomePage = () => {
                             Start Now →
                         </a>
                     </div>
-                    <img src={dietImage} alt="Training 2" className="training-image" />
+                    <img src={dietImage} alt="Training 2" className="image" />
                 </div>
 
-                <div className="training-section">
-                    <img src={mentalImage} alt="Training 3" className="training-image" />
-                    <div className="training-content">
+                <div className="section">
+                    <img src={mentalImage} alt="Training 3" className="image" />
+                    <div className="content">
                         <h2>Mental Health</h2>
                         <p>
                             Mental health is not a destination, but a process. It's about how you drive, not where
