@@ -73,6 +73,20 @@ const HomePage = () => {
                     </div>
                     <img src={dietImage} alt="Training 2" className="training-image" />
                 </div>
+
+                <div className="training-section">
+                    <img src={mentalImage} alt="Training 3" className="training-image" />
+                    <div className="training-content">
+                        <h2>Mental Health</h2>
+                        <p>
+                            Mental health is not a destination, but a process. It's about how you drive, not where
+                            you're going. Use our Ai to help you overcome your issues
+                        </p>
+                        <a href="#" className="start-link-mental">
+                            Start Now →
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     );
