@@ -94,7 +94,12 @@ const ExperTable = () => {
                         <button type="submit" className="submitBtn">
                             Create Course
                         </button>
-                        <button type="button" className="cancelBtn">
+                        <button
+                            onClick={() => {
+                                setform(!form);
+                            }}
+                            className="cancelBtn"
+                        >
                             Cancel
                         </button>
                     </form>
