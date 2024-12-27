@@ -7,6 +7,14 @@ import {useForm} from "react-hook-form";
 const ExperTable = () => {
     const [dataExperts, setDataExperts] = useState([]);
     const [formView, setformView] = useState(false);
+    const [file, setFile] = useState(null);
+
+    const fileChange = (e) => {
+        const selectedFile = e.target.files[0];
+        if (selectedFile) {
+            setFile(selectedFile);
+        }
+    };
     const {register, handleSubmit} = useForm({
         defaultValues: {
             name: "",
@@ -15,15 +23,6 @@ const ExperTable = () => {
             type: "coach",
         },
     });
-    const fileChange = (e) => {
-        const selectedFile = e.target.files[0];
-        if (selectedFile) {
-            setFile(selectedFile);
-        } else {
-            alert("Please select a file.");
-        }
-    };
-    const [file, setFile] = useState(null);
     const onSubmit = async (data) => {
         const formData = new FormData();
 
@@ -39,6 +38,17 @@ const ExperTable = () => {
         formData.append("password", data.password);
         formData.append("type", "user");
         formData.append("diseases", JSON.stringify(diseases));
+        try {
+            const response = await fetch("http://localhost:8080/users", {
+                method: "POST",
+                body: formData,
+            });
+
+            const responseData = await response.json();
+        } catch (error) {
+            console.error("Error during registration:", error);
+            alert("An error occurred. Please try again.");
+        }
     };
     useEffect(() => {
         const getExperts = async () => {
