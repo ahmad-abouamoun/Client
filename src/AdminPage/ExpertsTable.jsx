@@ -1,10 +1,21 @@
 import {Ban} from "lucide-react";
+import React from "react";
 import {useEffect, useState} from "react";
 import DataTable from "react-data-table-component";
+import {useForm} from "react-hook-form";
 
 const ExperTable = () => {
     const [dataExperts, setDataExperts] = useState([]);
-    const [form, setform] = useState(false);
+    const [formView, setformView] = useState(false);
+    const {register, handleSubmit} = useForm({
+        defaultValues: {
+            name: "",
+            email: "",
+            password: "",
+        },
+    });
+    const [file, setFile] = useState(null);
+
     useEffect(() => {
         const getExperts = async () => {
             try {
@@ -57,13 +68,13 @@ const ExperTable = () => {
             <div className="createBtn">
                 <button
                     onClick={() => {
-                        setform(!form);
+                        setformView(!formView);
                     }}
                 >
                     Create Expert
                 </button>
             </div>
-            {form && (
+            {formView && (
                 <div className="createForm">
                     <h2>Create New Expert</h2>
                     <form>
@@ -96,7 +107,7 @@ const ExperTable = () => {
                         </button>
                         <button
                             onClick={() => {
-                                setform(!form);
+                                setformView(!formView);
                             }}
                             className="cancelBtn"
                         >
