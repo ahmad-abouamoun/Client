@@ -29,10 +29,8 @@
     background-color: #ff6f61;
     border-radius: 5px;
 }
-.form {
-    height: 30vh;
-}
-input {
+
+.input-create {
     border: solid 1px;
     height: 20px;
     border-radius: 5px;

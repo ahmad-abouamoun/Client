@@ -36,7 +36,7 @@ const ExperTable = () => {
         formData.append("name", data.name);
         formData.append("email", data.email);
         formData.append("password", data.password);
-        formData.append("type", "user");
+        formData.append("type", data.type);
         formData.append("diseases", JSON.stringify(diseases));
         try {
             const response = await fetch("http://localhost:8080/users", {
@@ -114,15 +114,24 @@ const ExperTable = () => {
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="formGroup">
                             <label>Name:</label>
-                            <input type="text" name="name" {...register("name", {required: true})} />
+                            <input
+                                className="input-create"
+                                type="text"
+                                name="name"
+                                {...register("name", {required: true})}
+                            />
                         </div>
                         <div className="formGroup">
                             <label>Email:</label>
-                            <input type="email" {...register("email", {required: true})} />
+                            <input className="input-create" type="email" {...register("email", {required: true})} />
                         </div>
                         <div className="formGroup">
                             <label>Password:</label>
-                            <input type="password" {...register("password", {required: true})} />
+                            <input
+                                className="input-create"
+                                type="password"
+                                {...register("password", {required: true})}
+                            />
                         </div>
                         <div className="formGroup">
                             <label>Expert type:</label>
