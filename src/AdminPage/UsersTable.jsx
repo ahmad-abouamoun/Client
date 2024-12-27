@@ -55,6 +55,7 @@ const UserTable = () => {
             name: "Actions",
             cell: (row) => (
                 <button
+                    className="ban-button"
                     onClick={() => {
                         BanUser(row._id);
                     }}

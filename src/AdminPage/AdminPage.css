@@ -8,10 +8,24 @@
     width: 90%;
     margin: 0 auto;
 }
-button {
+.ban-button {
     height: 25px;
     border-radius: 5px;
     background-color: #ff6f61;
     cursor: pointer;
     width: 50px;
+}
+.createBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15vh;
+}
+.createBtn button {
+    width: 100px;
+    cursor: pointer;
+
+    height: 30px;
+    background-color: #ff6f61;
+    border-radius: 5px;
 }

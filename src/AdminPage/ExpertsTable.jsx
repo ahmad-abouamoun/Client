@@ -43,7 +43,7 @@ const ExperTable = () => {
         {
             name: "Actions",
             cell: (row) => (
-                <button>
+                <button className="ban-button">
                     <Ban />
                 </button>
             ),
@@ -53,6 +53,9 @@ const ExperTable = () => {
     return (
         <div>
             <DataTable title="Specialist Management" columns={columnsSpecialists} data={dataExperts} highlightOnHover />
+            <div className="createBtn">
+                <button>Create Expert</button>
+            </div>
         </div>
     );
 };
