@@ -1,3 +1,4 @@
+import {Ban} from "lucide-react";
 import {useEffect, useState} from "react";
 import DataTable from "react-data-table-component";
 
@@ -41,7 +42,11 @@ const ExperTable = () => {
         },
         {
             name: "Actions",
-            cell: (row) => <button>Click Me</button>,
+            cell: (row) => (
+                <button>
+                    <Ban />
+                </button>
+            ),
         },
     ];
 

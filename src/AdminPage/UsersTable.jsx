@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import DataTable from "react-data-table-component";
+import {Ban} from "lucide-react";
 
 const UserTable = () => {
     const [dataUsers, setDataUsers] = useState();
@@ -20,7 +21,11 @@ const UserTable = () => {
         },
         {
             name: "Actions",
-            cell: (row) => <button>Click Me</button>,
+            cell: (row) => (
+                <button>
+                    <Ban />
+                </button>
+            ),
         },
     ];
     useEffect(() => {
