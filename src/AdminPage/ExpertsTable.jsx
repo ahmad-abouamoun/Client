@@ -12,10 +12,13 @@ const ExperTable = () => {
             name: "",
             email: "",
             password: "",
+            type: "",
         },
     });
     const [file, setFile] = useState(null);
-
+    const onSubmit = async (data) => {
+        console.log(data);
+    };
     useEffect(() => {
         const getExperts = async () => {
             try {
@@ -77,22 +80,22 @@ const ExperTable = () => {
             {formView && (
                 <div className="createForm">
                     <h2>Create New Expert</h2>
-                    <form>
+                    <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="formGroup">
                             <label>Name:</label>
-                            <input type="text" name="name" required />
+                            <input type="text" name="name" {...register("name", {required: true})} />
                         </div>
                         <div className="formGroup">
                             <label>Email:</label>
-                            <input type="email" required />
+                            <input type="email" {...register("email", {required: true})} />
                         </div>
                         <div className="formGroup">
                             <label>Password:</label>
-                            <input type="password" required />
+                            <input type="password" {...register("password", {required: true})} />
                         </div>
                         <div className="formGroup">
                             <label>Expert type:</label>
-                            <select name="category" required>
+                            <select name="type" {...register("type", {required: true})}>
                                 <option value="coach">coach</option>
                                 <option value="therapist">therapist</option>
                                 <option value="nutritionist">nutritionist</option>
