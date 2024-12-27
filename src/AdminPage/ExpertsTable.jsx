@@ -12,12 +12,25 @@ const ExperTable = () => {
             name: "",
             email: "",
             password: "",
-            type: "",
+            type: "coach",
         },
     });
     const [file, setFile] = useState(null);
     const onSubmit = async (data) => {
-        console.log(data);
+        const formData = new FormData();
+
+        const diseases = {
+            diabetes: false,
+            highCholesterol: false,
+            hypertension: false,
+        };
+
+        formData.append("file", file);
+        formData.append("name", data.name);
+        formData.append("email", data.email);
+        formData.append("password", data.password);
+        formData.append("type", "user");
+        formData.append("diseases", JSON.stringify(diseases));
     };
     useEffect(() => {
         const getExperts = async () => {
