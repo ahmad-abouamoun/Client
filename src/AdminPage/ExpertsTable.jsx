@@ -4,7 +4,7 @@ import DataTable from "react-data-table-component";
 
 const ExperTable = () => {
     const [dataExperts, setDataExperts] = useState([]);
-
+    const [form, setform] = useState(false);
     useEffect(() => {
         const getExperts = async () => {
             try {
@@ -20,6 +20,7 @@ const ExperTable = () => {
 
         getExperts();
     }, []);
+    const CreateExpert = async () => {};
     const columnsSpecialists = [
         {
             name: "Name",
@@ -54,7 +55,13 @@ const ExperTable = () => {
         <div>
             <DataTable title="Specialist Management" columns={columnsSpecialists} data={dataExperts} highlightOnHover />
             <div className="createBtn">
-                <button>Create Expert</button>
+                <button
+                    onClick={() => {
+                        setform(!form);
+                    }}
+                >
+                    Create Expert
+                </button>
             </div>
         </div>
     );
