@@ -1,7 +1,8 @@
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import DataTable from "react-data-table-component";
 
 const UserTable = () => {
+    const [dataUsers, setDataUsers] = useState();
     const columnsUsers = [
         {
             name: "Name",
@@ -23,22 +24,22 @@ const UserTable = () => {
         },
     ];
     useEffect(() => {
-        const getExperts = async () => {
-            const response = await fetch("http://localhost:8080/users/experts", {
-                method: "GET",
-            });
-            const data = await response.json();
+        const getUsers = async () => {
+            try {
+                const response = await fetch("http://localhost:8080/users/", {
+                    method: "GET",
+                });
+                const data = await response.json();
+                setDataUsers(data);
+            } catch (error) {
+                console.error("Error fetching experts:", error);
+            }
         };
-        getExperts();
+
+        getUsers();
     }, []);
-    const dataUsers = [
-        {id: 1, name: "John Doe", email: "john@example.com", banned: false},
-        {id: 2, name: "Jane Smith", email: "jane@example.com", banned: true},
-        {id: 3, name: "Alice Johnson", email: "alice@example.com", banned: false},
-    ];
     return (
         <div>
-            {" "}
             <DataTable title="User Management" columns={columnsUsers} data={dataUsers} highlightOnHover />
         </div>
     );
