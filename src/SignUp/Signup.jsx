@@ -19,8 +19,6 @@ const Signup = () => {
         }
 
         const formData = new FormData();
-        console.log(file.name);
-        console.log(file.size);
 
         const diseases = {
             diabetes: true,
@@ -42,7 +40,6 @@ const Signup = () => {
             });
 
             const responseData = await response.json();
-            console.log(responseData);
         } catch (error) {
             console.error("Error during registration:", error);
             alert("An error occurred. Please try again.");
