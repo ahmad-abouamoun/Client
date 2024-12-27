@@ -1,15 +1,18 @@
+import React, {useState} from "react";
 import image1 from "../Assets/foodBackground.jpg";
-import BlackBox from "../Re-usableComponents/BlackBox/BlackBox";
+import Card from "../Re-usableComponents/Card/Card";
 import NavBar from "../Re-usableComponents/NavBar/NavBar";
+import BlackBox from "../Re-usableComponents/BlackBox/BlackBox";
+import "./Diet.css";
 
 const DietPage = () => {
     return (
-        <div>
-            <div className="backGround" style={{backgroundImage: `url(${image1})`}}>
+        <div style={{position: "relative"}}>
+            <div className="backGround" style={{backgroundImage: ` url(${image1})`}}>
                 <NavBar>
                     <ul>
                         <li>
-                            <span>Trainning</span>
+                            <span>Training</span>
                         </li>
                         <li>
                             <span>Diet</span>
@@ -21,14 +24,17 @@ const DietPage = () => {
                             <span>Meetings</span>
                         </li>
                     </ul>
-                    <img src={image1} alt="" />
+                    <img src={image1} alt="Diet Background" />
                 </NavBar>
+
+                {/* BlackBox Section */}
                 <BlackBox>
-                    <h1>"Let food be thy medicine and medicine be thy food." Hippocrates</h1>
+                    <h1>"Let food be thy medicine and medicine be thy food." - Hippocrates</h1>
                     <button>Book Now</button>
                 </BlackBox>
             </div>
         </div>
     );
 };
+
 export default DietPage;

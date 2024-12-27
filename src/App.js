@@ -4,11 +4,12 @@ import Login from "./Login/Login";
 import HomePage from "./HomePage/HomePage";
 import AdminPage from "./AdminPage/AdminPage";
 import DietPage from "./Diet/Diet";
+import ProfilePage from "./ProfilePage";
 
 function App() {
     return (
         <div>
-            <DietPage />
+            <ProfilePage />
         </div>
     );
 }
