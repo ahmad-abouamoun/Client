@@ -1,6 +1,24 @@
+import {useEffect, useState} from "react";
 import DataTable from "react-data-table-component";
 
 const ExperTable = () => {
+    const [dataExperts, setDataExperts] = useState();
+
+    useEffect(() => {
+        const getExperts = async () => {
+            try {
+                const response = await fetch("http://localhost:8080/users/experts", {
+                    method: "GET",
+                });
+                const data = await response.json();
+                setDataExperts(data);
+            } catch (error) {
+                console.error("Error fetching experts:", error);
+            }
+        };
+
+        getExperts();
+    }, []);
     const columnsSpecialists = [
         {
             name: "Name",
@@ -27,19 +45,9 @@ const ExperTable = () => {
         },
     ];
 
-    const dataSpecialists = [
-        {id: 1, name: "John Doe", email: "john@example.com", type: "coach", banned: false},
-        {id: 2, name: "Jane Smith", email: "jane@example.com", type: "coach", banned: true},
-        {id: 3, name: "Alice Johnson", email: "alice@example.com", type: "coach", banned: false},
-    ];
     return (
         <div>
-            <DataTable
-                title="Specialist Management"
-                columns={columnsSpecialists}
-                data={dataSpecialists}
-                highlightOnHover
-            />
+            <DataTable title="Specialist Management" columns={columnsSpecialists} data={dataExperts} highlightOnHover />
         </div>
     );
 };
