@@ -1,11 +1,16 @@
 import {useEffect, useState} from "react";
 import DataTable from "react-data-table-component";
 import {Ban} from "lucide-react";
+import {data} from "react-router";
 
 const UserTable = () => {
     const [dataUsers, setDataUsers] = useState([]);
-    const BanUser = async (row) => {
-        console.log(row);
+    const BanUser = async (id) => {
+        setDataUsers(
+            dataUsers.map((user) => {
+                return user._id === id ? {...user, banned: true} : user;
+            })
+        );
     };
     useEffect(() => {
         const getUsers = async () => {
