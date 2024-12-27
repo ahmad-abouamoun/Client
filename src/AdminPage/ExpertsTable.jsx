@@ -15,6 +15,14 @@ const ExperTable = () => {
             type: "coach",
         },
     });
+    const fileChange = (e) => {
+        const selectedFile = e.target.files[0];
+        if (selectedFile) {
+            setFile(selectedFile);
+        } else {
+            alert("Please select a file.");
+        }
+    };
     const [file, setFile] = useState(null);
     const onSubmit = async (data) => {
         const formData = new FormData();
@@ -115,8 +123,8 @@ const ExperTable = () => {
                             </select>
                         </div>
                         <div>
-                            <label>Upload Course Material:</label>
-                            <input type="file" name="courseMaterial" required />
+                            <label>Upload Expert Image:</label>
+                            <input type="file" name="courseMaterial" required onChange={(e) => fileChange(e)} />
                         </div>
                         <button type="submit" className="submitBtn">
                             Create Course
