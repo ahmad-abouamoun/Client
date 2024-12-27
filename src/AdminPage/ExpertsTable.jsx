@@ -63,6 +63,43 @@ const ExperTable = () => {
                     Create Expert
                 </button>
             </div>
+            {form && (
+                <div className="createForm">
+                    <h2>Create New Expert</h2>
+                    <form>
+                        <div className="formGroup">
+                            <label>Name:</label>
+                            <input type="text" name="name" required />
+                        </div>
+                        <div className="formGroup">
+                            <label>Email:</label>
+                            <input type="email" required />
+                        </div>
+                        <div className="formGroup">
+                            <label>Password:</label>
+                            <input type="password" required />
+                        </div>
+                        <div className="formGroup">
+                            <label>Expert type:</label>
+                            <select name="category" required>
+                                <option value="coach">coach</option>
+                                <option value="therapist">therapist</option>
+                                <option value="nutritionist">nutritionist</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>Upload Course Material:</label>
+                            <input type="file" name="courseMaterial" required />
+                        </div>
+                        <button type="submit" className="submitBtn">
+                            Create Course
+                        </button>
+                        <button type="button" className="cancelBtn">
+                            Cancel
+                        </button>
+                    </form>
+                </div>
+            )}
         </div>
     );
 };

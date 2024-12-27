@@ -29,3 +29,37 @@
     background-color: #ff6f61;
     border-radius: 5px;
 }
+.form {
+    height: 30vh;
+}
+input {
+    border: solid 1px;
+    height: 20px;
+    border-radius: 5px;
+}
+.createForm {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    margin: 20px auto;
+}
+
+.formGroup {
+    margin-bottom: 10px;
+}
+.createForm button {
+    width: 100px;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+
+    height: 25px;
+}
+.cancelBtn {
+    background-color: #3bbdb7;
+}
+.submitBtn {
+    background-color: #ff6f61;
+}

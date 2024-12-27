@@ -5,7 +5,7 @@ import "./AdminPage.css";
 import UserTable from "./UsersTable";
 import ExperTable from "./ExpertsTable";
 const AdminPage = () => {
-    const [output, setOutput] = useState("users");
+    const [output, setOutput] = useState("specialists");
 
     return (
         <div>
