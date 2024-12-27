@@ -11,6 +11,15 @@ const UserTable = () => {
                 return user._id === id ? {...user, banned: true} : user;
             })
         );
+        const response = await fetch(`http://localhost:8080/users/${id}`, {
+            method: "PUT",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                token: localStorage.getItem("token"),
+            }),
+        });
+        const data = await response.json();
+        console.log(data);
     };
     useEffect(() => {
         const getUsers = async () => {
