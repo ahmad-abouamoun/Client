@@ -2,29 +2,9 @@ import React, {useEffect, useState} from "react";
 import DataTable from "react-data-table-component";
 import NavBar from "../Re-usableComponents/NavBar/NavBar";
 import "./AdminPage.css";
+import UserTable from "./UsersTable";
 const AdminPage = () => {
     const [output, setOutput] = useState("users");
-
-    const columnsUsers = [
-        {
-            name: "Name",
-            selector: (row) => row.name,
-            sortable: true,
-        },
-        {
-            name: "Email",
-            selector: (row) => row.email,
-            sortable: true,
-        },
-        {
-            name: "Banned",
-            selector: (row) => (row.banned ? "Yes" : "No"),
-        },
-        {
-            name: "Actions",
-            cell: (row) => <button>Click Me</button>,
-        },
-    ];
 
     const columnsSpecialists = [
         {
@@ -51,11 +31,7 @@ const AdminPage = () => {
             cell: (row) => <button>Click Me</button>,
         },
     ];
-    const dataUsers = [
-        {id: 1, name: "John Doe", email: "john@example.com", banned: false},
-        {id: 2, name: "Jane Smith", email: "jane@example.com", banned: true},
-        {id: 3, name: "Alice Johnson", email: "alice@example.com", banned: false},
-    ];
+
     const dataSpecialists = [
         {id: 1, name: "John Doe", email: "john@example.com", type: "coach", banned: false},
         {id: 2, name: "Jane Smith", email: "jane@example.com", type: "coach", banned: true},
@@ -89,7 +65,7 @@ const AdminPage = () => {
             </NavBar>
             <div className="table-container">
                 {output === "users" ? (
-                    <DataTable title="User Management" columns={columnsUsers} data={dataUsers} highlightOnHover />
+                    <UserTable />
                 ) : (
                     <DataTable
                         title="Specialist Management"
