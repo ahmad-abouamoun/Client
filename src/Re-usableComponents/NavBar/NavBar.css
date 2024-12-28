@@ -8,11 +8,13 @@
 
 .centere {
     display: flex;
+    z-index: 1;
     justify-content: center;
 }
 
 .navbar {
     display: flex;
+    z-index: 1;
     padding: 10px;
     width: 90%;
     height: 70px;

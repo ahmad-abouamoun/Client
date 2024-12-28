@@ -13,7 +13,12 @@ const DietPage = () => {
                 method: "GET",
             });
             const data = await response.json();
-            console.log(data);
+            setFoods(data);
+            const NoDiabetes = data.filter((food) => food.diseases.diabetes === false);
+            const NoCholesterol = data.filter((food) => food.diseases.highCholesterol === false);
+            const NoHypertension = data.filter((food) => food.diseases.hypertension === false);
+
+            console.log(NoDiabetes);
         };
         getFood();
     }, []);
