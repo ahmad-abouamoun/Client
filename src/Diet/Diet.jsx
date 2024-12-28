@@ -7,7 +7,16 @@ import "./Diet.css";
 
 const DietPage = () => {
     const [foods, setFoods] = useState();
-    useEffect(() => {}, []);
+    useEffect(() => {
+        const getFood = async () => {
+            const response = await fetch("http://localhost:8080/food", {
+                method: "GET",
+            });
+            const data = await response.json();
+            console.log(data);
+        };
+        getFood();
+    }, []);
     return (
         <div>
             <div className="backGround" style={{backgroundImage: ` url(${image1})`}}>

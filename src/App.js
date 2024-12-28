@@ -9,7 +9,7 @@ import ProfilePage from "./ProfilePage";
 function App() {
     return (
         <div>
-            <Signup />
+            <DietPage />
         </div>
     );
 }
