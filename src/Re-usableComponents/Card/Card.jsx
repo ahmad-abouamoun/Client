@@ -2,7 +2,7 @@ import "./Card.css";
 import image1 from "../../Assets/dietBackground.jpg";
 import React, {useState} from "react";
 
-function Card({title, description}) {
+function Card({card, handleShowPopup}) {
     const [showPopup, setShowPopup] = useState(false);
 
     const handleLearnMore = () => {
@@ -16,8 +16,8 @@ function Card({title, description}) {
             <div className={`card`}>
                 <img className="card-image" src={image1} alt="Healthy Eating" />
                 <div className="card-content">
-                    <h2 className="card-title">{title}</h2>
-                    <p className="card-description">{description}</p>
+                    <h2 className="card-title">{card.name}</h2>
+                    <p className="card-description">{card.description}</p>
                 </div>
                 <div className="card-actions">
                     <button className="learn-more" onClick={handleLearnMore}>

@@ -5,12 +5,17 @@ import NavBar from "../Re-usableComponents/NavBar/NavBar";
 import BlackBox from "../Re-usableComponents/BlackBox/BlackBox";
 import "./Diet.css";
 import PageNumber from "./PageNumbers";
+import {data} from "react-router";
 
 const DietPage = () => {
     const [foods, setFoods] = useState([]);
     const [noDiaPageNum, setnoDiaPageNum] = useState(1);
     const [noColPageNum, setNoColPageNum] = useState(1);
     const [noHyPageNum, setNoHyPageNum] = useState(1);
+    const [showPopup, setShowPopup] = useState();
+    const handleShowPopup = (data) => {
+        setShowPopup(data);
+    };
     useEffect(() => {
         const getFood = async () => {
             const response = await fetch("http://localhost:8080/food", {
@@ -67,12 +72,7 @@ const DietPage = () => {
                 <h2>No Diabetes</h2>
                 <div className="cards-container">
                     {noDiaChunks[noDiaPageNum - 1]?.map((card) => (
-                        <Card
-                            key={card._id}
-                            title={card.name}
-                            description={card.description}
-                            diseases={card.diseases}
-                        />
+                        <Card handleShowPopup={handleShowPopup} key={card._id} card={card} />
                     ))}
                 </div>
                 <PageNumber numItems={noDiaChunks.length} setNumber={setnoDiaPageNum} />
@@ -81,12 +81,7 @@ const DietPage = () => {
                 <h2>No Cholesterol</h2>
                 <div className="cards-container">
                     {noColChunks[noColPageNum - 1]?.map((card) => (
-                        <Card
-                            key={card._id}
-                            title={card.name}
-                            description={card.description}
-                            diseases={card.diseases}
-                        />
+                        <Card handleShowPopup={handleShowPopup} key={card._id} card={card} />
                     ))}
                 </div>
                 <PageNumber numItems={noColChunks.length} setNumber={setNoColPageNum} />
@@ -95,12 +90,7 @@ const DietPage = () => {
                 <h2>No Hypertension</h2>
                 <div className="cards-container">
                     {noHyChunks[noHyPageNum - 1]?.map((card) => (
-                        <Card
-                            key={card._id}
-                            title={card.name}
-                            description={card.description}
-                            diseases={card.diseases}
-                        />
+                        <Card handleShowPopup={handleShowPopup} key={card._id} card={card} />
                     ))}
                 </div>
                 <PageNumber numItems={noHyChunks.length} setNumber={setNoHyPageNum} />
