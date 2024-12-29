@@ -9,7 +9,7 @@ function Popup({showPopup, setShowPopup}) {
                     <button
                         className="close-popup"
                         onClick={() => {
-                            console.log(showPopup);
+                            console.log(showPopup.diseases.hypertension);
                             setShowPopup(false);
                         }}
                     >
@@ -17,21 +17,20 @@ function Popup({showPopup, setShowPopup}) {
                     </button>
                     <img src={image1} alt="Healthy Eating" className="popup-image" />
                     <div className="popup-content">
-                        <h3>Name: Strawberry</h3>
+                        <h3>Name: {showPopup.name}</h3>
                         <p>
                             <strong>Healthy for:</strong>
                         </p>
                         <ul>
-                            <li>High Cholesterol Patients: No</li>
-                            <li>Hypertension Patients: No</li>
-                            <li>Diabetes Patients: No</li>
-                            <li>CKD Patients: No</li>
+                            diabetes highCholesterol hypertension
+                            <li>High Cholesterol Patients: {showPopup.diseases.highCholesterol ? "No" : "Yes"}</li>
+                            <li>Hypertension Patients: {showPopup.diseases.hypertension ? "No" : "Yes"}</li>
+                            <li>Diabetes Patients: {showPopup.diseases.diabetes ? "No" : "Yes"}</li>
                         </ul>
                         <p>
                             <strong>Description:</strong>
                             <br />
-                            Strawberries are rich in vitamin C, antioxidants, and fiber, while being low in sugar and
-                            calories, making them great for heart health and balanced diets.
+                            {showPopup.description}
                         </p>
                     </div>
                 </div>
