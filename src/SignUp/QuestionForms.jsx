@@ -1,4 +1,9 @@
+import "./QuestionForm.css";
 const QuestionFroms = () => {
-    return <div>hello world</div>;
+    return (
+        <div className="questionnaire-container">
+            <div className="overlay"></div>
+        </div>
+    );
 };
 export default QuestionFroms;
