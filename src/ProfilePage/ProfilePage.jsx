@@ -12,6 +12,8 @@ const ProfilePage = () => {
         hypertension: false,
     });
     const updateUser = async () => {
+        setShowPopup(false);
+
         const diseases = {
             diabetes: form.diabetes,
             highCholesterol: form.highCholesterol,
@@ -27,8 +29,8 @@ const ProfilePage = () => {
             });
 
             const responseData = await response.json();
+            console.log(responseData);
         } catch (error) {
-            console.error("Error during registration:", error);
             alert("An error occurred. Please try again.");
         }
     };
@@ -43,7 +45,6 @@ const ProfilePage = () => {
                             className="edit-icon"
                             onClick={() => {
                                 setShowPopup(true);
-                                console.log(showPopup);
                             }}
                         >
                             ✎
@@ -100,7 +101,7 @@ const ProfilePage = () => {
                                     No
                                 </label>
                             </div>
-                            <button onClick={() => setShowPopup(false)}>Save</button>
+                            <button onClick={() => updateUser()}>Save</button>
                         </div>
                     </div>
                 </div>
