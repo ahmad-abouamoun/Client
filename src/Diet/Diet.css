@@ -7,7 +7,7 @@ Diet .css .recommended-section {
     display: flex;
     justify-content: center;
     gap: 16px;
-    overflow: hidden;
+    overflow: scroll;
     margin: 20px 0;
 }
 
