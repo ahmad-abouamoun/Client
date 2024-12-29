@@ -96,7 +96,7 @@ const DietPage = () => {
                 </div>
                 <PageNumber numItems={noHyChunks.length} setNumber={setNoHyPageNum} />
             </div>
-            {showPopup && <Popup />}
+            <Popup setShowPopup={setShowPopup} showPopup={showPopup} />
         </div>
     );
 };
