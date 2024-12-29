@@ -8,7 +8,7 @@ body {
     position: relative;
     width: 100%;
     height: 400px;
-    background-image: url("./Assets/dietBackground.jpg");
+    background-image: url("../Assets/dietBackground.jpg");
     background-size: cover;
     background-position: center;
 }
@@ -37,14 +37,13 @@ body {
     background-color: rgba(0, 0, 0, 0.7);
     padding: 10px 20px;
     border-radius: 8px;
-    color: white;
     text-align: center;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .profile-info h2 {
     margin: 0;
     font-size: 1.8em;
+    color: white;
 }
 
 .profile-info .edit-icon {

@@ -4,13 +4,13 @@ import Login from "./Login/Login";
 import HomePage from "./HomePage/HomePage";
 import AdminPage from "./AdminPage/AdminPage";
 import DietPage from "./Diet/Diet";
-import ProfilePage from "./ProfilePage";
+import ProfilePage from "./ProfilePage/ProfilePage";
 import Popup from "./Diet/Popup";
 
 function App() {
     return (
         <div>
-            <DietPage />
+            <ProfilePage />
         </div>
     );
 }
