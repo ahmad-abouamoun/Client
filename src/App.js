@@ -5,11 +5,12 @@ import HomePage from "./HomePage/HomePage";
 import AdminPage from "./AdminPage/AdminPage";
 import DietPage from "./Diet/Diet";
 import ProfilePage from "./ProfilePage";
+import Popup from "./Diet/Popup";
 
 function App() {
     return (
         <div>
-            <Signup />
+            <DietPage />
         </div>
     );
 }
