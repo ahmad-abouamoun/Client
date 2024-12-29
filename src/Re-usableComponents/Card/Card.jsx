@@ -3,14 +3,6 @@ import image1 from "../../Assets/dietBackground.jpg";
 import React, {useState} from "react";
 
 function Card({card, handleShowPopup}) {
-    const [showPopup, setShowPopup] = useState(false);
-
-    const handleLearnMore = () => {
-        setShowPopup(true);
-    };
-    const handleClosePopup = () => {
-        setShowPopup(false);
-    };
     return (
         <div>
             <div className={`card`}>
@@ -20,7 +12,7 @@ function Card({card, handleShowPopup}) {
                     <p className="card-description">{card.description}</p>
                 </div>
                 <div className="card-actions">
-                    <button className="learn-more" onClick={handleLearnMore}>
+                    <button className="learn-more" onClick={() => handleShowPopup(card)}>
                         Learn More
                     </button>
                     <button className="bookmark">Bookmark</button>

@@ -1,13 +1,12 @@
 import React from "react";
 import image1 from "../Assets/dietBackground.jpg";
+import "./Popup.css";
 function Popup({showPopup, setShowPopup}) {
     return (
         showPopup && (
             <div className="popup-overlay">
                 <div className="popup">
-                    <button className="close-popup" onClick={handleClosePopup}>
-                        &times;
-                    </button>
+                    <button className="close-popup">&times;</button>
                     <img src={image1} alt="Healthy Eating" className="popup-image" />
                     <div className="popup-content">
                         <h3>Name: Strawberry</h3>

@@ -6,6 +6,7 @@ import BlackBox from "../Re-usableComponents/BlackBox/BlackBox";
 import "./Diet.css";
 import PageNumber from "./PageNumbers";
 import {data} from "react-router";
+import Popup from "./Popup";
 
 const DietPage = () => {
     const [foods, setFoods] = useState([]);
@@ -95,6 +96,7 @@ const DietPage = () => {
                 </div>
                 <PageNumber numItems={noHyChunks.length} setNumber={setNoHyPageNum} />
             </div>
+            {showPopup && <Popup />}
         </div>
     );
 };
