@@ -41,12 +41,11 @@
     left: 0;
     top: 0;
     transition: transform 0.3s ease, background-color 0.3s ease;
-    background-color: rgb(11 117 223);
     border-radius: 9999px;
 }
 
 .radio-input label:has(input:checked) {
-    color: #fff;
+    color: #ff6f61;
 }
 
 .radio-input label:has(input:checked) ~ .selection {
