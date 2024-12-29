@@ -79,6 +79,7 @@ const ProfilePage = () => {
                                     No
                                 </label>
                             </div>
+                            <button onClick={() => setShowPopup(false)}>Save</button>
                         </div>
                     </div>
                 </div>
