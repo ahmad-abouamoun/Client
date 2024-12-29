@@ -44,6 +44,41 @@ const ProfilePage = () => {
                         <div className="popup-content">
                             <h3>Name: </h3>
                             <input type="text" placeholder="Name" onChange={updateForm} />
+                            <div>
+                                <h3>Do you have Diabetes:</h3>
+                                <label>
+                                    <input onChange={updateForm} name="diabetes" type="radio" value={true} />
+                                    Yes
+                                </label>
+                                <label>
+                                    <input onChange={updateForm} name="diabetes" type="radio" value={false} />
+                                    No
+                                </label>
+                            </div>
+                            <div>
+                                <h3>Do you have High Cholesterol:</h3>
+
+                                <label>
+                                    <input onChange={updateForm} name="highCholesterol" type="radio" value={true} />
+                                    Yes
+                                </label>
+                                <label>
+                                    <input onChange={updateForm} name="highCholesterol" type="radio" value={false} />
+                                    No
+                                </label>
+                            </div>
+                            <div>
+                                <h3>Do you have Hypertension:</h3>
+
+                                <label>
+                                    <input onChange={updateForm} name="hypertension" type="radio" value={true} />
+                                    Yes
+                                </label>
+                                <label>
+                                    <input onChange={updateForm} name="hypertension" type="radio" value={false} />
+                                    No
+                                </label>
+                            </div>
                         </div>
                     </div>
                 </div>
