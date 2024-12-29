@@ -1,16 +1,37 @@
 import React, {useState} from "react";
 import "./ProfilePage.css";
 import image from "../Assets/dietBackground.jpg";
-import image1 from "../Assets/dietBackground.jpg";
 import useForm from "../hooks/useForm";
 const ProfilePage = () => {
     const [showPopup, setShowPopup] = useState(false);
+    const token = localStorage.getItem("token");
     const {form, updateForm} = useForm({
         name: "",
         diabetes: false,
         highCholesterol: false,
         hypertension: false,
     });
+    const updateUser = async () => {
+        const diseases = {
+            diabetes: form.diabetes,
+            highCholesterol: form.highCholesterol,
+            hypertension: form.hypertension,
+        };
+        try {
+            const response = await fetch(`http://localhost:8080/users/${token}`, {
+                method: "PATCH",
+                body: {
+                    name: form.name,
+                    diseases,
+                },
+            });
+
+            const responseData = await response.json();
+        } catch (error) {
+            console.error("Error during registration:", error);
+            alert("An error occurred. Please try again.");
+        }
+    };
     return (
         <div className="profile-container">
             <div className="profile-overlay">
