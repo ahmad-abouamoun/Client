@@ -1,20 +1,21 @@
 import React, {useState} from "react";
 import "./Signup.css";
-import {useForm} from "react-hook-form";
-import QuestionFroms from "./QuestionForms";
-
+import "./QuestionForm.css";
+import useForm from "../hooks/useForm.js";
 const Signup = () => {
-    const {register, handleSubmit} = useForm({
-        defaultValues: {
-            name: "",
-            email: "",
-            password: "",
-        },
+    const {form, updateForm} = useForm({
+        name: "",
+        email: "",
+        password: "",
+        diabetes: false,
+        highCholesterol: false,
+        hypertension: false,
     });
+
     const [number, setNumber] = useState(1);
     const [file, setFile] = useState(null);
 
-    const onSubmit = async (data) => {
+    const onSubmit = async () => {
         if (!file) {
             alert("Please upload a file before submitting.");
             return;
@@ -23,15 +24,15 @@ const Signup = () => {
         const formData = new FormData();
 
         const diseases = {
-            diabetes: true,
-            highCholesterol: true,
-            hypertension: true,
+            diabetes: form.diabetes,
+            highCholesterol: form.highCholesterol,
+            hypertension: form.hypertension,
         };
 
         formData.append("file", file);
-        formData.append("name", data.name);
-        formData.append("email", data.email);
-        formData.append("password", data.password);
+        formData.append("name", form.name);
+        formData.append("email", form.email);
+        formData.append("password", form.password);
         formData.append("type", "user");
         formData.append("diseases", JSON.stringify(diseases));
 
@@ -60,32 +61,21 @@ const Signup = () => {
     return (
         <div className="center">
             {number === 1 && (
-                <form className="form" onSubmit={() => handleSubmit(setNumber(2))}>
+                <div className="form">
                     <p className="title">Register</p>
                     <p className="message">Signup now and get full access to our app.</p>
                     <label>
-                        <input
-                            {...register("name", {required: true})}
-                            className="input"
-                            type="text"
-                            placeholder
-                            required
-                        />
+                        <input onChange={updateForm} name="name" className="input" type="text" placeholder required />
                         <span>Firstname</span>
                     </label>
                     <label>
-                        <input
-                            {...register("email", {required: true})}
-                            className="input"
-                            type="text"
-                            placeholder
-                            required
-                        />
+                        <input onChange={updateForm} name="email" className="input" type="text" placeholder required />
                         <span>Email</span>
                     </label>
                     <label>
                         <input
-                            {...register("password", {required: true})}
+                            onChange={updateForm}
+                            name="password"
                             className="input"
                             type="password"
                             placeholder
@@ -99,15 +89,83 @@ const Signup = () => {
                         <input className="file" name="text" type="file" onChange={(e) => fileChange(e)} />
                     </button>
 
-                    <button className="submit" type="submit">
+                    <button className="submit" onClick={() => setNumber(2)}>
                         Submit
                     </button>
                     <p className="signin">
                         Already have an account? <a href="#">Signin</a>
                     </p>
-                </form>
+                </div>
             )}
-            {number === 2 && <QuestionFroms />}
+            {number === 2 && (
+                <div className="questionnaire-container">
+                    <div className="overlay">
+                        <div className="questionnaire-content">
+                            <h2>Just a couple of questions before creating your account</h2>
+                            <p>Do you have highCholesterol?</p>
+                            <div className="options">
+                                <label>
+                                    <input onChange={updateForm} name="highCholesterol" type="radio" value={true} />
+                                    Yes
+                                </label>
+                                <label>
+                                    <input type="radio" onChange={updateForm} name="highCholesterol" value={false} />
+                                    No
+                                </label>
+                            </div>
+                            <button className="next-button" onClick={() => setNumber(3)}>
+                                Next
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+            {number === 3 && (
+                <div className="questionnaire-container">
+                    <div className="overlay">
+                        <div className="questionnaire-content">
+                            <h2>Just a couple of questions before creating your account</h2>
+                            <p>Do you have hypertension?</p>
+                            <div className="options">
+                                <label>
+                                    <input onChange={updateForm} name="hypertension" type="radio" value={true} />
+                                    Yes
+                                </label>
+                                <label>
+                                    <input type="radio" onChange={updateForm} name="hypertension" value={false} />
+                                    No
+                                </label>
+                            </div>
+                            <button className="next-button" onClick={() => setNumber(4)}>
+                                Next
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+            {number === 4 && (
+                <div className="questionnaire-container">
+                    <div className="overlay">
+                        <div className="questionnaire-content">
+                            <h2>Just a couple of questions before creating your account</h2>
+                            <p>Do you have Diabetes?</p>
+                            <div className="options">
+                                <label>
+                                    <input onChange={updateForm} name="diabetes" type="radio" value={true} />
+                                    Yes
+                                </label>
+                                <label>
+                                    <input type="radio" onChange={updateForm} name="diabetes" value={false} />
+                                    No
+                                </label>
+                            </div>
+                            <button className="next-button" onClick={() => onSubmit()}>
+                                Next
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
