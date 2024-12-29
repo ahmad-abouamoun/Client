@@ -1,9 +1,8 @@
-import React, {useState} from "react";
 import "./Card.css";
 import image1 from "../../Assets/dietBackground.jpg";
+import React, {useState} from "react";
 
-const Card = () => {
-    <div></div>;
-};
-
+function Card() {
+    return <div></div>;
+}
 export default Card;

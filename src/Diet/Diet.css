@@ -1,0 +1,30 @@
+Diet .css .recommended-section {
+    padding: 20px;
+    text-align: center;
+}
+
+.cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.arrow-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.arrow-button:hover {
+    background-color: #0056b3;
+}
+.blured {
+    filter: blur(1);
+}
