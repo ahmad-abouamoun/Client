@@ -10,6 +10,7 @@ const Signup = () => {
             password: "",
         },
     });
+    const [number, setNumber] = useState();
     const [file, setFile] = useState(null);
 
     const onSubmit = async (data) => {
