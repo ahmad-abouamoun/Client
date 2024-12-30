@@ -5,9 +5,7 @@ import {Bookmark} from "lucide-react";
 
 function Card({card, handleShowPopup}) {
     const [isBookmarked, setIsBookmarked] = useState(false);
-    const addFavFood = async () => {
-        console.log("in the add fav food ");
-    };
+    const addFavFood = async () => {};
     const removeFavFood = async () => {
         console.log("in the remove fav food ");
     };

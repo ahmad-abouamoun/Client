@@ -20,12 +20,16 @@ const ProfilePage = () => {
             hypertension: form.hypertension,
         };
         try {
-            const response = await fetch(`http://localhost:8080/users/${token}`, {
+            const response = await fetch(`http://localhost:8080/users`, {
                 method: "PATCH",
-                body: {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    token,
                     name: form.name,
                     diseases,
-                },
+                }),
             });
 
             const responseData = await response.json();
@@ -65,7 +69,7 @@ const ProfilePage = () => {
                         </button>
                         <div className="popup-content">
                             <h3>Name: </h3>
-                            <input type="text" placeholder="Name" onChange={updateForm} />
+                            <input type="text" placeholder="Name" name="name" onChange={updateForm} />
                             <div>
                                 <h3>Do you have Diabetes:</h3>
                                 <label>
