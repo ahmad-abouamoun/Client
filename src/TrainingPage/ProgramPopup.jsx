@@ -9,7 +9,6 @@ function ProgramPopup({showPopup, setShowPopup}) {
                     <button
                         className="close-popup"
                         onClick={() => {
-                            console.log(showPopup.diseases.hypertension);
                             setShowPopup(false);
                         }}
                     >
@@ -19,18 +18,14 @@ function ProgramPopup({showPopup, setShowPopup}) {
                     <div className="popup-content">
                         <h3>Name: {showPopup.name}</h3>
                         <p>
-                            <strong>Healthy for:</strong>
+                            {showPopup.training.map((training) => (
+                                <p>{training}</p>
+                            ))}
                         </p>
-                        <ul>
-                            diabetes highCholesterol hypertension
-                            <li>High Cholesterol Patients: {showPopup.diseases.highCholesterol ? "No" : "Yes"}</li>
-                            <li>Hypertension Patients: {showPopup.diseases.hypertension ? "No" : "Yes"}</li>
-                            <li>Diabetes Patients: {showPopup.diseases.diabetes ? "No" : "Yes"}</li>
-                        </ul>
                         <p>
-                            <strong>Description:</strong>
-                            <br />
-                            {showPopup.description}
+                            {showPopup.link.map((link) => (
+                                <p>{link}</p>
+                            ))}
                         </p>
                     </div>
                 </div>

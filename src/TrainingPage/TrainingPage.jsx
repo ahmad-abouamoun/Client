@@ -10,7 +10,10 @@ import ProgramPopup from "./ProgramPopup";
 const TrainingPage = () => {
     const [programs, setPrograms] = useState([]);
     const [programNum, setProgramNum] = useState(1);
-
+    const [showPopup, setShowPopup] = useState();
+    const handleShowPopup = (data) => {
+        setShowPopup(data);
+    };
     useEffect(() => {
         const getPrograms = async () => {
             const response = await fetch("http://localhost:8080/programs", {
@@ -60,10 +63,10 @@ const TrainingPage = () => {
                 </BlackBox>
             </div>
             <div className="recommended-section">
-                <h2>No Diabetes</h2>
+                <h2>Training Programs</h2>
                 <div className="cards-container">
                     {programChunk[programNum - 1]?.map((card) => (
-                        <ProgramCard key={card._id} card={card} />
+                        <ProgramCard handleShowPopup={handleShowPopup} key={card._id} card={card} />
                     ))}
                 </div>
                 <PageNumber numItems={programChunk.length} setNumber={setProgramNum} />
