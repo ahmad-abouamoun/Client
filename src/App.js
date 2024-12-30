@@ -10,7 +10,7 @@ import Popup from "./Diet/Popup";
 function App() {
     return (
         <div>
-            <ProfilePage />
+            <DietPage />
         </div>
     );
 }

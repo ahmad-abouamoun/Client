@@ -5,7 +5,26 @@ import {Bookmark} from "lucide-react";
 
 function Card({card, handleShowPopup}) {
     const [isBookmarked, setIsBookmarked] = useState(false);
-    const addFavFood = async () => {};
+    const token = localStorage.getItem("token");
+    const addFavFood = async () => {
+        try {
+            const response = await fetch(`http://localhost:8080/users/favFood`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    token,
+                    FoodId: card._id,
+                }),
+            });
+
+            const responseData = await response.json();
+            console.log(responseData);
+        } catch (error) {
+            alert("An error occurred. Please try again.");
+        }
+    };
     const removeFavFood = async () => {
         console.log("in the remove fav food ");
     };
