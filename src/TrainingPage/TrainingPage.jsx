@@ -2,8 +2,20 @@ import NavBar from "../Re-usableComponents/NavBar/NavBar";
 import image from "../Assets/TraningPageBackGround.jpg";
 import image1 from "../Assets/foodBackground.jpg";
 import BlackBox from "../Re-usableComponents/BlackBox/BlackBox";
+import React, {useEffect, useState} from "react";
 
 const TrainingPage = () => {
+    const [programs, setPrograms] = useState();
+    useEffect(() => {
+        const getPrograms = async () => {
+            const response = await fetch("http://localhost:8080/programs", {
+                method: "GET",
+            });
+            const data = await response.json();
+            setPrograms(data);
+        };
+        getPrograms();
+    }, []);
     return (
         <div>
             <div className="backGround" style={{backgroundImage: ` url(${image})`}}>
