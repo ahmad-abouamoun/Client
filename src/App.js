@@ -6,11 +6,12 @@ import AdminPage from "./AdminPage/AdminPage";
 import DietPage from "./Diet/Diet";
 import ProfilePage from "./ProfilePage/ProfilePage";
 import Popup from "./Diet/Popup";
+import TrainingPage from "./TrainingPage/TrainingPage";
 
 function App() {
     return (
         <div>
-            <DietPage />
+            <TrainingPage />
         </div>
     );
 }

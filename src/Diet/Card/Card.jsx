@@ -26,7 +26,23 @@ function Card({card, handleShowPopup}) {
         }
     };
     const removeFavFood = async () => {
-        console.log("in the remove fav food ");
+        try {
+            const response = await fetch(`http://localhost:8080/users/favFood`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    token,
+                    FoodId: card._id,
+                }),
+            });
+
+            const responseData = await response.json();
+            console.log(responseData);
+        } catch (error) {
+            alert("An error occurred. Please try again.");
+        }
     };
     return (
         <div>

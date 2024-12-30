@@ -1,6 +1,6 @@
 import React, {useEffect, useMemo, useState} from "react";
 import image1 from "../Assets/foodBackground.jpg";
-import Card from "../Re-usableComponents/Card/Card";
+import Card from "./Card/Card";
 import NavBar from "../Re-usableComponents/NavBar/NavBar";
 import BlackBox from "../Re-usableComponents/BlackBox/BlackBox";
 import "./Diet.css";
