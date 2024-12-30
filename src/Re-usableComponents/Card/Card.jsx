@@ -1,8 +1,10 @@
 import "./Card.css";
 import image1 from "../../Assets/dietBackground.jpg";
 import React, {useState} from "react";
+import {Bookmark} from "lucide-react";
 
 function Card({card, handleShowPopup}) {
+    const [toggle, setToggle] = useState(true);
     return (
         <div>
             <div className={`card`}>
@@ -15,7 +17,14 @@ function Card({card, handleShowPopup}) {
                     <button className="learn-more" onClick={() => handleShowPopup(card)}>
                         Learn More
                     </button>
-                    <button className="bookmark">Bookmark</button>
+                    <div
+                        onClick={() => {
+                            setToggle(!toggle);
+                            console.log(toggle);
+                        }}
+                    >
+                        <Bookmark />
+                    </div>
                 </div>
             </div>
         </div>

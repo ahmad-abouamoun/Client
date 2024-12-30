@@ -9,7 +9,6 @@ const useForm = (initialValues) => {
             ...prevForm,
             [name]: value,
         }));
-        console.log(form);
     };
 
     return {form, updateForm};
