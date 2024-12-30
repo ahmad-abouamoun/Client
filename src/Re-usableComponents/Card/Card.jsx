@@ -4,7 +4,13 @@ import React, {useState} from "react";
 import {Bookmark} from "lucide-react";
 
 function Card({card, handleShowPopup}) {
-    const [toggle, setToggle] = useState(true);
+    const [isBookmarked, setIsBookmarked] = useState(false);
+    const addFavFood = async () => {
+        console.log("in the add fav food ");
+    };
+    const removeFavFood = async () => {
+        console.log("in the remove fav food ");
+    };
     return (
         <div>
             <div className={`card`}>
@@ -19,11 +25,11 @@ function Card({card, handleShowPopup}) {
                     </button>
                     <div
                         onClick={() => {
-                            setToggle(!toggle);
-                            console.log(toggle);
+                            setIsBookmarked(!isBookmarked);
+                            isBookmarked ? removeFavFood() : addFavFood();
                         }}
                     >
-                        <Bookmark />
+                        <Bookmark fill={isBookmarked ? "#ff6f61" : "none"} />
                     </div>
                 </div>
             </div>
