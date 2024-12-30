@@ -4,7 +4,8 @@ import image1 from "../Assets/foodBackground.jpg";
 import BlackBox from "../Re-usableComponents/BlackBox/BlackBox";
 import React, {useEffect, useState} from "react";
 import ProgramCard from "./Card/ProgramCard";
-import PageNumber from "../Diet/PageNumbers";
+import PageNumber from "../Re-usableComponents/PageNumber/PageNumbers";
+import ProgramPopup from "./ProgramPopup";
 
 const TrainingPage = () => {
     const [programs, setPrograms] = useState([]);
@@ -67,6 +68,7 @@ const TrainingPage = () => {
                 </div>
                 <PageNumber numItems={programChunk.length} setNumber={setProgramNum} />
             </div>
+            <ProgramPopup setShowPopup={setShowPopup} showPopup={showPopup} />
         </div>
     );
 };

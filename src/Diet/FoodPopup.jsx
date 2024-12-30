@@ -1,7 +1,7 @@
 import React from "react";
 import image1 from "../Assets/dietBackground.jpg";
 import "./Popup.css";
-function Popup({showPopup, setShowPopup}) {
+function FoodPopup({showPopup, setShowPopup}) {
     return (
         showPopup && (
             <div className="popup-overlay">
@@ -38,4 +38,4 @@ function Popup({showPopup, setShowPopup}) {
         )
     );
 }
-export default Popup;
+export default FoodPopup;

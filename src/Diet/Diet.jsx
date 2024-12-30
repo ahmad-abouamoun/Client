@@ -3,9 +3,9 @@ import image1 from "../Assets/foodBackground.jpg";
 import NavBar from "../Re-usableComponents/NavBar/NavBar";
 import BlackBox from "../Re-usableComponents/BlackBox/BlackBox";
 import "./Diet.css";
-import PageNumber from "./PageNumbers";
-import Popup from "./Popup";
+import PageNumber from "../Re-usableComponents/PageNumber/PageNumbers";
 import FoodCard from "./Card/FoodCard";
+import FoodPopup from "./FoodPopup";
 
 const DietPage = () => {
     const [foods, setFoods] = useState([]);
@@ -95,7 +95,7 @@ const DietPage = () => {
                 </div>
                 <PageNumber numItems={noHyChunks.length} setNumber={setNoHyPageNum} />
             </div>
-            <Popup setShowPopup={setShowPopup} showPopup={showPopup} />
+            <FoodPopup setShowPopup={setShowPopup} showPopup={showPopup} />
         </div>
     );
 };
