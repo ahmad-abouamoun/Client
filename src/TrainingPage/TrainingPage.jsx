@@ -3,9 +3,13 @@ import image from "../Assets/TraningPageBackGround.jpg";
 import image1 from "../Assets/foodBackground.jpg";
 import BlackBox from "../Re-usableComponents/BlackBox/BlackBox";
 import React, {useEffect, useState} from "react";
+import ProgramCard from "./Card/ProgramCard";
+import PageNumber from "../Diet/PageNumbers";
 
 const TrainingPage = () => {
-    const [programs, setPrograms] = useState();
+    const [programs, setPrograms] = useState([]);
+    const [programNum, setProgramNum] = useState(1);
+
     useEffect(() => {
         const getPrograms = async () => {
             const response = await fetch("http://localhost:8080/programs", {
@@ -16,6 +20,15 @@ const TrainingPage = () => {
         };
         getPrograms();
     }, []);
+    function Chuncks(arr) {
+        let res = [];
+        for (let i = 0; i < arr.length; i += 4) {
+            res.push(arr.slice(i, i + 4));
+        }
+        return res;
+    }
+    let programChunk = Chuncks(programs);
+
     return (
         <div>
             <div className="backGround" style={{backgroundImage: ` url(${image})`}}>
@@ -38,9 +51,21 @@ const TrainingPage = () => {
                 </NavBar>
 
                 <BlackBox>
-                    <h1>"The pain you feel today will be the strength you feel tomorrow." Arnold Schwarzenegger</h1>
+                    <h1>
+                        "The pain you feel today will be the strength you feel tomorrow." <br />
+                        Arnold Schwarzenegger
+                    </h1>
                     <button>Book Now</button>
                 </BlackBox>
+            </div>
+            <div className="recommended-section">
+                <h2>No Diabetes</h2>
+                <div className="cards-container">
+                    {programChunk[programNum - 1]?.map((card) => (
+                        <ProgramCard key={card._id} card={card} />
+                    ))}
+                </div>
+                <PageNumber numItems={programChunk.length} setNumber={setProgramNum} />
             </div>
         </div>
     );

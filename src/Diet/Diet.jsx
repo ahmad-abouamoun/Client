@@ -1,11 +1,11 @@
 import React, {useEffect, useMemo, useState} from "react";
 import image1 from "../Assets/foodBackground.jpg";
-import Card from "./Card/Card";
 import NavBar from "../Re-usableComponents/NavBar/NavBar";
 import BlackBox from "../Re-usableComponents/BlackBox/BlackBox";
 import "./Diet.css";
 import PageNumber from "./PageNumbers";
 import Popup from "./Popup";
+import FoodCard from "./Card/FoodCard";
 
 const DietPage = () => {
     const [foods, setFoods] = useState([]);
@@ -72,7 +72,7 @@ const DietPage = () => {
                 <h2>No Diabetes</h2>
                 <div className="cards-container">
                     {noDiaChunks[noDiaPageNum - 1]?.map((card) => (
-                        <Card handleShowPopup={handleShowPopup} key={card._id} card={card} />
+                        <FoodCard handleShowPopup={handleShowPopup} key={card._id} card={card} />
                     ))}
                 </div>
                 <PageNumber numItems={noDiaChunks.length} setNumber={setnoDiaPageNum} />
@@ -81,7 +81,7 @@ const DietPage = () => {
                 <h2>No Cholesterol</h2>
                 <div className="cards-container">
                     {noColChunks[noColPageNum - 1]?.map((card) => (
-                        <Card handleShowPopup={handleShowPopup} key={card._id} card={card} />
+                        <FoodCard handleShowPopup={handleShowPopup} key={card._id} card={card} />
                     ))}
                 </div>
                 <PageNumber numItems={noColChunks.length} setNumber={setNoColPageNum} />
@@ -90,7 +90,7 @@ const DietPage = () => {
                 <h2>No Hypertension</h2>
                 <div className="cards-container">
                     {noHyChunks[noHyPageNum - 1]?.map((card) => (
-                        <Card handleShowPopup={handleShowPopup} key={card._id} card={card} />
+                        <FoodCard handleShowPopup={handleShowPopup} key={card._id} card={card} />
                     ))}
                 </div>
                 <PageNumber numItems={noHyChunks.length} setNumber={setNoHyPageNum} />

@@ -3,7 +3,7 @@ import image1 from "../../Assets/dietBackground.jpg";
 import React, {useState} from "react";
 import {Bookmark} from "lucide-react";
 
-function Card({card, handleShowPopup}) {
+function FoodCard({card, handleShowPopup}) {
     const [isBookmarked, setIsBookmarked] = useState(false);
     const token = localStorage.getItem("token");
     const addFavFood = async () => {
@@ -69,4 +69,4 @@ function Card({card, handleShowPopup}) {
         </div>
     );
 }
-export default Card;
+export default FoodCard;
