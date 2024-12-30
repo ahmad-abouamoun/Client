@@ -6,16 +6,16 @@ import {Bookmark} from "lucide-react";
 function ProgramCard({card, handleShowPopup}) {
     const [isBookmarked, setIsBookmarked] = useState(false);
     const token = localStorage.getItem("token");
-    const addFavFood = async () => {
+    const addFavProgram = async () => {
         try {
-            const response = await fetch(`http://localhost:8080/users/favFood`, {
+            const response = await fetch(`http://localhost:8080/users/favProgram`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
                     token,
-                    FoodId: card._id,
+                    programId: card._id,
                 }),
             });
 
@@ -25,16 +25,16 @@ function ProgramCard({card, handleShowPopup}) {
             alert("An error occurred. Please try again.");
         }
     };
-    const removeFavFood = async () => {
+    const removeFavProgram = async () => {
         try {
-            const response = await fetch(`http://localhost:8080/users/favFood`, {
+            const response = await fetch(`http://localhost:8080/users/favProgram`, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
                     token,
-                    FoodId: card._id,
+                    programId: card._id,
                 }),
             });
 
@@ -59,7 +59,7 @@ function ProgramCard({card, handleShowPopup}) {
                     <div
                         onClick={() => {
                             setIsBookmarked(!isBookmarked);
-                            isBookmarked ? removeFavFood() : addFavFood();
+                            isBookmarked ? removeFavProgram() : addFavProgram();
                         }}
                     >
                         <Bookmark fill={isBookmarked ? "#ff6f61" : "none"} />
