@@ -5,7 +5,7 @@ import BlackBox from "../Re-usableComponents/BlackBox/BlackBox";
 import React, {useEffect, useState} from "react";
 import ProgramCard from "./Card/ProgramCard";
 import PageNumber from "../Re-usableComponents/PageNumber/PageNumbers";
-import ProgramPopup from "./ProgramPopup";
+import ProgramPopup from "./PopUp/ProgramPopup";
 import "./TrainingPage.css";
 const TrainingPage = () => {
     const [programs, setPrograms] = useState([]);
