@@ -50,7 +50,13 @@ const CreateProgram = ({show, handleClick}) => {
                                 {file ? "Image Uploaded" : "Upload Image"}
                                 <input className="file" name="text" type="file" onChange={(e) => fileChange(e)} />
                             </button>
-                            <button>Save</button>
+                            <button
+                                onClick={() => {
+                                    CreateProgram();
+                                }}
+                            >
+                                Create
+                            </button>
                         </div>
                     </div>
                 </div>
