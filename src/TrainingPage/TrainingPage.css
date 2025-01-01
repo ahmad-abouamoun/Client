@@ -1,0 +1,13 @@
+.addBtn {
+    display: flex;
+    justify-content: center;
+}
+.addBtn button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

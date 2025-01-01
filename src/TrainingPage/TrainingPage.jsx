@@ -6,7 +6,7 @@ import React, {useEffect, useState} from "react";
 import ProgramCard from "./Card/ProgramCard";
 import PageNumber from "../Re-usableComponents/PageNumber/PageNumbers";
 import ProgramPopup from "./ProgramPopup";
-
+import "./TrainingPage.css";
 const TrainingPage = () => {
     const [programs, setPrograms] = useState([]);
     const [programNum, setProgramNum] = useState(1);
@@ -70,6 +70,9 @@ const TrainingPage = () => {
                     ))}
                 </div>
                 <PageNumber numItems={programChunk.length} setNumber={setProgramNum} />
+                <div className="addBtn">
+                    <button>Add a Program</button>
+                </div>
             </div>
             <ProgramPopup setShowPopup={setShowPopup} showPopup={showPopup} />
         </div>
