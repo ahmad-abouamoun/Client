@@ -11,6 +11,17 @@ const CreateProgram = ({show, handleClick}) => {
             alert("Please select a file.");
         }
     };
+    const CreateProgram = async () => {
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("name", name);
+        const response = await fetch("http://localhost:8080/programs", {
+            method: "POST",
+            body: formData,
+        });
+        const data = await response.json();
+        console.log(data);
+    };
     const handleSubmit = (value) => {
         setName(value);
     };
@@ -31,11 +42,14 @@ const CreateProgram = ({show, handleClick}) => {
                                     handleSubmit(e.target.value);
                                 }}
                             />
+                            <br />
+                            <br />
+
+                            <h3>Upload an Image For the Program</h3>
                             <button className="container-btn-file">
                                 {file ? "Image Uploaded" : "Upload Image"}
                                 <input className="file" name="text" type="file" onChange={(e) => fileChange(e)} />
                             </button>
-                            <br />
                             <button>Save</button>
                         </div>
                     </div>
