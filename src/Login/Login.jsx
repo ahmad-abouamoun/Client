@@ -14,7 +14,6 @@ const Login = () => {
             email: data.email,
             password: data.password,
         };
-        console.log(input);
         try {
             const response = await fetch("http://localhost:8080/users/signin", {
                 headers: {
@@ -23,8 +22,9 @@ const Login = () => {
                 method: "POST",
                 body: JSON.stringify(input),
             });
-            const responseData = await response.json();
-            console.log(responseData);
+            const data = await response.json();
+            console.log(data);
+            localStorage.setItem("token", data.token);
         } catch (error) {
             console.error("Error during registration:", error);
             alert("An error occurred. Please try again.");

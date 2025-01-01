@@ -7,7 +7,6 @@ import DietPage from "./Diet/Diet";
 import ProfilePage from "./ProfilePage/ProfilePage";
 import Popup from "./Diet/FoodPopup";
 import TrainingPage from "./TrainingPage/TrainingPage";
-
 function App() {
     return (
         <div>

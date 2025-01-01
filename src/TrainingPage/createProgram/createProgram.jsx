@@ -3,6 +3,7 @@ import React, {useState} from "react";
 const CreateProgram = ({show, handleClick}) => {
     const [name, setName] = useState("");
     const [file, setFile] = useState(null);
+    const token = localStorage.getItem("token");
     const fileChange = (e) => {
         const selectedFile = e.target.files[0];
         if (selectedFile) {
@@ -15,6 +16,8 @@ const CreateProgram = ({show, handleClick}) => {
         const formData = new FormData();
         formData.append("file", file);
         formData.append("name", name);
+        formData.append("token", token);
+
         const response = await fetch("http://localhost:8080/programs", {
             method: "POST",
             body: formData,
