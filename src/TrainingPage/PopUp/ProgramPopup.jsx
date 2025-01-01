@@ -1,5 +1,5 @@
 import React from "react";
-import image1 from "../Assets/dietBackground.jpg";
+import image1 from "../../Assets/dietBackground.jpg";
 import "./Popup.css";
 function ProgramPopup({showPopup, setShowPopup}) {
     return (

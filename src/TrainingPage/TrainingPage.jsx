@@ -7,10 +7,12 @@ import ProgramCard from "./Card/ProgramCard";
 import PageNumber from "../Re-usableComponents/PageNumber/PageNumbers";
 import ProgramPopup from "./PopUp/ProgramPopup";
 import "./TrainingPage.css";
+import CreateProgram from "./createProgram/CreateProgram";
 const TrainingPage = () => {
     const [programs, setPrograms] = useState([]);
     const [programNum, setProgramNum] = useState(1);
     const [showPopup, setShowPopup] = useState();
+    const [createProgram, setCreateProgram] = useState(false);
     const handleShowPopup = (data) => {
         setShowPopup(data);
     };
@@ -71,9 +73,16 @@ const TrainingPage = () => {
                 </div>
                 <PageNumber numItems={programChunk.length} setNumber={setProgramNum} />
                 <div className="addBtn">
-                    <button>Add a Program</button>
+                    <button
+                        onClick={() => {
+                            setCreateProgram(!createProgram);
+                        }}
+                    >
+                        Add a Program
+                    </button>
                 </div>
             </div>
+            <CreateProgram show={createProgram} handleClick={setCreateProgram} />
             <ProgramPopup setShowPopup={setShowPopup} showPopup={showPopup} />
         </div>
     );
