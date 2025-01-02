@@ -14,7 +14,7 @@ const localizer = dateFnsLocalizer({
 });
 
 const BookingPage = () => {
-    const [events, setEvents] = useState();
+    const [events, setEvents] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [newEvent, setNewEvent] = useState({
@@ -70,6 +70,22 @@ const BookingPage = () => {
             type: selectedType,
             room: assignedRoom,
         });
+    };
+
+    const handleEventSubmit = () => {
+        if (newEvent.start && newEvent.end && newEvent.type && newEvent.room) {
+            setEvents([
+                ...events,
+                {
+                    ...newEvent,
+                    title: `${newEvent.type} (${newEvent.room})`,
+                },
+            ]);
+            setNewEvent({title: "Meeting", start: "", end: "", type: "", room: ""});
+            setShowModal(false);
+        } else {
+            alert("Please fill out all fields.");
+        }
     };
 
     const handleSlotSelect = (slotInfo) => {
@@ -144,7 +160,9 @@ const BookingPage = () => {
                     </p>
                     <br />
 
-                    <button className="modal-button add">Add Meeting</button>
+                    <button className="modal-button add" onClick={handleEventSubmit}>
+                        Add Meeting
+                    </button>
                     <button className="modal-button cancel" onClick={() => setShowModal(false)}>
                         Cancel
                     </button>
