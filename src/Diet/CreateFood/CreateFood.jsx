@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {useForm} from "react-hook-form";
-
+import "./CreateFood.css";
 const CreateFood = ({show, handleClick}) => {
     const {register, handleSubmit} = useForm({
         defaultValues: {
@@ -21,17 +21,16 @@ const CreateFood = ({show, handleClick}) => {
             alert("Please select a file.");
         }
     };
-    const CreateProgram = async () => {
+    const onSubmit = async (data) => {
         const formData = new FormData();
         formData.append("file", file);
         formData.append("token", token);
 
-        const response = await fetch("http://localhost:8080/programs", {
-            method: "POST",
-            body: formData,
-        });
-        const data = await response.json();
-        console.log(data);
+        console.log(data.name);
+        console.log(data.description);
+        console.log(data.highCholesterol);
+        console.log(data.diabetes);
+        console.log(data.hypertension);
     };
 
     return (
@@ -43,61 +42,77 @@ const CreateFood = ({show, handleClick}) => {
                             &times;
                         </button>
                         <div className="popup-content">
-                            <h3>Name: </h3>
-                            <input type="text" placeholder="Name" {...register("name", {required: true})} />
-                            <br />
-                            <h3>Description: </h3>
-                            <input type="text" placeholder="Name" {...register("description", {required: true})} />
-                            <br />
-                            <br />
-                            <div>
-                                <h3>Do you have Diabetes:</h3>
-                                <label>
-                                    <input name="diabetes" type="radio" value={true} />
-                                    Yes
-                                </label>
-                                <label>
-                                    <input name="diabetes" type="radio" value={false} />
-                                    No
-                                </label>
-                            </div>
-                            <div>
-                                <h3>Do you have High Cholesterol:</h3>
+                            <form onSubmit={handleSubmit(onSubmit)}>
+                                <h3>Name: </h3>
+                                <input type="text" placeholder="Name" {...register("name", {required: true})} />
+                                <br />
+                                <h3>Description: </h3>
+                                <input
+                                    type="text"
+                                    placeholder="Description"
+                                    {...register("description", {required: true})}
+                                />
+                                <br />
+                                <br />
+                                <div>
+                                    <h3>Do you have Diabetes:</h3>
+                                    <label>
+                                        <input {...register("diabetes", {required: true})} type="radio" value={true} />
+                                        Yes
+                                    </label>
+                                    <label>
+                                        <input {...register("diabetes", {required: true})} type="radio" value={false} />
+                                        No
+                                    </label>
+                                </div>
+                                <div>
+                                    <h3>Do you have High Cholesterol:</h3>
 
-                                <label>
-                                    <input name="highCholesterol" type="radio" value={true} />
-                                    Yes
-                                </label>
-                                <label>
-                                    <input name="highCholesterol" type="radio" value={false} />
-                                    No
-                                </label>
-                            </div>
-                            <div>
-                                <h3>Do you have Hypertension:</h3>
+                                    <label>
+                                        <input
+                                            {...register("highCholesterol", {required: true})}
+                                            type="radio"
+                                            value={true}
+                                        />
+                                        Yes
+                                    </label>
+                                    <label>
+                                        <input
+                                            {...register("highCholesterol", {required: true})}
+                                            type="radio"
+                                            value={false}
+                                        />
+                                        No
+                                    </label>
+                                </div>
+                                <div>
+                                    <h3>Do you have Hypertension:</h3>
 
-                                <label>
-                                    <input name="hypertension" type="radio" value={true} />
-                                    Yes
-                                </label>
-                                <label>
-                                    <input name="hypertension" type="radio" value={false} />
-                                    No
-                                </label>
-                            </div>
+                                    <label>
+                                        <input
+                                            {...register("hypertension", {required: true})}
+                                            type="radio"
+                                            value={true}
+                                        />
+                                        Yes
+                                    </label>
+                                    <label>
+                                        <input
+                                            {...register("hypertension", {required: true})}
+                                            type="radio"
+                                            value={false}
+                                        />
+                                        No
+                                    </label>
+                                </div>
 
-                            <h3>Upload an Image For the Program</h3>
-                            <button className="container-btn-file">
-                                {file ? "Image Uploaded" : "Upload Image"}
-                                <input className="file" name="text" type="file" onChange={(e) => fileChange(e)} />
-                            </button>
-                            <button
-                                onClick={() => {
-                                    CreateProgram();
-                                }}
-                            >
-                                Create
-                            </button>
+                                <h3>Upload an Image For the Program</h3>
+                                <button className="container-btn-file">
+                                    {file ? "Image Uploaded" : "Upload Image"}
+                                    <input className="file" name="text" type="file" onChange={(e) => fileChange(e)} />
+                                </button>
+                                <button type="submit">Create</button>
+                            </form>
                         </div>
                     </div>
                 </div>
