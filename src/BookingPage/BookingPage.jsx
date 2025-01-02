@@ -61,6 +61,17 @@ const BookingPage = () => {
         });
     };
 
+    const handleMeetingTypeChange = (e) => {
+        const selectedType = e.target.value;
+        const assignedRoom = Experts[selectedType] || "";
+
+        setNewEvent({
+            ...newEvent,
+            type: selectedType,
+            room: assignedRoom,
+        });
+    };
+
     const handleSlotSelect = (slotInfo) => {
         setSelectedDate(slotInfo.start);
         setNewEvent({title: "Meeting", start: "", end: "", type: "", room: ""});
@@ -117,7 +128,7 @@ const BookingPage = () => {
 
                     <label className="modal-label">
                         Choose Expert you want to meet:
-                        <select value={newEvent.type} className="modal-select">
+                        <select value={newEvent.type} onChange={handleMeetingTypeChange} className="modal-select">
                             <option value="">-- Select Type --</option>
                             {meetingOptions.map((option, index) => (
                                 <option key={index} value={option}>
