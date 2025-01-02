@@ -47,6 +47,20 @@ const BookingPage = () => {
 
     const timeOptions = generateTimeOptions();
 
+    const handleStartTimeChange = (e) => {
+        const selectedTime = e.target.value;
+        const [hours, minutes] = selectedTime.split(":");
+
+        const startDate = setHours(setMinutes(selectedDate, Number(minutes)), Number(hours));
+        const endDate = addMinutes(startDate, 30);
+
+        setNewEvent({
+            ...newEvent,
+            start: startDate,
+            end: endDate,
+        });
+    };
+
     const handleSlotSelect = (slotInfo) => {
         setSelectedDate(slotInfo.start);
         setNewEvent({title: "Meeting", start: "", end: "", type: "", room: ""});
@@ -75,7 +89,11 @@ const BookingPage = () => {
 
                     <label className="modal-label">
                         Select time to start:
-                        <select value={newEvent.start ? format(newEvent.start, "HH:mm") : ""} className="modal-select">
+                        <select
+                            value={newEvent.start ? format(newEvent.start, "HH:mm") : ""}
+                            onChange={handleStartTimeChange}
+                            className="modal-select"
+                        >
                             <option value="">-- Select Time --</option>
                             {timeOptions.map((time, index) => (
                                 <option key={index} value={time}>
@@ -95,6 +113,7 @@ const BookingPage = () => {
                             className="modal-input"
                         />
                     </label>
+                    <br />
 
                     <br />
 
