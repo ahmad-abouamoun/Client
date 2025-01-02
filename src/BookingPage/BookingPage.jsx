@@ -14,10 +14,22 @@ const localizer = dateFnsLocalizer({
 });
 
 const BookingPage = () => {
+    const [events, setEvents] = useState([]);
+    const [showModal, setShowModal] = useState(false);
+    const [selectedDate, setSelectedDate] = useState(new Date());
+    const [newEvent, setNewEvent] = useState({
+        title: "Meeting",
+        start: "",
+        end: "",
+        type: "",
+        room: "",
+    });
+
     return (
         <div>
             <Calendar
                 localizer={localizer}
+                events={events}
                 startAccessor="start"
                 endAccessor="end"
                 style={{height: 500}}
