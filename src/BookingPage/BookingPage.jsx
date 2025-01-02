@@ -115,6 +115,17 @@ const BookingPage = () => {
                     </label>
                     <br />
 
+                    <label className="modal-label">
+                        Choose Expert you want to meet:
+                        <select value={newEvent.type} className="modal-select">
+                            <option value="">-- Select Type --</option>
+                            {meetingOptions.map((option, index) => (
+                                <option key={index} value={option}>
+                                    {option}
+                                </option>
+                            ))}
+                        </select>
+                    </label>
                     <br />
 
                     <p className="modal-text">
