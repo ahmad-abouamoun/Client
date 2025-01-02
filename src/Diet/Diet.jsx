@@ -6,6 +6,7 @@ import "./Diet.css";
 import PageNumber from "../Re-usableComponents/PageNumber/PageNumbers";
 import FoodCard from "./Card/FoodCard";
 import FoodPopup from "./FoodPopup";
+import CreateFood from "./CreateFood/CreateFood";
 
 const DietPage = () => {
     const [foods, setFoods] = useState([]);
@@ -13,6 +14,7 @@ const DietPage = () => {
     const [noColPageNum, setNoColPageNum] = useState(1);
     const [noHyPageNum, setNoHyPageNum] = useState(1);
     const [showPopup, setShowPopup] = useState();
+    const [showForm, setShowForm] = useState(false);
     const handleShowPopup = (data) => {
         setShowPopup(data);
     };
@@ -96,6 +98,16 @@ const DietPage = () => {
                 <PageNumber numItems={noHyChunks.length} setNumber={setNoHyPageNum} />
             </div>
             <FoodPopup setShowPopup={setShowPopup} showPopup={showPopup} />
+            <div className="addBtn">
+                <button
+                    onClick={() => {
+                        setShowForm(true);
+                    }}
+                >
+                    Add Food
+                </button>
+            </div>
+            <CreateFood show={showForm} handleClick={setShowForm} />
         </div>
     );
 };
