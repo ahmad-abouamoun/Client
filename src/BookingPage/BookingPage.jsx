@@ -33,6 +33,20 @@ const BookingPage = () => {
 
     const meetingOptions = Object.keys(Experts);
 
+    const generateTimeOptions = () => {
+        const times = [];
+        let currentTime = new Date();
+        currentTime.setHours(8, 0, 0, 0);
+
+        while (currentTime.getHours() < 18) {
+            times.push(format(new Date(currentTime), "HH:mm"));
+            currentTime = addMinutes(currentTime, 30);
+        }
+        return times;
+    };
+
+    const timeOptions = generateTimeOptions();
+
     const handleSlotSelect = (slotInfo) => {
         setSelectedDate(slotInfo.start);
         setNewEvent({title: "Meeting", start: "", end: "", type: "", room: ""});
@@ -58,6 +72,29 @@ const BookingPage = () => {
                 <div className="modal">
                     <h2 className="modal-header">Add Event</h2>
                     <p className="modal-text">Selected Date: {format(selectedDate, "MMMM d, yyyy")}</p>
+
+                    <label className="modal-label">
+                        Select time to start:
+                        <select value={newEvent.start ? format(newEvent.start, "HH:mm") : ""} className="modal-select">
+                            <option value="">-- Select Time --</option>
+                            {timeOptions.map((time, index) => (
+                                <option key={index} value={time}>
+                                    {time}
+                                </option>
+                            ))}
+                        </select>
+                    </label>
+                    <br />
+
+                    <label className="modal-label">
+                        Time to end will be:
+                        <input
+                            type="text"
+                            value={newEvent.end ? format(newEvent.end, "HH:mm") : ""}
+                            disabled
+                            className="modal-input"
+                        />
+                    </label>
 
                     <br />
 
