@@ -1,16 +1,22 @@
-import {Route, Router} from "react-router";
+import {Routes, Route} from "react-router-dom";
 import Signup from "./SignUp/Signup";
 import Login from "./Login/Login";
 import HomePage from "./HomePage/HomePage";
 import AdminPage from "./AdminPage/AdminPage";
 import DietPage from "./Diet/Diet";
 import ProfilePage from "./ProfilePage/ProfilePage";
-import Popup from "./Diet/FoodPopup";
 import TrainingPage from "./TrainingPage/TrainingPage";
+import CryptoJS from "crypto-js";
+
 function App() {
     return (
         <div>
-            <DietPage />
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/trainingPage" element={<TrainingPage />} />
+                <Route path="/dietPage" element={<DietPage />} />
+                <Route path="/adminPage" element={<AdminPage />} />
+            </Routes>
         </div>
     );
 }

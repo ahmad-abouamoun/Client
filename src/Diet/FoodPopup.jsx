@@ -9,7 +9,6 @@ function FoodPopup({showPopup, setShowPopup}) {
                     <button
                         className="close-popup"
                         onClick={() => {
-                            console.log(showPopup.diseases.hypertension);
                             setShowPopup(false);
                         }}
                     >
@@ -22,7 +21,6 @@ function FoodPopup({showPopup, setShowPopup}) {
                             <strong>Healthy for:</strong>
                         </p>
                         <ul>
-                            diabetes highCholesterol hypertension
                             <li>High Cholesterol Patients: {showPopup.diseases.highCholesterol ? "No" : "Yes"}</li>
                             <li>Hypertension Patients: {showPopup.diseases.hypertension ? "No" : "Yes"}</li>
                             <li>Diabetes Patients: {showPopup.diseases.diabetes ? "No" : "Yes"}</li>
