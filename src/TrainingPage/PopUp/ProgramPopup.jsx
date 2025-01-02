@@ -1,7 +1,19 @@
-import React from "react";
+import React, {useState} from "react";
 import image1 from "../../Assets/dietBackground.jpg";
 import "./Popup.css";
 function ProgramPopup({showPopup, setShowPopup}) {
+    const [show, setShow] = useState(true);
+    const CreateProgram = async () => {
+        const response = await fetch("http://localhost:8080/programs", {
+            method: "POST",
+            body: "",
+        });
+        const data = await response.json();
+        console.log(data);
+    };
+    const handleSubmit = (value) => {
+        // setName(value);
+    };
     return (
         showPopup && (
             <div className="popup-overlay">

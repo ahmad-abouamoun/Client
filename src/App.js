@@ -10,7 +10,7 @@ import TrainingPage from "./TrainingPage/TrainingPage";
 function App() {
     return (
         <div>
-            <TrainingPage />
+            <DietPage />
         </div>
     );
 }
