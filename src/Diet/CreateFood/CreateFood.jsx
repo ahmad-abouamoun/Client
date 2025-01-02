@@ -22,15 +22,24 @@ const CreateFood = ({show, handleClick}) => {
         }
     };
     const onSubmit = async (data) => {
+        const diseases = {
+            diabetes: data.diabetes,
+            highCholesterol: data.highCholesterol,
+            hypertension: data.hypertension,
+        };
+        const stringfiedDiseases = JSON.stringify(diseases);
         const formData = new FormData();
-        formData.append("file", file);
+        formData.append("filename", file);
         formData.append("token", token);
-
-        console.log(data.name);
-        console.log(data.description);
-        console.log(data.highCholesterol);
-        console.log(data.diabetes);
-        console.log(data.hypertension);
+        formData.append("name", data.name);
+        formData.append("description", data.description);
+        formData.append("diseases", stringfiedDiseases);
+        const response = await fetch("http://localhost:8080/food", {
+            method: "POST",
+            body: formData,
+        });
+        const result = await response.json();
+        console.log(result);
     };
 
     return (
@@ -55,7 +64,7 @@ const CreateFood = ({show, handleClick}) => {
                                 <br />
                                 <br />
                                 <div>
-                                    <h3>Do you have Diabetes:</h3>
+                                    <h3>Does it affect people with Diabetes:</h3>
                                     <label>
                                         <input {...register("diabetes", {required: true})} type="radio" value={true} />
                                         Yes
@@ -66,7 +75,7 @@ const CreateFood = ({show, handleClick}) => {
                                     </label>
                                 </div>
                                 <div>
-                                    <h3>Do you have High Cholesterol:</h3>
+                                    <h3>Does it affect people with High Cholesterol:</h3>
 
                                     <label>
                                         <input
@@ -86,7 +95,7 @@ const CreateFood = ({show, handleClick}) => {
                                     </label>
                                 </div>
                                 <div>
-                                    <h3>Do you have Hypertension:</h3>
+                                    <h3>Does it affect people with Hypertension:</h3>
 
                                     <label>
                                         <input
