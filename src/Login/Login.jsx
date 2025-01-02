@@ -37,13 +37,7 @@ const Login = () => {
                 <p className="message">Login now and get full access to our app.</p>
 
                 <label>
-                    <input
-                        {...register("email", {required: true})}
-                        className="input"
-                        type="text"
-                        placeholder
-                        required
-                    />
+                    <input {...register("email", {required: true})} className="input" type="text" placeholder />
                     <span>Email</span>
                 </label>
                 <label>
