@@ -10,7 +10,10 @@ import mentalImage from "../Assets/mental.jpg";
 import "./HomePage.css";
 import BlackBox from "../Re-usableComponents/BlackBox/BlackBox";
 import BookingPage from "../BookingPage/BookingPage";
+import {useNavigate} from "react-router";
 const HomePage = () => {
+    const navigate = useNavigate();
+
     const [image, setImage] = useState("");
     const [showCalendar, setShowCalendar] = useState(false);
     const [logged, setLogged] = useState(false);
@@ -28,7 +31,7 @@ const HomePage = () => {
                 <div className="backGround" style={{backgroundImage: `url(${images[image]})`}}>
                     <NavBar showCalendar={showCalendar} setShowCalendar={setShowCalendar} />
                     {showCalendar && (
-                        <div className="calendar popup ">
+                        <div className=" calendar-popup ">
                             <BookingPage showCalendar={showCalendar} setShowCalendar={setShowCalendar} />
                         </div>
                     )}
@@ -52,9 +55,14 @@ const HomePage = () => {
                             A sound mind in a sound body. Use our trainings and 3D model so that you get the best
                             results. Our programs are tailored to your needs to ensure steady progress.
                         </p>
-                        <a href="#" className="start-link-training">
+                        <span
+                            className="start-link-training"
+                            onClick={() => {
+                                navigate("/trainingPage");
+                            }}
+                        >
                             Start Now →
-                        </a>
+                        </span>
                     </div>
                 </div>
 
@@ -65,9 +73,14 @@ const HomePage = () => {
                             You are what you eat.Use our program to help you decide what is healthy and beneficial to
                             you
                         </p>
-                        <a href="#" className="start-link-diet">
+                        <span
+                            className="start-link-diet"
+                            onClick={() => {
+                                navigate("/dietPage");
+                            }}
+                        >
                             Start Now →
-                        </a>
+                        </span>
                     </div>
                     <img src={dietImage} alt="Training 2" className="image" />
                 </div>
@@ -80,9 +93,14 @@ const HomePage = () => {
                             Mental health is not a destination, but a process. It's about how you drive, not where
                             you're going. Use our Ai to help you overcome your issues
                         </p>
-                        <a href="#" className="start-link-mental">
+                        <span
+                            className="start-link-mental"
+                            onClick={() => {
+                                navigate("/trainingPage");
+                            }}
+                        >
                             Start Now →
-                        </a>
+                        </span>
                     </div>
                 </div>
             </div>

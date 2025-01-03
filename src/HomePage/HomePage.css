@@ -63,29 +63,30 @@
     text-decoration: none;
     font-weight: bold;
     font-size: 1.1em;
+    cursor: pointer;
 }
 .start-link-diet {
     color: #46bc29;
     text-decoration: none;
     font-weight: bold;
     font-size: 1.1em;
+    cursor: pointer;
 }
 .start-link-mental {
     color: #3bbdb7;
     text-decoration: none;
     font-weight: bold;
     font-size: 1.1em;
-}
-.calendar {
-    z-index: 5;
-    background-color: aliceblue;
+    cursor: pointer;
 }
 
-.popup {
+.calendar-popup {
+    z-index: 5;
+    background-color: aliceblue;
     border-radius: 10px;
     padding: 20px;
-    max-width: 600px;
-    position: fixed;
+    max-width: 500px;
+    position: relative;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
