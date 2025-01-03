@@ -13,7 +13,7 @@ const localizer = dateFnsLocalizer({
     locales: {"en-US": enUS},
 });
 
-const BookingPage = () => {
+const BookingPage = ({showCalendar, setShowCalendar}) => {
     const [events, setEvents] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [selectedDate, setSelectedDate] = useState(new Date());
@@ -119,7 +119,14 @@ const BookingPage = () => {
 
     return (
         <div className="calendar">
-            <button className="close-calendar">&times;</button>
+            <button
+                onClick={() => {
+                    setShowCalendar(!showCalendar);
+                }}
+                className="close-calendar"
+            >
+                &times;
+            </button>
             <Calendar
                 localizer={localizer}
                 events={events}

@@ -26,10 +26,10 @@ const HomePage = () => {
         <div>
             <div>
                 <div className="backGround" style={{backgroundImage: `url(${images[image]})`}}>
-                    <NavBar />
+                    <NavBar showCalendar={showCalendar} setShowCalendar={setShowCalendar} />
                     {showCalendar && (
                         <div className="calendar popup ">
-                            <BookingPage />
+                            <BookingPage showCalendar={showCalendar} setShowCalendar={setShowCalendar} />
                         </div>
                     )}
                     <BlackBox>

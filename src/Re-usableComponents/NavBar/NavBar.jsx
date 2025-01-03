@@ -3,7 +3,7 @@ import image from "../../Assets/Logo.png";
 import image1 from "../../Assets/Logo.png";
 import {useNavigate} from "react-router";
 
-const NavBar = ({children}) => {
+const NavBar = ({showCalendar, setShowCalendar}) => {
     const navigate = useNavigate();
     return (
         <div className="centere">
@@ -11,13 +11,31 @@ const NavBar = ({children}) => {
                 <img src={image} alt="" />
                 <ul>
                     <li>
-                        <span>Training</span>
+                        <span
+                            onClick={() => {
+                                navigate("/trainingPage");
+                            }}
+                        >
+                            Training
+                        </span>
                     </li>
                     <li>
-                        <span>Diet</span>
+                        <span
+                            onClick={() => {
+                                navigate("/dietPage");
+                            }}
+                        >
+                            Diet
+                        </span>
                     </li>
                     <li>
-                        <span>Mental Health</span>
+                        <span
+                            onClick={() => {
+                                navigate("/trainingPage");
+                            }}
+                        >
+                            Mental Health
+                        </span>
                     </li>
                     <li>
                         <span>Meetings</span>
@@ -26,8 +44,20 @@ const NavBar = ({children}) => {
                 <div className="dropdown-container">
                     <img src={image1} alt="Diet Background" />
                     <ul className="dropdown">
-                        <li>Profile Page</li>
-                        <li>Book Meeting</li>
+                        <li
+                            onClick={() => {
+                                navigate("/ProfilePage");
+                            }}
+                        >
+                            Profile Page
+                        </li>
+                        <li
+                            onClick={() => {
+                                setShowCalendar(!showCalendar);
+                            }}
+                        >
+                            Book Meeting
+                        </li>
                     </ul>
                 </div>
             </nav>
