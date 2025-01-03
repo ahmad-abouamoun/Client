@@ -1,8 +1,10 @@
 import "./NavBar.css";
 import image from "../../Assets/Logo.png";
 import image1 from "../../Assets/Logo.png";
+import {useNavigate} from "react-router";
 
 const NavBar = ({children}) => {
+    const navigate = useNavigate();
     return (
         <div className="centere">
             <nav className="navbar">

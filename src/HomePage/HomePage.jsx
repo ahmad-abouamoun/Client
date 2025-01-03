@@ -9,8 +9,10 @@ import mentalImage from "../Assets/mental.jpg";
 
 import "./HomePage.css";
 import BlackBox from "../Re-usableComponents/BlackBox/BlackBox";
+import BookingPage from "../BookingPage/BookingPage";
 const HomePage = () => {
     const [image, setImage] = useState("");
+    const [showCalendar, setShowCalendar] = useState(false);
     const [logged, setLogged] = useState(false);
     const images = [image1, image2, image3];
     useEffect(() => {
@@ -25,11 +27,21 @@ const HomePage = () => {
             <div>
                 <div className="backGround" style={{backgroundImage: `url(${images[image]})`}}>
                     <NavBar />
-
+                    {showCalendar && (
+                        <div className="calendar popup ">
+                            <BookingPage />
+                        </div>
+                    )}
                     <BlackBox>
                         <h1>Welcome to Balance Beacon</h1>
                         <p>Book a meeting now with one of our specialists</p>
-                        <button>Book Now</button>
+                        <button
+                            onClick={() => {
+                                setShowCalendar(!showCalendar);
+                            }}
+                        >
+                            Book Now
+                        </button>
                     </BlackBox>
                 </div>
                 <div className="section">

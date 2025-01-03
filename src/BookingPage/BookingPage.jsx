@@ -118,7 +118,8 @@ const BookingPage = () => {
     };
 
     return (
-        <div>
+        <div className="calendar">
+            <button className="close-calendar">&times;</button>
             <Calendar
                 localizer={localizer}
                 events={events}
