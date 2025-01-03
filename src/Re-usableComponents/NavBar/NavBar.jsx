@@ -24,8 +24,8 @@ const NavBar = ({children}) => {
                 <div className="dropdown-container">
                     <img src={image1} alt="Diet Background" />
                     <ul className="dropdown">
-                        <li>Option 1</li>
-                        <li>Option 2</li>
+                        <li>Profile Page</li>
+                        <li>Book Meeting</li>
                     </ul>
                 </div>
             </nav>
