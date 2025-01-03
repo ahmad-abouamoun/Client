@@ -72,17 +72,40 @@ const BookingPage = () => {
         });
     };
 
-    const handleEventSubmit = () => {
+    const handleEventSubmit = async () => {
         if (newEvent.start && newEvent.end && newEvent.type && newEvent.room) {
-            setEvents([
-                ...events,
-                {
-                    ...newEvent,
-                    title: `${newEvent.type} (${newEvent.room})`,
-                },
-            ]);
-            setNewEvent({title: "Meeting", start: "", end: "", type: "", room: ""});
-            setShowModal(false);
+            const meetingData = {
+                token: localStorage.getItem("token"),
+                title: newEvent.title,
+                startDate: newEvent.start,
+                endDate: newEvent.end,
+                expert: newEvent.type,
+                room: newEvent.room,
+            };
+            try {
+                const response = await fetch("http://localhost:8080/meetings", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(meetingData),
+                });
+                const data = await response.json();
+                console.log(data);
+                if (data.status !== "failed") {
+                    setEvents([
+                        ...events,
+                        {
+                            ...newEvent,
+                            title: `${newEvent.type} (${newEvent.room})`,
+                        },
+                    ]);
+                }
+                setNewEvent({title: "Meeting", start: "", end: "", type: "", room: ""});
+                setShowModal(false);
+            } catch (error) {
+                alert(error);
+            }
         } else {
             alert("Please fill out all fields.");
         }

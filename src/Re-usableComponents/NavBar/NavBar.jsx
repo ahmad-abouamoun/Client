@@ -21,7 +21,13 @@ const NavBar = ({children}) => {
                         <span>Meetings</span>
                     </li>
                 </ul>
-                <img src={image1} alt="Diet Background" />
+                <div className="dropdown-container">
+                    <img src={image1} alt="Diet Background" />
+                    <ul className="dropdown">
+                        <li>Option 1</li>
+                        <li>Option 2</li>
+                    </ul>
+                </div>
             </nav>
         </div>
     );

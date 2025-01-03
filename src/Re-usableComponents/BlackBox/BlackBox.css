@@ -1,7 +1,6 @@
 .blackBox {
     position: absolute;
     z-index: 2;
-
     top: 50%;
     left: 50%;
     transform: translate(-50%, -30%);
@@ -28,6 +27,7 @@
 .blackBox button {
     padding: 10px 20px;
     font-size: 1rem;
+
     background-color: #ff6f61;
     color: white;
     border: none;

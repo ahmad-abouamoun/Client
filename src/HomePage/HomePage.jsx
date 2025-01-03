@@ -24,23 +24,8 @@ const HomePage = () => {
         <div>
             <div>
                 <div className="backGround" style={{backgroundImage: `url(${images[image]})`}}>
-                    <NavBar>
-                        <ul>
-                            <li>
-                                <span>Trainning</span>
-                            </li>
-                            <li>
-                                <span>Diet</span>
-                            </li>
-                            <li>
-                                <span>Mental Health</span>
-                            </li>
-                            <li>
-                                <span>Meetings</span>
-                            </li>
-                        </ul>
-                        {logged ? <button>Login</button> : <img src={image1} alt="" className="profile" />}
-                    </NavBar>
+                    <NavBar />
+
                     <BlackBox>
                         <h1>Welcome to Balance Beacon</h1>
                         <p>Book a meeting now with one of our specialists</p>
