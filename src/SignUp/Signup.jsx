@@ -2,7 +2,9 @@ import React, {useState} from "react";
 import "./Signup.css";
 import "./QuestionForm.css";
 import useForm from "../hooks/useForm.js";
+import {useNavigate} from "react-router";
 const Signup = () => {
+    const navigate = useNavigate();
     const {form, updateForm} = useForm({
         name: "",
         email: "",
@@ -93,7 +95,14 @@ const Signup = () => {
                         Submit
                     </button>
                     <p className="signin">
-                        Already have an account? <a href="#">Signin</a>
+                        Already have an account?{" "}
+                        <span
+                            onClick={() => {
+                                navigate("/Login");
+                            }}
+                        >
+                            Login
+                        </span>
                     </p>
                 </div>
             )}

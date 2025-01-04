@@ -1,8 +1,10 @@
 import React, {useState} from "react";
 import "./Login.css";
 import {useForm} from "react-hook-form";
+import {useNavigate} from "react-router";
 
 const Login = () => {
+    const navigate = useNavigate();
     const {register, handleSubmit} = useForm({
         defaultValues: {
             email: "",
@@ -55,7 +57,14 @@ const Login = () => {
                     Submit
                 </button>
                 <p className="signin">
-                    Do not have an account? <a href="#">Signup</a>
+                    Do not have an account?{" "}
+                    <span
+                        onClick={() => {
+                            navigate("/SignUp");
+                        }}
+                    >
+                        Register
+                    </span>
                 </p>
             </form>
         </div>
