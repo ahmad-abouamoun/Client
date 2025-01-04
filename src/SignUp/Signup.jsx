@@ -37,7 +37,6 @@ const Signup = () => {
         formData.append("name", form.name);
         formData.append("email", form.email);
         formData.append("password", form.password);
-        formData.append("type", "user");
         formData.append("diseases", JSON.stringify(diseases));
         try {
             const response = await fetch("http://localhost:8080/users", {
@@ -52,7 +51,9 @@ const Signup = () => {
                 throw Error("an error occured in db");
             }
             const responseData = await response.json();
-            dispatch(setUser(responseData));
+            dispatch(setUser(responseData.data));
+            localStorage.setItem("token", responseData.token);
+            navigate("/");
         } catch (error) {
             alert(error.message);
         }
