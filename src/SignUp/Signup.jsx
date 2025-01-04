@@ -33,7 +33,6 @@ const Signup = () => {
             highCholesterol: form.highCholesterol,
             hypertension: form.hypertension,
         };
-        dispatch(setUser());
         formData.append("file", file);
         formData.append("name", form.name);
         formData.append("email", form.email);
@@ -53,6 +52,7 @@ const Signup = () => {
                 throw Error("an error occured in db");
             }
             const responseData = await response.json();
+            dispatch(setUser(responseData));
         } catch (error) {
             alert(error.message);
         }

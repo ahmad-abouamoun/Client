@@ -7,7 +7,11 @@ const userSlice = createSlice({
     name: "users",
     initialState,
     reducers: {
-        setUser: (state, action) => {},
+        setUser: (state, action) => {
+            state.user = action.payload;
+            console.log("---------------------");
+            console.log(state.user);
+        },
         Logout: (state, action) => {},
     },
 });
