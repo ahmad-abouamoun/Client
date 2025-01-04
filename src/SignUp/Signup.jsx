@@ -3,8 +3,11 @@ import "./Signup.css";
 import "./QuestionForm.css";
 import useForm from "../hooks/useForm.js";
 import {useNavigate} from "react-router";
+import {useDispatch} from "react-redux";
+import {setUser} from "../redux/userSlice.js";
 const Signup = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const {form, updateForm} = useForm({
         name: "",
         email: "",
@@ -30,24 +33,28 @@ const Signup = () => {
             highCholesterol: form.highCholesterol,
             hypertension: form.hypertension,
         };
-
+        dispatch(setUser());
         formData.append("file", file);
         formData.append("name", form.name);
         formData.append("email", form.email);
         formData.append("password", form.password);
         formData.append("type", "user");
         formData.append("diseases", JSON.stringify(diseases));
-
         try {
             const response = await fetch("http://localhost:8080/users", {
                 method: "POST",
                 body: formData,
             });
-
+            if (response.status === 400) {
+                throw Error("please enter all fields");
+            } else if (response.status === 401) {
+                throw Error("email already registered");
+            } else if (response.status === 500) {
+                throw Error("an error occured in db");
+            }
             const responseData = await response.json();
         } catch (error) {
-            console.error("Error during registration:", error);
-            alert("An error occurred. Please try again.");
+            alert(error.message);
         }
     };
 
