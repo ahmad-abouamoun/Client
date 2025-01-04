@@ -23,7 +23,7 @@
     justify-content: space-between;
 }
 
-.navbar ul {
+.navbar > ul {
     display: flex;
     flex-grow: 0.8;
     justify-content: space-between;
@@ -42,7 +42,7 @@
     transition: all 0.5s;
 }
 
-.navbar ul > li > span {
+.navbar > ul > li > span {
     text-decoration: none;
     color: white;
     font-size: 16px;
@@ -77,9 +77,9 @@
     position: absolute;
     top: 100%;
     right: 0;
-    background-color: rgba(0, 0, 0, 0.8);
     border-radius: 10px;
     list-style: none;
+    height: 50px;
     padding: 10px 0;
     opacity: 0;
     visibility: hidden;

@@ -8,7 +8,13 @@ const NavBar = ({showCalendar, setShowCalendar}) => {
     return (
         <div className="centere">
             <nav className="navbar">
-                <img src={image} alt="" />
+                <img
+                    src={image}
+                    alt=""
+                    onClick={() => {
+                        navigate("/");
+                    }}
+                />
                 <ul>
                     <li>
                         <span
@@ -58,6 +64,7 @@ const NavBar = ({showCalendar, setShowCalendar}) => {
                         >
                             Book Meeting
                         </li>
+                        <li>Log out</li>
                     </ul>
                 </div>
             </nav>
