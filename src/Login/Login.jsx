@@ -24,12 +24,17 @@ const Login = () => {
                 method: "POST",
                 body: JSON.stringify(input),
             });
+            if (response.status === 400) {
+                throw Error("Wrong email or password");
+            }
+            if (response.status === 401) {
+                throw Error("User has Been Banned");
+            }
             const data = await response.json();
-            console.log(data);
             localStorage.setItem("token", data.token);
+            navigate("/");
         } catch (error) {
-            console.error("Error during registration:", error);
-            alert("An error occurred. Please try again.");
+            alert(error.message);
         }
     };
     return (
@@ -39,7 +44,13 @@ const Login = () => {
                 <p className="message">Login now and get full access to our app.</p>
 
                 <label>
-                    <input {...register("email", {required: true})} className="input" type="text" placeholder />
+                    <input
+                        {...register("email", {required: true})}
+                        className="input"
+                        type="text"
+                        required
+                        placeholder
+                    />
                     <span>Email</span>
                 </label>
                 <label>
