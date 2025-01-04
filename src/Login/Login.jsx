@@ -2,9 +2,12 @@ import React, {useState} from "react";
 import "./Login.css";
 import {useForm} from "react-hook-form";
 import {useNavigate} from "react-router";
+import {useDispatch} from "react-redux";
+import {setUser} from "../redux/userSlice";
 
 const Login = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const {register, handleSubmit} = useForm({
         defaultValues: {
             email: "",
@@ -26,12 +29,14 @@ const Login = () => {
             });
             if (response.status === 400) {
                 throw Error("Wrong email or password");
-            }
-            if (response.status === 401) {
+            } else if (response.status === 401) {
                 throw Error("User has Been Banned");
+            } else if (response.status === 500) {
+                throw Error("Error with db");
             }
-            const data = await response.json();
-            localStorage.setItem("token", data.token);
+            const responseData = await response.json();
+            dispatch(setUser(responseData.data));
+            localStorage.setItem("token", responseData.token);
             navigate("/");
         } catch (error) {
             alert(error.message);
