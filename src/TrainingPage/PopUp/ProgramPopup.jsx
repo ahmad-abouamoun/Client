@@ -26,7 +26,11 @@ function ProgramPopup({showPopup, setShowPopup}) {
                     >
                         &times;
                     </button>
-                    <img src={image1} alt="Healthy Eating" className="popup-image" />
+                    <img
+                        src={`http://localhost:8080/programsImages/${showPopup.filename}`}
+                        alt="Healthy Eating"
+                        className="popup-image"
+                    />
                     <div className="popup-content">
                         <h3>Name: {showPopup.name}</h3>
                         <p>

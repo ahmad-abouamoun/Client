@@ -38,6 +38,7 @@ const CreateFood = ({show, handleClick}) => {
             method: "POST",
             body: formData,
         });
+        handleClick(!show);
         const result = await response.json();
         console.log(result);
     };
@@ -46,7 +47,7 @@ const CreateFood = ({show, handleClick}) => {
         show && (
             <div>
                 <div className="popup-overlay">
-                    <div className="popup">
+                    <div className="popup-food">
                         <button onClick={() => handleClick(!show)} className="close-popup">
                             &times;
                         </button>
@@ -115,7 +116,7 @@ const CreateFood = ({show, handleClick}) => {
                                     </label>
                                 </div>
 
-                                <h3>Upload an Image For the Program</h3>
+                                <h3>Upload an Image of the food</h3>
                                 <button className="container-btn-file">
                                     {file ? "Image Uploaded" : "Upload Image"}
                                     <input className="file" name="text" type="file" onChange={(e) => fileChange(e)} />
