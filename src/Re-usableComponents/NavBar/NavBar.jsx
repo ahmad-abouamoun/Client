@@ -2,11 +2,10 @@ import "./NavBar.css";
 import image from "../../Assets/Logo.png";
 import image1 from "../../Assets/Logo.png";
 import {useNavigate} from "react-router";
-import {useData} from "../../context/DataContext";
 
 const NavBar = ({showCalendar, setShowCalendar}) => {
     const navigate = useNavigate();
-    const {loggedIn} = useData();
+    const token = sessionStorage.getItem("token");
 
     return (
         <div className="centere">
@@ -22,7 +21,7 @@ const NavBar = ({showCalendar, setShowCalendar}) => {
                     <li>
                         <span
                             onClick={() => {
-                                if (loggedIn) {
+                                if (token) {
                                     navigate("/trainingPage");
                                 } else {
                                     alert("Please Login first to access all our services");
@@ -35,7 +34,7 @@ const NavBar = ({showCalendar, setShowCalendar}) => {
                     <li>
                         <span
                             onClick={() => {
-                                if (loggedIn) {
+                                if (token) {
                                     navigate("/dietPage");
                                 } else {
                                     alert("Please Login first to access all our services");
@@ -48,7 +47,7 @@ const NavBar = ({showCalendar, setShowCalendar}) => {
                     <li>
                         <span
                             onClick={() => {
-                                if (loggedIn) {
+                                if (token) {
                                     navigate("/trainingPage");
                                 } else {
                                     alert("Please Login first to access all our services");
@@ -67,7 +66,7 @@ const NavBar = ({showCalendar, setShowCalendar}) => {
                     <ul className="dropdown">
                         <li
                             onClick={() => {
-                                if (loggedIn) {
+                                if (token) {
                                     navigate("/ProfilePage");
                                 } else {
                                     alert("Please Login first to access all our services");

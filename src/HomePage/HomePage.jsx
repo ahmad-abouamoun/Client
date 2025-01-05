@@ -11,7 +11,6 @@ import "./HomePage.css";
 import BlackBox from "../Re-usableComponents/BlackBox/BlackBox";
 import BookingPage from "../BookingPage/BookingPage";
 import {useNavigate} from "react-router";
-import {useData} from "../context/DataContext";
 const HomePage = () => {
     const navigate = useNavigate();
     const token = sessionStorage.getItem("token");
