@@ -2,9 +2,13 @@ import React, {useState} from "react";
 import "./ProfilePage.css";
 import image from "../Assets/dietBackground.jpg";
 import useForm from "../hooks/useForm";
+import {useDispatch, useSelector} from "react-redux";
+import {setUser} from "../redux/userSlice";
 const ProfilePage = () => {
-    const [showPopup, setShowPopup] = useState(false);
     const token = localStorage.getItem("token");
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.users.user);
+    const [showPopup, setShowPopup] = useState(false);
     const {form, updateForm} = useForm({
         name: "",
         diabetes: false,
@@ -33,9 +37,9 @@ const ProfilePage = () => {
             });
 
             const responseData = await response.json();
-            console.log(responseData);
+            dispatch(setUser(responseData));
         } catch (error) {
-            alert("An error occurred. Please try again.");
+            alert(error.message);
         }
     };
     return (
@@ -44,7 +48,7 @@ const ProfilePage = () => {
                 <img src={image} alt="Profile Picture" className="profile-picture" />
                 <div className="profile-info">
                     <h2>
-                        Ahmad Abou Amoun
+                        {user.name}
                         <span
                             className="edit-icon"
                             onClick={() => {
