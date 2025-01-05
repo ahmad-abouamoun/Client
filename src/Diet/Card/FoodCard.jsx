@@ -1,9 +1,11 @@
 import "./Card.css";
-import image1 from "../../Assets/dietBackground.jpg";
 import React, {useState} from "react";
 import {Bookmark} from "lucide-react";
+import {useDispatch} from "react-redux";
+import {addFood} from "../../redux/userSlice";
 
 function FoodCard({card, handleShowPopup}) {
+    const dispatch = useDispatch();
     const [isBookmarked, setIsBookmarked] = useState(false);
     const token = sessionStorage.getItem("token");
     const addFavFood = async () => {
@@ -20,7 +22,7 @@ function FoodCard({card, handleShowPopup}) {
             });
 
             const responseData = await response.json();
-            console.log(responseData);
+            dispatch(addFood(card._id));
         } catch (error) {
             alert("An error occurred. Please try again.");
         }

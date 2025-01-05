@@ -1,12 +1,12 @@
 import "./NavBar.css";
 import image from "../../Assets/Logo.png";
-import image1 from "../../Assets/Logo.png";
 import {useNavigate} from "react-router";
+import {useSelector} from "react-redux";
 
 const NavBar = ({showCalendar, setShowCalendar}) => {
     const navigate = useNavigate();
     const token = sessionStorage.getItem("token");
-
+    const user = useSelector((state) => state.users.user);
     return (
         <div className="centere">
             <nav className="navbar">
@@ -61,30 +61,40 @@ const NavBar = ({showCalendar, setShowCalendar}) => {
                         <span>Meetings</span>
                     </li>
                 </ul>
-                <div className="dropdown-container">
-                    <img src={image1} alt="Diet Background" />
-                    <ul className="dropdown">
-                        <li
-                            onClick={() => {
-                                if (token) {
-                                    navigate("/ProfilePage");
-                                } else {
-                                    alert("Please Login first to access all our services");
-                                }
-                            }}
-                        >
-                            Profile Page
-                        </li>
-                        <li
-                            onClick={() => {
-                                setShowCalendar(!showCalendar);
-                            }}
-                        >
-                            Book Meeting
-                        </li>
-                        <li>Log out</li>
-                    </ul>
-                </div>
+                {token ? (
+                    <div className="dropdown-container">
+                        <img src={`http://localhost:8080/userImages/${user.filename}`} alt="Diet Background" />
+                        <ul className="dropdown">
+                            <li
+                                onClick={() => {
+                                    if (token) {
+                                        navigate("/ProfilePage");
+                                    } else {
+                                        alert("Please Login first to access all our services");
+                                    }
+                                }}
+                            >
+                                Profile Page
+                            </li>
+                            <li
+                                onClick={() => {
+                                    setShowCalendar(!showCalendar);
+                                }}
+                            >
+                                Book Meeting
+                            </li>
+                            <li>Log out</li>
+                        </ul>
+                    </div>
+                ) : (
+                    <button
+                        onClick={() => {
+                            navigate("/login");
+                        }}
+                    >
+                        Log in
+                    </button>
+                )}
             </nav>
         </div>
     );

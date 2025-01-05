@@ -5,10 +5,8 @@ import useForm from "../hooks/useForm.js";
 import {useNavigate} from "react-router";
 import {useDispatch} from "react-redux";
 import {setUser} from "../redux/userSlice.js";
-import {useData} from "../context/DataContext.js";
 const Signup = () => {
     const navigate = useNavigate();
-    const {setLoggedIn} = useData();
     const dispatch = useDispatch();
     const {form, updateForm} = useForm({
         name: "",
@@ -55,7 +53,6 @@ const Signup = () => {
             const responseData = await response.json();
             dispatch(setUser(responseData.data));
             sessionStorage.setItem("token", responseData.token);
-            setLoggedIn(true);
             navigate("/");
         } catch (error) {
             alert(error.message);

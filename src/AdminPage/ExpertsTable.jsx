@@ -43,11 +43,13 @@ const ExperTable = () => {
                 method: "POST",
                 body: formData,
             });
-
+            if (response.status === 401) {
+                throw Error("account already exists");
+            }
+            setformView(!formView);
             const responseData = await response.json();
         } catch (error) {
-            console.error("Error during registration:", error);
-            alert("An error occurred. Please try again.");
+            alert(error.message);
         }
     };
     useEffect(() => {
@@ -65,7 +67,6 @@ const ExperTable = () => {
 
         getExperts();
     }, []);
-    const CreateExpert = async () => {};
     const columnsSpecialists = [
         {
             name: "Name",
@@ -146,7 +147,7 @@ const ExperTable = () => {
                             <input type="file" name="courseMaterial" required onChange={(e) => fileChange(e)} />
                         </div>
                         <button type="submit" className="submitBtn">
-                            Create Course
+                            Create Expert Account
                         </button>
                         <button
                             onClick={() => {

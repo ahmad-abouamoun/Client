@@ -24,8 +24,6 @@ export const DataProvider = ({children}) => {
                 } catch (error) {
                     console.log(error.message);
                 }
-            } else {
-                console.log("error");
             }
         };
         getUser();

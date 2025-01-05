@@ -10,10 +10,13 @@ const userSlice = createSlice({
         setUser: (state, action) => {
             state.user = action.payload;
         },
-
+        addFood: (state, action) => {
+            state.user = {...state.user, favFoods: [...state.user.favFoods, action.payload]};
+            console.log(state.user);
+        },
         Logout: (state, action) => {},
     },
 });
 
-export const {setUser, Logout} = userSlice.actions;
+export const {setUser, Logout, addFood} = userSlice.actions;
 export default userSlice.reducer;

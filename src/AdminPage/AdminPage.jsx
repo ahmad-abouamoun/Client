@@ -1,15 +1,16 @@
 import React, {useEffect, useState} from "react";
 import DataTable from "react-data-table-component";
-import NavBar from "../Re-usableComponents/NavBar/NavBar";
 import "./AdminPage.css";
 import UserTable from "./UsersTable";
 import ExperTable from "./ExpertsTable";
+import image from "../Assets/Logo.png";
 const AdminPage = () => {
     const [output, setOutput] = useState("specialists");
 
     return (
         <div>
-            <NavBar>
+            <nav className="navbar">
+                <img src={image} alt="" />
                 <ul>
                     <li>
                         <span
@@ -31,7 +32,7 @@ const AdminPage = () => {
                     </li>
                 </ul>
                 <h3>Welcome Admin</h3>
-            </NavBar>
+            </nav>
             <div className="table-container">{output === "users" ? <UserTable /> : <ExperTable />}</div>
         </div>
     );
