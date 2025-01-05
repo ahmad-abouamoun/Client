@@ -10,6 +10,7 @@ import CryptoJS from "crypto-js";
 import BookingPage from "./BookingPage/BookingPage";
 import {useEffect} from "react";
 import {useDispatch} from "react-redux";
+import {setUser} from "./redux/userSlice";
 
 function App() {
     const dispatch = useDispatch();
@@ -27,7 +28,7 @@ function App() {
                         method: "GET",
                     });
                     const responseDate = await response.json();
-                    console.log(responseDate);
+                    dispatch(setUser(responseDate));
                 } catch (error) {
                     console.log(error.message);
                 }
