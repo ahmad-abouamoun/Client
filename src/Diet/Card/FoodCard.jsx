@@ -2,7 +2,7 @@ import "./Card.css";
 import React, {useState} from "react";
 import {Bookmark} from "lucide-react";
 import {useDispatch} from "react-redux";
-import {addFood} from "../../redux/userSlice";
+import {addFood, removeFood} from "../../redux/userSlice";
 
 function FoodCard({card, handleShowPopup}) {
     const dispatch = useDispatch();
@@ -41,7 +41,7 @@ function FoodCard({card, handleShowPopup}) {
             });
 
             const responseData = await response.json();
-            console.log(responseData);
+            dispatch(removeFood(card._id));
         } catch (error) {
             alert("An error occurred. Please try again.");
         }
