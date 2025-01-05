@@ -5,7 +5,7 @@ import {Bookmark} from "lucide-react";
 
 function FoodCard({card, handleShowPopup}) {
     const [isBookmarked, setIsBookmarked] = useState(false);
-    const token = localStorage.getItem("token");
+    const token = sessionStorage.getItem("token");
     const addFavFood = async () => {
         try {
             const response = await fetch(`http://localhost:8080/users/favFood`, {

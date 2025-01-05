@@ -5,7 +5,7 @@ import useForm from "../hooks/useForm";
 import {useDispatch, useSelector} from "react-redux";
 import {setUser} from "../redux/userSlice";
 const ProfilePage = () => {
-    const token = localStorage.getItem("token");
+    const token = sessionStorage.getItem("token");
     const dispatch = useDispatch();
     const user = useSelector((state) => state.users.user);
     const [showPopup, setShowPopup] = useState(false);

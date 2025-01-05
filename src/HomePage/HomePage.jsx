@@ -14,7 +14,7 @@ import {useNavigate} from "react-router";
 import {useData} from "../context/DataContext";
 const HomePage = () => {
     const navigate = useNavigate();
-    const {loggedIn} = useData();
+    const token = sessionStorage.getItem("token");
     const [image, setImage] = useState("");
     const [showCalendar, setShowCalendar] = useState(false);
     const images = [image1, image2, image3];
@@ -30,7 +30,7 @@ const HomePage = () => {
             <div>
                 <div className="backGround" style={{backgroundImage: `url(${images[image]})`}}>
                     <NavBar showCalendar={showCalendar} setShowCalendar={setShowCalendar} />
-                    {showCalendar && loggedIn && (
+                    {showCalendar && token && (
                         <div className=" calendar-popup ">
                             <BookingPage showCalendar={showCalendar} setShowCalendar={setShowCalendar} />
                         </div>
@@ -58,7 +58,7 @@ const HomePage = () => {
                         <span
                             className="start-link-training"
                             onClick={() => {
-                                if (loggedIn) {
+                                if (token) {
                                     navigate("/trainingPage");
                                 } else {
                                     alert("Please Login first to access all our services");
@@ -80,7 +80,7 @@ const HomePage = () => {
                         <span
                             className="start-link-diet"
                             onClick={() => {
-                                if (loggedIn) {
+                                if (token) {
                                     navigate("/dietPage");
                                 } else {
                                     alert("Please Login first to access all our services");
@@ -104,7 +104,7 @@ const HomePage = () => {
                         <span
                             className="start-link-mental"
                             onClick={() => {
-                                if (loggedIn) {
+                                if (token) {
                                     navigate("/trainingPage");
                                 } else {
                                     alert("Please Login first to access all our services");

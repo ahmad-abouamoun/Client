@@ -75,7 +75,7 @@ const BookingPage = ({showCalendar, setShowCalendar}) => {
     const handleEventSubmit = async () => {
         if (newEvent.start && newEvent.end && newEvent.type && newEvent.room) {
             const meetingData = {
-                token: localStorage.getItem("token"),
+                token: sessionStorage.getItem("token"),
                 title: newEvent.title,
                 startDate: newEvent.start,
                 endDate: newEvent.end,

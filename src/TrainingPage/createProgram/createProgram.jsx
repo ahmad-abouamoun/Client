@@ -3,7 +3,7 @@ import "./createProgram.css";
 const CreateProgram = ({show, handleClick}) => {
     const [name, setName] = useState("");
     const [file, setFile] = useState(null);
-    const token = localStorage.getItem("token");
+    const token = sessionStorage.getItem("token");
     const fileChange = (e) => {
         const selectedFile = e.target.files[0];
         if (selectedFile) {

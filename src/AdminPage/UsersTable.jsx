@@ -15,7 +15,7 @@ const UserTable = () => {
             method: "PUT",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
-                token: localStorage.getItem("token"),
+                token: sessionStorage.getItem("token"),
             }),
         });
         const data = await response.json();

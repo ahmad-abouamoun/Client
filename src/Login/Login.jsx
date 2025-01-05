@@ -36,7 +36,7 @@ const Login = () => {
             }
             const responseData = await response.json();
             dispatch(setUser(responseData.data));
-            localStorage.setItem("token", responseData.token);
+            sessionStorage.setItem("token", responseData.token);
             navigate("/");
         } catch (error) {
             alert(error.message);
