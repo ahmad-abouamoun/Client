@@ -11,12 +11,12 @@ import "./HomePage.css";
 import BlackBox from "../Re-usableComponents/BlackBox/BlackBox";
 import BookingPage from "../BookingPage/BookingPage";
 import {useNavigate} from "react-router";
+import {useData} from "../context/DataContext";
 const HomePage = () => {
     const navigate = useNavigate();
-
+    const {loggedIn} = useData();
     const [image, setImage] = useState("");
     const [showCalendar, setShowCalendar] = useState(false);
-    const [logged, setLogged] = useState(false);
     const images = [image1, image2, image3];
     useEffect(() => {
         const interval = setInterval(() => {
@@ -30,7 +30,7 @@ const HomePage = () => {
             <div>
                 <div className="backGround" style={{backgroundImage: `url(${images[image]})`}}>
                     <NavBar showCalendar={showCalendar} setShowCalendar={setShowCalendar} />
-                    {showCalendar && (
+                    {showCalendar && loggedIn && (
                         <div className=" calendar-popup ">
                             <BookingPage showCalendar={showCalendar} setShowCalendar={setShowCalendar} />
                         </div>
@@ -58,7 +58,11 @@ const HomePage = () => {
                         <span
                             className="start-link-training"
                             onClick={() => {
-                                navigate("/trainingPage");
+                                if (loggedIn) {
+                                    navigate("/trainingPage");
+                                } else {
+                                    alert("Please Login first to access all our services");
+                                }
                             }}
                         >
                             Start Now →
@@ -76,7 +80,11 @@ const HomePage = () => {
                         <span
                             className="start-link-diet"
                             onClick={() => {
-                                navigate("/dietPage");
+                                if (loggedIn) {
+                                    navigate("/dietPage");
+                                } else {
+                                    alert("Please Login first to access all our services");
+                                }
                             }}
                         >
                             Start Now →
@@ -96,7 +104,11 @@ const HomePage = () => {
                         <span
                             className="start-link-mental"
                             onClick={() => {
-                                navigate("/trainingPage");
+                                if (loggedIn) {
+                                    navigate("/trainingPage");
+                                } else {
+                                    alert("Please Login first to access all our services");
+                                }
                             }}
                         >
                             Start Now →

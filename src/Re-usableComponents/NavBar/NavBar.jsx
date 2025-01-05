@@ -2,9 +2,12 @@ import "./NavBar.css";
 import image from "../../Assets/Logo.png";
 import image1 from "../../Assets/Logo.png";
 import {useNavigate} from "react-router";
+import {useData} from "../../context/DataContext";
 
 const NavBar = ({showCalendar, setShowCalendar}) => {
     const navigate = useNavigate();
+    const {loggedIn} = useData();
+
     return (
         <div className="centere">
             <nav className="navbar">
@@ -19,7 +22,11 @@ const NavBar = ({showCalendar, setShowCalendar}) => {
                     <li>
                         <span
                             onClick={() => {
-                                navigate("/trainingPage");
+                                if (loggedIn) {
+                                    navigate("/trainingPage");
+                                } else {
+                                    alert("Please Login first to access all our services");
+                                }
                             }}
                         >
                             Training
@@ -28,7 +35,11 @@ const NavBar = ({showCalendar, setShowCalendar}) => {
                     <li>
                         <span
                             onClick={() => {
-                                navigate("/dietPage");
+                                if (loggedIn) {
+                                    navigate("/dietPage");
+                                } else {
+                                    alert("Please Login first to access all our services");
+                                }
                             }}
                         >
                             Diet
@@ -37,7 +48,11 @@ const NavBar = ({showCalendar, setShowCalendar}) => {
                     <li>
                         <span
                             onClick={() => {
-                                navigate("/trainingPage");
+                                if (loggedIn) {
+                                    navigate("/trainingPage");
+                                } else {
+                                    alert("Please Login first to access all our services");
+                                }
                             }}
                         >
                             Mental Health
@@ -52,7 +67,11 @@ const NavBar = ({showCalendar, setShowCalendar}) => {
                     <ul className="dropdown">
                         <li
                             onClick={() => {
-                                navigate("/ProfilePage");
+                                if (loggedIn) {
+                                    navigate("/ProfilePage");
+                                } else {
+                                    alert("Please Login first to access all our services");
+                                }
                             }}
                         >
                             Profile Page

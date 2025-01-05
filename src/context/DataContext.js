@@ -8,4 +8,4 @@ export const DataProvider = ({children}) => {
 
     return <DataContext.Provider value={{loggedIn, setLoggedIn}}>{children}</DataContext.Provider>;
 };
-export const useQuiz = () => useContext(DataContext);
+export const useData = () => useContext(DataContext);
