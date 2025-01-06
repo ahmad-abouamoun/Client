@@ -40,30 +40,13 @@ const TrainingPage = () => {
     return (
         <div>
             <div className="backGround" style={{backgroundImage: ` url(${image})`}}>
-                <NavBar>
-                    <ul>
-                        <li>
-                            <span>Training</span>
-                        </li>
-                        <li>
-                            <span>Diet</span>
-                        </li>
-                        <li>
-                            <span>Mental Health</span>
-                        </li>
-                        <li>
-                            <span>Meetings</span>
-                        </li>
-                    </ul>
-                    <img src={image1} alt="Diet Background" />
-                </NavBar>
+                <NavBar />
 
                 <BlackBox>
                     <h1>
                         "The pain you feel today will be the strength you feel tomorrow." <br />
                         Arnold Schwarzenegger
                     </h1>
-                    <button>Book Now</button>
                 </BlackBox>
             </div>
             <div className="section-title">

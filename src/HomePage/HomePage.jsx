@@ -11,11 +11,12 @@ import "./HomePage.css";
 import BlackBox from "../Re-usableComponents/BlackBox/BlackBox";
 import BookingPage from "../BookingPage/BookingPage";
 import {useNavigate} from "react-router";
+import {useData} from "../context/DataContext";
 const HomePage = () => {
     const navigate = useNavigate();
     const token = sessionStorage.getItem("token");
     const [image, setImage] = useState("");
-    const [showCalendar, setShowCalendar] = useState(false);
+    const {showCalendar, setShowCalendar} = useData();
     const images = [image1, image2, image3];
     useEffect(() => {
         const interval = setInterval(() => {
@@ -28,22 +29,15 @@ const HomePage = () => {
         <div>
             <div>
                 <div className="backGround" style={{backgroundImage: `url(${images[image]})`}}>
-                    <NavBar showCalendar={showCalendar} setShowCalendar={setShowCalendar} />
+                    <NavBar />
                     {showCalendar && token && (
                         <div className=" calendar-popup ">
-                            <BookingPage showCalendar={showCalendar} setShowCalendar={setShowCalendar} />
+                            <BookingPage />
                         </div>
                     )}
                     <BlackBox>
                         <h1>Welcome to Balance Beacon</h1>
                         <p>Book a meeting now with one of our specialists</p>
-                        <button
-                            onClick={() => {
-                                setShowCalendar(!showCalendar);
-                            }}
-                        >
-                            Book Now
-                        </button>
                     </BlackBox>
                 </div>
                 <div className="section">

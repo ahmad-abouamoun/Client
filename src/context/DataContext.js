@@ -1,4 +1,4 @@
-import {useContext} from "react";
+import {useContext, useState} from "react";
 import {createContext} from "react";
 import {useEffect} from "react";
 import {useDispatch} from "react-redux";
@@ -7,6 +7,10 @@ import {setUser} from "../redux/userSlice";
 const DataContext = createContext();
 export const DataProvider = ({children}) => {
     const dispatch = useDispatch();
+    const [showCalendar, setShowCalendar] = useState(false);
+    const handleCalendar = () => {
+        setShowCalendar(!showCalendar);
+    };
     useEffect(() => {
         const getUser = async () => {
             const token = sessionStorage.getItem("token");
@@ -28,6 +32,6 @@ export const DataProvider = ({children}) => {
         };
         getUser();
     }, []);
-    return <DataContext.Provider>{children}</DataContext.Provider>;
+    return <DataContext.Provider value={(showCalendar, handleCalendar)}>{children}</DataContext.Provider>;
 };
 export const useData = () => useContext(DataContext);

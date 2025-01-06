@@ -7,7 +7,6 @@ import DietPage from "./Diet/Diet";
 import ProfilePage from "./ProfilePage/ProfilePage";
 import TrainingPage from "./TrainingPage/TrainingPage";
 import CryptoJS from "crypto-js";
-import BookingPage from "./BookingPage/BookingPage";
 
 function App() {
     return (
@@ -18,7 +17,6 @@ function App() {
                 <Route path="/Login" element={<Login />} />
                 <Route path="/trainingPage" element={<TrainingPage />} />
                 <Route path="/dietPage" element={<DietPage />} />
-                <Route path="/BookingPage" element={<BookingPage />} />
                 <Route path="/ProfilePage" element={<ProfilePage />} />
                 <Route path="/adminPage" element={<AdminPage />} />
             </Routes>

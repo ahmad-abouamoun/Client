@@ -2,9 +2,11 @@ import "./NavBar.css";
 import image from "../../Assets/Logo.png";
 import {useNavigate} from "react-router";
 import {useSelector} from "react-redux";
+import {useData} from "../../context/DataContext";
 
-const NavBar = ({showCalendar, setShowCalendar}) => {
+const NavBar = () => {
     const navigate = useNavigate();
+    const {showCalendar, setShowCalendar} = useData();
     const token = sessionStorage.getItem("token");
     const user = useSelector((state) => state.users.user);
     return (
