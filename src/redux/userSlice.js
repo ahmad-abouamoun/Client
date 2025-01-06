@@ -12,15 +12,22 @@ const userSlice = createSlice({
         },
         addFood: (state, action) => {
             state.user = {...state.user, favFoods: [...state.user.favFoods, action.payload]};
-            console.log(state.user);
         },
         removeFood: (state, action) => {
             state.user = {...state.user, favFoods: state.user.favFoods.filter((food) => food !== action.payload)};
-            console.log(state.user);
+        },
+        addProgram: (state, action) => {
+            state.user = {...state.user, favPrograms: [...state.user.favPrograms, action.payload]};
+        },
+        removeProgram: (state, action) => {
+            state.user = {
+                ...state.user,
+                favPrograms: state.user.favPrograms.filter((program) => program !== action.payload),
+            };
         },
         Logout: (state, action) => {},
     },
 });
 
-export const {setUser, Logout, addFood, removeFood} = userSlice.actions;
+export const {setUser, Logout, addFood, removeFood, removeProgram, addProgram} = userSlice.actions;
 export default userSlice.reducer;

@@ -8,7 +8,9 @@ import PageNumber from "../Re-usableComponents/PageNumber/PageNumbers";
 import ProgramPopup from "./PopUp/ProgramPopup";
 import "./TrainingPage.css";
 import CreateProgram from "./createProgram/CreateProgram";
+import {useSelector} from "react-redux";
 const TrainingPage = () => {
+    const user = useSelector((state) => state.users.user);
     const [programs, setPrograms] = useState([]);
     const [programNum, setProgramNum] = useState(1);
     const [showPopup, setShowPopup] = useState();
@@ -64,6 +66,18 @@ const TrainingPage = () => {
                     <button>Book Now</button>
                 </BlackBox>
             </div>
+            <div className="section-title">
+                <span>Reccomended Food</span>
+                {user.type === "coach" && (
+                    <button
+                        onClick={() => {
+                            setCreateProgram(!createProgram);
+                        }}
+                    >
+                        Add a Program
+                    </button>
+                )}
+            </div>
             <div className="recommended-section">
                 <h2>Training Programs</h2>
                 <div className="cards-container">
@@ -72,15 +86,7 @@ const TrainingPage = () => {
                     ))}
                 </div>
                 <PageNumber numItems={programChunk.length} setNumber={setProgramNum} />
-                <div className="addBtn">
-                    <button
-                        onClick={() => {
-                            setCreateProgram(!createProgram);
-                        }}
-                    >
-                        Add a Program
-                    </button>
-                </div>
+                <div className="addBtn"></div>
             </div>
             <CreateProgram show={createProgram} handleClick={setCreateProgram} />
             <ProgramPopup setShowPopup={setShowPopup} showPopup={showPopup} />

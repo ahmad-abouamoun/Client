@@ -1,11 +1,21 @@
 import "./Card.css";
-import image1 from "../../Assets/dietBackground.jpg";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Bookmark} from "lucide-react";
+import {useDispatch, useSelector} from "react-redux";
+import {addFood, addProgram, removeProgram} from "../../redux/userSlice";
 
 function ProgramCard({card, handleShowPopup}) {
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.users.user);
     const [isBookmarked, setIsBookmarked] = useState(false);
     const token = sessionStorage.getItem("token");
+
+    useEffect(() => {
+        if (user.favPrograms?.includes(card._id)) {
+            setIsBookmarked(true);
+        }
+    }, [user.favPrograms, card._id]);
+
     const addFavProgram = async () => {
         try {
             const response = await fetch(`http://localhost:8080/users/favProgram`, {
@@ -20,7 +30,7 @@ function ProgramCard({card, handleShowPopup}) {
             });
 
             const responseData = await response.json();
-            console.log(responseData);
+            dispatch(addProgram(card._id));
         } catch (error) {
             alert("An error occurred. Please try again.");
         }
@@ -39,7 +49,7 @@ function ProgramCard({card, handleShowPopup}) {
             });
 
             const responseData = await response.json();
-            console.log(responseData);
+            dispatch(removeProgram(card._id));
         } catch (error) {
             alert("An error occurred. Please try again.");
         }
@@ -48,7 +58,12 @@ function ProgramCard({card, handleShowPopup}) {
         <div>
             <div className={`card`}>
                 <div className="bookmark">
-                    <div>
+                    <div
+                        onClick={() => {
+                            setIsBookmarked(!isBookmarked);
+                            isBookmarked ? removeFavProgram() : addFavProgram();
+                        }}
+                    >
                         <Bookmark stroke="#ff6f61" fill={isBookmarked ? "#ff6f61" : "none"} />
                     </div>
                     <img
@@ -65,12 +80,6 @@ function ProgramCard({card, handleShowPopup}) {
                     <button className="learn-more" onClick={() => handleShowPopup(card)}>
                         Learn More
                     </button>
-                    <div
-                        onClick={() => {
-                            setIsBookmarked(!isBookmarked);
-                            isBookmarked ? removeFavProgram() : addFavProgram();
-                        }}
-                    ></div>
                 </div>
             </div>
         </div>
