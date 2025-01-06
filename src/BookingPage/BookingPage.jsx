@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Calendar, dateFnsLocalizer} from "react-big-calendar";
 import {format, parse, startOfWeek, getDay, addMinutes, setHours, setMinutes} from "date-fns";
 import {enUS} from "date-fns/locale";
@@ -16,6 +16,7 @@ const localizer = dateFnsLocalizer({
 });
 
 const BookingPage = () => {
+    const token = sessionStorage.getItem("token");
     const dispatch = useDispatch();
 
     const [events, setEvents] = useState([]);
@@ -79,7 +80,7 @@ const BookingPage = () => {
     const handleEventSubmit = async () => {
         if (newEvent.start && newEvent.end && newEvent.type && newEvent.room) {
             const meetingData = {
-                token: sessionStorage.getItem("token"),
+                token,
                 title: newEvent.title,
                 startDate: newEvent.start,
                 endDate: newEvent.end,
@@ -95,7 +96,6 @@ const BookingPage = () => {
                     body: JSON.stringify(meetingData),
                 });
                 const data = await response.json();
-                console.log(data);
                 if (data.status !== "failed") {
                     setEvents([
                         ...events,
@@ -114,6 +114,20 @@ const BookingPage = () => {
             alert("Please fill out all fields.");
         }
     };
+    useEffect(() => {
+        const getMeetings = async () => {
+            const response = await fetch("http://localhost:8080/meetings", {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    token,
+                },
+            });
+            const data = await response.json();
+            console.log(data);
+        };
+        getMeetings();
+    }, []);
 
     const handleSlotSelect = (slotInfo) => {
         setSelectedDate(slotInfo.start);
