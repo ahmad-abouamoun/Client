@@ -72,7 +72,6 @@ const DietPage = () => {
                 )}
                 <BlackBox>
                     <h1>"Let food be thy medicine and medicine be thy food." - Hippocrates</h1>
-                    <button>Book Now</button>
                 </BlackBox>
             </div>
             <div className="section-title">

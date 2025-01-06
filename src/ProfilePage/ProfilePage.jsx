@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import "./ProfilePage.css";
 import image from "../Assets/dietBackground.jpg";
 import useForm from "../hooks/useForm";
@@ -42,10 +42,36 @@ const ProfilePage = () => {
             alert(error.message);
         }
     };
+    useEffect(() => {
+        const getFavProgram = async () => {
+            const response = await fetch("http://localhost:8080/users/favProgram", {
+                method: "GET",
+                headers: {token},
+            });
+            const data = await response.json();
+            console.log("========program============");
+
+            console.log(data);
+        };
+        getFavProgram();
+    }, []);
+    useEffect(() => {
+        const getFavProgram = async () => {
+            const response = await fetch("http://localhost:8080/users/favFood", {
+                method: "GET",
+                headers: {token},
+            });
+            const data = await response.json();
+            console.log("========food============");
+
+            console.log(data);
+        };
+        getFavProgram();
+    }, []);
     return (
         <div className="profile-container">
             <div className="profile-overlay">
-                <img src={image} alt="Profile Picture" className="profile-picture" />
+                <img src={`http://localhost:8080/userImages/${user.filename}`} alt="" className="profile-picture" />
                 <div className="profile-info">
                     <h2>
                         {user.name}
