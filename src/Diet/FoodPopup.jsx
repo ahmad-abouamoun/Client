@@ -9,7 +9,7 @@ function FoodPopup({showPopup, setShowPopup}) {
                     <button
                         className="close-popup"
                         onClick={() => {
-                            setShowPopup(false);
+                            setShowPopup();
                         }}
                     >
                         &times;

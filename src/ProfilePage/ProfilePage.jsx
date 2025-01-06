@@ -7,6 +7,8 @@ import {setUser} from "../redux/userSlice";
 import FoodCard from "../Diet/Card/FoodCard";
 import PageNumber from "../Re-usableComponents/PageNumber/PageNumbers";
 import ProgramCard from "../TrainingPage/Card/ProgramCard";
+import FoodPopup from "../Diet/FoodPopup";
+import ProgramPopup from "../TrainingPage/PopUp/ProgramPopup";
 
 const ProfilePage = () => {
     const token = sessionStorage.getItem("token");
@@ -19,6 +21,9 @@ const ProfilePage = () => {
     const dispatch = useDispatch();
     const user = useSelector((state) => state.users.user);
     const [showPopup, setShowPopup] = useState(false);
+    const [showProgramPopup, setShowProgramPopup] = useState(false);
+    const [showFoodPopup, setShowFoodPopup] = useState(false);
+
     const {form, updateForm} = useForm({
         name: "",
         diabetes: false,
@@ -171,20 +176,23 @@ const ProfilePage = () => {
                 <h2>Favorited Food</h2>
                 <div className="cards-container">
                     {favFoodChunks[favFoodNum - 1]?.map((card) => (
-                        <FoodCard handleShowPopup={handleShowPopup} key={card._id} card={card} />
+                        <FoodCard handleShowPopup={setShowFoodPopup} key={card._id} card={card} />
                     ))}
                 </div>
                 <PageNumber numItems={favFoodChunks.length} setNumber={setFavFoodNum} />
             </div>
+            <FoodPopup setShowPopup={setShowFoodPopup} showPopup={showFoodPopup} />
+
             <div className="recommended-section">
                 <h2>Favorited Program</h2>
                 <div className="cards-container">
                     {favProgramChunks[favProgramNum - 1]?.map((card) => (
-                        <ProgramCard handleShowPopup={handleShowPopup} key={card._id} card={card} />
+                        <ProgramCard handleShowPopup={setShowProgramPopup} key={card._id} card={card} />
                     ))}
                 </div>
                 <PageNumber numItems={favProgramChunks.length} setNumber={setFavProgramNum} />
             </div>
+            <ProgramPopup setShowPopup={setShowProgramPopup} showPopup={showProgramPopup} />
         </div>
     );
 };
