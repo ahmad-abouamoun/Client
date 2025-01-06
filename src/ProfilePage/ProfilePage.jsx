@@ -4,8 +4,14 @@ import image from "../Assets/dietBackground.jpg";
 import useForm from "../hooks/useForm";
 import {useDispatch, useSelector} from "react-redux";
 import {setUser} from "../redux/userSlice";
+
 const ProfilePage = () => {
     const token = sessionStorage.getItem("token");
+    const [favFood, setFavFood] = useState([]);
+    const [favProgram, setFavProgram] = useState([]);
+    const [favFoodNum, setFavFoodNum] = useState(1);
+    const [favProgramNum, setFavProgramNum] = useState(1);
+
     const dispatch = useDispatch();
     const user = useSelector((state) => state.users.user);
     const [showPopup, setShowPopup] = useState(false);
@@ -49,9 +55,7 @@ const ProfilePage = () => {
                 headers: {token},
             });
             const data = await response.json();
-            console.log("========program============");
-
-            console.log(data);
+            setFavFood(data);
         };
         getFavProgram();
     }, []);
@@ -62,12 +66,21 @@ const ProfilePage = () => {
                 headers: {token},
             });
             const data = await response.json();
-            console.log("========food============");
-
-            console.log(data);
+            setFavProgram(data);
         };
         getFavProgram();
     }, []);
+
+    function Chuncks(arr) {
+        let res = [];
+        for (let i = 0; i < arr.length; i += 4) {
+            res.push(arr.slice(i, i + 4));
+        }
+        return res;
+    }
+    let favFoodChunks, favProgramChunks;
+    favFoodChunks = Chuncks(favFood);
+    favProgramChunks = Chuncks(favProgram);
     return (
         <div className="profile-container">
             <div className="profile-overlay">
