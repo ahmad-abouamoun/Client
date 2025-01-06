@@ -9,7 +9,7 @@ const AdminPage = () => {
 
     return (
         <div>
-            <nav className="navbar">
+            <nav className="nav">
                 <img src={image} alt="" />
                 <ul>
                     <li>

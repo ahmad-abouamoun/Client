@@ -1,11 +1,11 @@
-Diet .css .recommended-section {
+.recommended-section {
     padding: 20px;
-    text-align: center;
+    text-align: left;
 }
 
 .cards-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     gap: 16px;
     overflow: scroll;
     margin: 20px 0;

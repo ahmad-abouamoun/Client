@@ -75,7 +75,7 @@
     justify-content: center;
 }
 
-.navbar {
+.nav {
     display: flex;
     z-index: 1;
     padding: 10px;
@@ -86,7 +86,7 @@
     justify-content: space-between;
 }
 
-.navbar > ul {
+.nav > ul {
     display: flex;
     flex-grow: 0.8;
     justify-content: space-between;
@@ -95,7 +95,7 @@
     margin: 0 20px;
 }
 
-.navbar ul > li {
+.nav ul > li {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -105,19 +105,19 @@
     transition: all 0.5s;
 }
 
-.navbar > ul > li > span {
+.nav > ul > li > span {
     text-decoration: none;
     color: black;
     font-size: 16px;
     cursor: pointer;
 }
 
-.navbar ul > li > span:hover {
+.nav ul > li > span:hover {
     color: #ff6f61;
     text-decoration: underline;
 }
 
-.navbar > button {
+.nav > button {
     height: 30px;
     width: 100px;
     border-radius: 10px;
@@ -125,7 +125,7 @@
     cursor: pointer;
 }
 
-.navbar img {
+.nav img {
     height: 50px;
     width: 50px;
     border-radius: 30px;

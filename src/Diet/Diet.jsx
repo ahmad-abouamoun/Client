@@ -47,7 +47,7 @@ const DietPage = () => {
     return (
         <div>
             <div className="backGround" style={{backgroundImage: ` url(${image1})`}}>
-                <NavBar></NavBar>
+                <NavBar />
 
                 <BlackBox>
                     <h1>"Let food be thy medicine and medicine be thy food." - Hippocrates</h1>

@@ -1,12 +1,20 @@
 import "./Card.css";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Bookmark} from "lucide-react";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {addFood, removeFood} from "../../redux/userSlice";
 
 function FoodCard({card, handleShowPopup}) {
     const dispatch = useDispatch();
+    const user = useSelector((state) => state.users.user);
     const [isBookmarked, setIsBookmarked] = useState(false);
+
+    useEffect(() => {
+        if (user.favFoods?.includes(card._id)) {
+            setIsBookmarked(true);
+        }
+    }, [user.favFoods, card._id]);
+
     const token = sessionStorage.getItem("token");
     const addFavFood = async () => {
         try {
@@ -48,7 +56,17 @@ function FoodCard({card, handleShowPopup}) {
     };
     return (
         <div>
-            <div className={`card`}>
+            <div className="card">
+                <div className="bookmark">
+                    <div
+                        onClick={() => {
+                            setIsBookmarked(!isBookmarked);
+                            isBookmarked ? removeFavFood() : addFavFood();
+                        }}
+                    >
+                        <Bookmark stroke="#ff6f61" fill={isBookmarked ? "#ff6f61" : "none"} />
+                    </div>
+                </div>
                 <img
                     className="card-image"
                     src={`http://localhost:8080/foodImages/${card.filename}`}
@@ -62,14 +80,6 @@ function FoodCard({card, handleShowPopup}) {
                     <button className="learn-more" onClick={() => handleShowPopup(card)}>
                         Learn More
                     </button>
-                    <div
-                        onClick={() => {
-                            setIsBookmarked(!isBookmarked);
-                            isBookmarked ? removeFavFood() : addFavFood();
-                        }}
-                    >
-                        <Bookmark fill={isBookmarked ? "#ff6f61" : "none"} />
-                    </div>
                 </div>
             </div>
         </div>
