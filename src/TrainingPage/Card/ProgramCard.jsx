@@ -47,11 +47,16 @@ function ProgramCard({card, handleShowPopup}) {
     return (
         <div>
             <div className={`card`}>
-                <img
-                    className="card-image"
-                    src={`http://localhost:8080/programsImages/${card.filename}`}
-                    alt="Healthy Eating"
-                />
+                <div className="bookmark">
+                    <div>
+                        <Bookmark stroke="#ff6f61" fill={isBookmarked ? "#ff6f61" : "none"} />
+                    </div>
+                    <img
+                        className="card-image"
+                        src={`http://localhost:8080/programsImages/${card.filename}`}
+                        alt="Healthy Eating"
+                    />
+                </div>
                 <div className="card-content">
                     <h2 className="card-title">{card.name}</h2>
                     <p className="card-description">{card.description}</p>
@@ -65,9 +70,7 @@ function ProgramCard({card, handleShowPopup}) {
                             setIsBookmarked(!isBookmarked);
                             isBookmarked ? removeFavProgram() : addFavProgram();
                         }}
-                    >
-                        <Bookmark fill={isBookmarked ? "#ff6f61" : "none"} />
-                    </div>
+                    ></div>
                 </div>
             </div>
         </div>

@@ -7,10 +7,15 @@ import PageNumber from "../Re-usableComponents/PageNumber/PageNumbers";
 import FoodCard from "./Card/FoodCard";
 import FoodPopup from "./FoodPopup";
 import CreateFood from "./CreateFood/CreateFood";
+import {useSelector} from "react-redux";
 
 const DietPage = () => {
+    const user = useSelector((state) => state.users.user);
     const [foods, setFoods] = useState([]);
+    const [reccomendedNum, setReccomendedNum] = useState(1);
+
     const [noDiaPageNum, setnoDiaPageNum] = useState(1);
+
     const [noColPageNum, setNoColPageNum] = useState(1);
     const [noHyPageNum, setNoHyPageNum] = useState(1);
     const [showPopup, setShowPopup] = useState();
@@ -31,6 +36,15 @@ const DietPage = () => {
     const NoDiabetes = useMemo(() => foods.filter((food) => food.diseases.diabetes === false), [foods]);
     const NoCholesterol = useMemo(() => foods.filter((food) => food.diseases.highCholesterol === false), [foods]);
     const NoHypertension = useMemo(() => foods.filter((food) => food.diseases.hypertension === false), [foods]);
+    const Reccomended = useMemo(
+        () =>
+            foods
+            .filter((food) => !(user.diseases.diabetes && food.diseases.diabetes))
+            .filter((food) => !(user.diseases.highCholesterol && food.diseases.highCholesterol))
+            .filter((food) => !(user.diseases.hypertension && food.diseases.hypertension)),
+
+        [foods]
+    );
 
     function Chuncks(arr) {
         let res = [];
@@ -39,11 +53,11 @@ const DietPage = () => {
         }
         return res;
     }
-    let noDiaChunks, noColChunks, noHyChunks;
+    let noDiaChunks, noColChunks, noHyChunks, reccomended;
     noDiaChunks = Chuncks(NoDiabetes);
     noColChunks = Chuncks(NoCholesterol);
     noHyChunks = Chuncks(NoHypertension);
-
+    reccomended = Chuncks(Reccomended);
     return (
         <div>
             <div className="backGround" style={{backgroundImage: ` url(${image1})`}}>
@@ -53,6 +67,28 @@ const DietPage = () => {
                     <h1>"Let food be thy medicine and medicine be thy food." - Hippocrates</h1>
                     <button>Book Now</button>
                 </BlackBox>
+            </div>
+            <div className="section-title">
+                <span>Reccomended Food</span>
+                {user.type === "nutritionist" && (
+                    <button
+                        onClick={() => {
+                            setShowForm(true);
+                            console.log(Reccomended);
+                        }}
+                    >
+                        Add Food
+                    </button>
+                )}
+            </div>
+            <div className="recommended-section">
+                <h2>food</h2>
+                <div className="cards-container">
+                    {reccomended[reccomendedNum - 1]?.map((card) => (
+                        <FoodCard handleShowPopup={handleShowPopup} key={card._id} card={card} />
+                    ))}
+                </div>
+                <PageNumber numItems={reccomended.length} setNumber={setReccomendedNum} />
             </div>
             <div className="recommended-section">
                 <h2>No Diabetes</h2>
@@ -82,15 +118,6 @@ const DietPage = () => {
                 <PageNumber numItems={noHyChunks.length} setNumber={setNoHyPageNum} />
             </div>
             <FoodPopup setShowPopup={setShowPopup} showPopup={showPopup} />
-            <div className="addBtn">
-                <button
-                    onClick={() => {
-                        setShowForm(true);
-                    }}
-                >
-                    Add Food
-                </button>
-            </div>
             <CreateFood show={showForm} handleClick={setShowForm} />
         </div>
     );

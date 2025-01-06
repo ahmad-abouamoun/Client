@@ -1,12 +1,41 @@
 .recommended-section {
-    padding: 20px;
+    padding: 10px;
     text-align: left;
 }
 
 .cards-container {
     display: flex;
-    justify-content: space-between;
-    gap: 16px;
-    overflow: scroll;
+    justify-content: start;
+    overflow-x: scroll;
     margin: 20px 0;
+}
+.cards-container::-webkit-scrollbar {
+    opacity: 0;
+}
+.section-title {
+    display: flex;
+    justify-content: center;
+    align-items: space-between;
+    width: 100%;
+    padding: 20px;
+}
+
+.section-title span {
+    margin: 0 auto;
+    font-size: 1.2rem;
+    text-align: center;
+    font-weight: bold;
+    font-size: xx-large;
+}
+
+.section-title button {
+    padding: 8px 16px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .cards-container::-webkit-scrollbar {
+        opacity: 1;
+    }
 }

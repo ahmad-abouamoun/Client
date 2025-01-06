@@ -7,6 +7,7 @@
     transition: transform 0.3s ease;
     margin-bottom: 1rem;
     z-index: 0;
+    margin-left: 40px;
 }
 
 .card-image {
