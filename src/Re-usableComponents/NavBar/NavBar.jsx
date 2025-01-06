@@ -1,12 +1,13 @@
 import "./NavBar.css";
 import image from "../../Assets/Logo.png";
 import {useNavigate} from "react-router";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {useData} from "../../context/DataContext";
+import {handleCalendar} from "../../redux/calendarSlice";
 
 const NavBar = () => {
     const navigate = useNavigate();
-    const {showCalendar, setShowCalendar} = useData();
+    const dispatch = useDispatch();
     const token = sessionStorage.getItem("token");
     const user = useSelector((state) => state.users.user);
     return (
@@ -16,6 +17,7 @@ const NavBar = () => {
                     src={image}
                     alt=""
                     onClick={() => {
+                        dispatch(handleCalendar(false));
                         navigate("/");
                     }}
                 />
@@ -24,6 +26,8 @@ const NavBar = () => {
                         <span
                             onClick={() => {
                                 if (token) {
+                                    dispatch(handleCalendar(false));
+
                                     navigate("/trainingPage");
                                 } else {
                                     alert("Please Login first to access all our services");
@@ -37,6 +41,8 @@ const NavBar = () => {
                         <span
                             onClick={() => {
                                 if (token) {
+                                    dispatch(handleCalendar(false));
+
                                     navigate("/dietPage");
                                 } else {
                                     alert("Please Login first to access all our services");
@@ -50,6 +56,7 @@ const NavBar = () => {
                         <span
                             onClick={() => {
                                 if (token) {
+                                    dispatch(handleCalendar(false));
                                     navigate("/trainingPage");
                                 } else {
                                     alert("Please Login first to access all our services");
@@ -80,7 +87,7 @@ const NavBar = () => {
                             </li>
                             <li
                                 onClick={() => {
-                                    setShowCalendar(!showCalendar);
+                                    dispatch(handleCalendar(true));
                                 }}
                             >
                                 Book Meeting
@@ -91,6 +98,8 @@ const NavBar = () => {
                 ) : (
                     <button
                         onClick={() => {
+                            dispatch(handleCalendar(false));
+
                             navigate("/login");
                         }}
                     >

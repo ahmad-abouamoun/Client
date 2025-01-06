@@ -11,12 +11,12 @@ import "./HomePage.css";
 import BlackBox from "../Re-usableComponents/BlackBox/BlackBox";
 import BookingPage from "../BookingPage/BookingPage";
 import {useNavigate} from "react-router";
-import {useData} from "../context/DataContext";
+import {useSelector} from "react-redux";
 const HomePage = () => {
     const navigate = useNavigate();
     const token = sessionStorage.getItem("token");
     const [image, setImage] = useState("");
-    const {showCalendar, setShowCalendar} = useData();
+    const showCalendar = useSelector((state) => state.calendar.calendar);
     const images = [image1, image2, image3];
     useEffect(() => {
         const interval = setInterval(() => {

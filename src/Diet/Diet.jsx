@@ -8,9 +8,12 @@ import FoodCard from "./Card/FoodCard";
 import FoodPopup from "./FoodPopup";
 import CreateFood from "./CreateFood/CreateFood";
 import {useSelector} from "react-redux";
+import BookingPage from "../BookingPage/BookingPage";
 
 const DietPage = () => {
     const user = useSelector((state) => state.users.user);
+    const showCalendar = useSelector((state) => state.calendar.calendar);
+
     const [foods, setFoods] = useState([]);
     const [reccomendedNum, setReccomendedNum] = useState(1);
 
@@ -62,7 +65,11 @@ const DietPage = () => {
         <div>
             <div className="backGround" style={{backgroundImage: ` url(${image1})`}}>
                 <NavBar />
-
+                {showCalendar && (
+                    <div className=" calendar-popup ">
+                        <BookingPage />
+                    </div>
+                )}
                 <BlackBox>
                     <h1>"Let food be thy medicine and medicine be thy food." - Hippocrates</h1>
                     <button>Book Now</button>

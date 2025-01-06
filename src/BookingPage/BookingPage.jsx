@@ -4,6 +4,8 @@ import {format, parse, startOfWeek, getDay, addMinutes, setHours, setMinutes} fr
 import {enUS} from "date-fns/locale";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "./BookingPage.css";
+import {useDispatch} from "react-redux";
+import {handleCalendar} from "../redux/calendarSlice";
 
 const localizer = dateFnsLocalizer({
     format,
@@ -13,7 +15,9 @@ const localizer = dateFnsLocalizer({
     locales: {"en-US": enUS},
 });
 
-const BookingPage = ({showCalendar, setShowCalendar}) => {
+const BookingPage = () => {
+    const dispatch = useDispatch();
+
     const [events, setEvents] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [selectedDate, setSelectedDate] = useState(new Date());
@@ -121,7 +125,7 @@ const BookingPage = ({showCalendar, setShowCalendar}) => {
         <div className="calendar">
             <button
                 onClick={() => {
-                    setShowCalendar(!showCalendar);
+                    dispatch(handleCalendar(false));
                 }}
                 className="close-calendar"
             >

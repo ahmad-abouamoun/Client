@@ -9,8 +9,11 @@ import ProgramPopup from "./PopUp/ProgramPopup";
 import "./TrainingPage.css";
 import CreateProgram from "./createProgram/CreateProgram";
 import {useSelector} from "react-redux";
+import BookingPage from "../BookingPage/BookingPage";
 const TrainingPage = () => {
     const user = useSelector((state) => state.users.user);
+    const showCalendar = useSelector((state) => state.calendar.calendar);
+
     const [programs, setPrograms] = useState([]);
     const [programNum, setProgramNum] = useState(1);
     const [showPopup, setShowPopup] = useState();
@@ -41,7 +44,11 @@ const TrainingPage = () => {
         <div>
             <div className="backGround" style={{backgroundImage: ` url(${image})`}}>
                 <NavBar />
-
+                {showCalendar && (
+                    <div className=" calendar-popup ">
+                        <BookingPage />
+                    </div>
+                )}
                 <BlackBox>
                     <h1>
                         "The pain you feel today will be the strength you feel tomorrow." <br />

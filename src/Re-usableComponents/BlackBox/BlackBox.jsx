@@ -1,17 +1,18 @@
 import React from "react";
 import "./BlackBox.css";
 import {useData} from "../../context/DataContext";
+import {useDispatch, useSelector} from "react-redux";
+import {handleCalendar} from "../../redux/calendarSlice";
 
 const BlackBox = ({children}) => {
-    const {showCalendar, setShowCalendar} = useData();
-
+    const dispatch = useDispatch();
     return (
         <div>
             <div className="blackBox">
                 {children}
                 <button
                     onClick={() => {
-                        setShowCalendar(!showCalendar);
+                        dispatch(handleCalendar(true));
                     }}
                 >
                     Book Now
