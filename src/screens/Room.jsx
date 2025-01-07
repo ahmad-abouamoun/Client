@@ -39,11 +39,26 @@ const Room = () => {
         [socket]
     );
 
+    const sendStreams = useCallback(() => {
+        for (const track of myStream.getTracks()) {
+            peer.peer.addTrack(track, myStream);
+        }
+    }, [myStream]);
+
+    const handleCallAccepted = useCallback(
+        ({from, ans}) => {
+            peer.setLocalDescription(ans);
+            console.log("Call Accepted!");
+            sendStreams();
+        },
+        [sendStreams]
+    );
+
     return (
         <div>
             <h1>Room Page</h1>
             <h4>{remoteSocketId ? "Connected" : "No one in room"}</h4>
-            {myStream && <button>Send Stream</button>}
+            {myStream && <button onClick={sendStreams}>Send Stream</button>}
             {remoteSocketId && <button onClick={handleCallUser}>CALL</button>}
             {myStream && (
                 <>
