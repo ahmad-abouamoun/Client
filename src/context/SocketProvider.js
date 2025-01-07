@@ -1,16 +1,14 @@
-import {useContext, useState} from "react";
+import {useContext, useMemo, useState} from "react";
 import {createContext} from "react";
 import {useEffect} from "react";
 import {useDispatch} from "react-redux";
 import {setUser} from "../redux/userSlice";
+import {io} from "socket.io-client";
 
-const DataContext = createContext();
-export const DataProvider = ({children}) => {
+const SocketContext = createContext(null);
+export const SocketProvider = ({children}) => {
     const dispatch = useDispatch();
-    const [showCalendar, setShowCalendar] = useState(false);
-    const handleCalendar = () => {
-        setShowCalendar(!showCalendar);
-    };
+
     useEffect(() => {
         const getUser = async () => {
             const token = sessionStorage.getItem("token");
@@ -32,6 +30,11 @@ export const DataProvider = ({children}) => {
         };
         getUser();
     }, []);
-    return <DataContext.Provider value={(showCalendar, handleCalendar)}>{children}</DataContext.Provider>;
+    const socket = useMemo(() => io("localhost:8000"), []);
+
+    return <SocketContext.Provider value={socket}>{children}</SocketContext.Provider>;
 };
-export const useData = () => useContext(DataContext);
+export const useSocket = () => {
+    const socket = useContext(SocketContext);
+    return socket;
+};

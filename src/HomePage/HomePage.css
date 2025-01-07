@@ -81,13 +81,13 @@
 }
 
 .calendar-popup {
-    height: 650px;
-    background-color: aliceblue;
+    height: 520px;
+    background-color: #fa8f92;
     border-radius: 10px;
     padding: 20px;
     max-width: 500px;
     position: relative;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 10;

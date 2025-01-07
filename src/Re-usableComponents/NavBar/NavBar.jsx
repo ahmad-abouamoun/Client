@@ -2,7 +2,7 @@ import "./NavBar.css";
 import image from "../../Assets/Logo.png";
 import {useNavigate} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
-import {useData} from "../../context/DataContext";
+import {useData} from "../../context/SocketProvider";
 import {handleCalendar} from "../../redux/calendarSlice";
 
 const NavBar = () => {

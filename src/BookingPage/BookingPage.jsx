@@ -124,7 +124,7 @@ const BookingPage = () => {
                 },
             });
             const data = await response.json();
-            console.log(data);
+            setEvents(data);
         };
         getMeetings();
     }, []);
