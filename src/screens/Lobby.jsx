@@ -11,10 +11,18 @@ const Lobby = () => {
     const socket = useSocket();
     const navigate = useNavigate();
 
+    const handleSubmitForm = useCallback(
+        (e) => {
+            e.preventDefault();
+            socket.emit("room:join", {email, room});
+        },
+        [email, room, socket]
+    );
+
     return (
         <div>
             <h1>Lobby</h1>
-            <form>
+            <form onSubmit={handleSubmitForm}>
                 <label htmlFor="room">Room Number</label>
                 <input type="text" id="room" value={room} onChange={(e) => setRoom(e.target.value)} />
                 <br />
