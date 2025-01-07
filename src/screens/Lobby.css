@@ -1,4 +1,29 @@
 .view {
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 100vh;
+}
+.lobby {
+    height: auto;
+    text-align: center;
+    width: 300px;
+    border: 2px solid black;
+}
+.lobby > form > button {
+    height: 30px;
+    font-size: medium;
+    background-color: #ff6f61;
+    width: 75px;
+    margin: 5px;
+    border-radius: 5px;
+}
+.lobby > form > select {
+    height: 25px;
+    font-size: medium;
+    border: 2px solid black;
+
+    margin: 5px;
+    border-radius: 5px;
 }
