@@ -19,6 +19,14 @@ const Lobby = () => {
         [email, room, socket]
     );
 
+    const handleJoinRoom = useCallback(
+        (data) => {
+            const {email, room} = data;
+            navigate(`/room/${room}`);
+        },
+        [navigate]
+    );
+
     return (
         <div>
             <h1>Lobby</h1>
