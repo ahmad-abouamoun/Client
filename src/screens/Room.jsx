@@ -9,12 +9,27 @@ const Room = () => {
     const [myStream, setMyStream] = useState();
     const [remoteStream, setRemoteStream] = useState();
 
+    const handleUserJoined = useCallback(({email, id}) => {
+        console.log(`Email ${email} joined room`);
+        setRemoteSocketId(id);
+    }, []);
+
+    const handleCallUser = useCallback(async () => {
+        const stream = await navigator.mediaDevices.getUserMedia({
+            audio: true,
+            video: true,
+        });
+        const offer = await peer.getOffer();
+        socket.emit("user:call", {to: remoteSocketId, offer});
+        setMyStream(stream);
+    }, [remoteSocketId, socket]);
+
     return (
         <div>
             <h1>Room Page</h1>
             <h4>{remoteSocketId ? "Connected" : "No one in room"}</h4>
             {myStream && <button>Send Stream</button>}
-            {remoteSocketId && <button>CALL</button>}
+            {remoteSocketId && <button onClick={handleCallUser}>CALL</button>}
             {myStream && (
                 <>
                     <h1>My Stream</h1>
