@@ -27,6 +27,13 @@ const Lobby = () => {
         [navigate]
     );
 
+    useEffect(() => {
+        socket.on("room:join", handleJoinRoom);
+        return () => {
+            socket.off("room:join", handleJoinRoom);
+        };
+    }, [socket, handleJoinRoom]);
+
     return (
         <div>
             <h1>Lobby</h1>
