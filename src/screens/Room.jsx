@@ -66,6 +66,26 @@ const Room = () => {
         };
     }, [handleNegoNeeded]);
 
+    const handleNegoNeedIncomming = useCallback(
+        async ({from, offer}) => {
+            const ans = await peer.getAnswer(offer);
+            socket.emit("peer:nego:done", {to: from, ans});
+        },
+        [socket]
+    );
+
+    const handleNegoNeedFinal = useCallback(async ({ans}) => {
+        await peer.setLocalDescription(ans);
+    }, []);
+
+    useEffect(() => {
+        peer.peer.addEventListener("track", async (ev) => {
+            const remoteStream = ev.streams;
+            console.log("GOT TRACKS!!");
+            setRemoteStream(remoteStream[0]);
+        });
+    }, []);
+
     return (
         <div>
             <h1>Room Page</h1>
