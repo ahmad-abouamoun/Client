@@ -86,6 +86,29 @@ const Room = () => {
         });
     }, []);
 
+    useEffect(() => {
+        socket.on("user:joined", handleUserJoined);
+        socket.on("incomming:call", handleIncommingCall);
+        socket.on("call:accepted", handleCallAccepted);
+        socket.on("peer:nego:needed", handleNegoNeedIncomming);
+        socket.on("peer:nego:final", handleNegoNeedFinal);
+
+        return () => {
+            socket.off("user:joined", handleUserJoined);
+            socket.off("incomming:call", handleIncommingCall);
+            socket.off("call:accepted", handleCallAccepted);
+            socket.off("peer:nego:needed", handleNegoNeedIncomming);
+            socket.off("peer:nego:final", handleNegoNeedFinal);
+        };
+    }, [
+        socket,
+        handleUserJoined,
+        handleIncommingCall,
+        handleCallAccepted,
+        handleNegoNeedIncomming,
+        handleNegoNeedFinal,
+    ]);
+
     return (
         <div>
             <h1>Room Page</h1>
