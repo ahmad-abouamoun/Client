@@ -12,7 +12,7 @@ const CreateProgram = ({show, handleClick}) => {
             alert("Please select a file.");
         }
     };
-    const CreateProgram = async () => {
+    const CreateProgramApi = async () => {
         const formData = new FormData();
         formData.append("file", file);
         formData.append("name", name);
@@ -55,7 +55,7 @@ const CreateProgram = ({show, handleClick}) => {
                             </button>
                             <button
                                 onClick={() => {
-                                    CreateProgram();
+                                    CreateProgramApi();
                                 }}
                             >
                                 Create

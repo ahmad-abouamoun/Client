@@ -7,7 +7,7 @@ import ProgramCard from "./Card/ProgramCard";
 import PageNumber from "../Re-usableComponents/PageNumber/PageNumbers";
 import ProgramPopup from "./PopUp/ProgramPopup";
 import "./TrainingPage.css";
-import CreateProgram from "./createProgram/CreateProgram";
+import CreateProgram from "./createProgram/createProgram.jsx";
 import {useSelector} from "react-redux";
 import BookingPage from "../BookingPage/BookingPage";
 const TrainingPage = () => {
