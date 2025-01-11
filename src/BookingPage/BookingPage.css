@@ -53,17 +53,18 @@
 }
 
 .modal-button.add {
-    background-color: #4caf50;
+    background-color: #ff6f61;
     color: white;
-    margin-right: 10px;
 }
 
 .modal-button.cancel {
-    background-color: #f44336;
+    background-color: #3bbdb7;
     color: white;
+    margin-right: 20px;
 }
 .close-calendar {
     position: absolute;
+    z-index: 10;
     top: 10px;
     right: 10px;
     background: none;

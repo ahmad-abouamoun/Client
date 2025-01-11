@@ -3,17 +3,20 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    background-image: url("../Assets/dietBackground.jpg");
+    background-size: cover;
 }
 
 .form {
+    z-index: 5;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
     width: 350px;
     background-color: #fff;
     padding: 20px;
     border-radius: 20px;
-    border: 2px solid black;
     position: relative;
     margin: 0 auto;
 }

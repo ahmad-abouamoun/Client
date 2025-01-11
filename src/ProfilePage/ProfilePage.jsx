@@ -129,10 +129,10 @@ const ProfilePage = () => {
                                 &times;
                             </button>
                             <div className="popup-content">
-                                <h3>Name: </h3>
+                                <h3>Name </h3>
                                 <input type="text" placeholder="Name" name="name" onChange={updateForm} />
                                 <div>
-                                    <h3>Do you have Diabetes:</h3>
+                                    <h3>Do you have Diabetes</h3>
                                     <label>
                                         <input onChange={updateForm} name="diabetes" type="radio" value={true} />
                                         Yes
@@ -143,7 +143,7 @@ const ProfilePage = () => {
                                     </label>
                                 </div>
                                 <div>
-                                    <h3>Do you have High Cholesterol:</h3>
+                                    <h3>Do you have High Cholesterol</h3>
 
                                     <label>
                                         <input onChange={updateForm} name="highCholesterol" type="radio" value={true} />
@@ -160,7 +160,7 @@ const ProfilePage = () => {
                                     </label>
                                 </div>
                                 <div>
-                                    <h3>Do you have Hypertension:</h3>
+                                    <h3>Do you have Hypertension</h3>
 
                                     <label>
                                         <input onChange={updateForm} name="hypertension" type="radio" value={true} />

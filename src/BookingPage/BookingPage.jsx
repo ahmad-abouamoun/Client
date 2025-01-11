@@ -208,12 +208,11 @@ const BookingPage = () => {
                         Assigned Room: <strong>{newEvent.room || "No room assigned yet"}</strong>
                     </p>
                     <br />
-
-                    <button className="modal-button add" onClick={handleEventSubmit}>
-                        Add Meeting
-                    </button>
                     <button className="modal-button cancel" onClick={() => setShowModal(false)}>
                         Cancel
+                    </button>
+                    <button className="modal-button add" onClick={handleEventSubmit}>
+                        Add Meeting
                     </button>
                 </div>
             )}

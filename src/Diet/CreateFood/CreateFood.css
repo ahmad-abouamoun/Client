@@ -3,7 +3,9 @@
     border: solid black 1px;
     width: 300px;
     height: 30px;
+    padding: 5px;
 }
+
 .popup-content form > div {
     margin-top: 10px;
     height: 60px;
@@ -53,4 +55,8 @@
 
 .popup-content ul li {
     margin-bottom: 8px;
+}
+.buttons {
+    display: flex;
+    gap: 10px;
 }

@@ -53,10 +53,10 @@ const CreateFood = ({show, handleClick}) => {
                         </button>
                         <div className="popup-content">
                             <form onSubmit={handleSubmit(onSubmit)}>
-                                <h3>Name: </h3>
+                                <h3>Name </h3>
                                 <input type="text" placeholder="Name" {...register("name", {required: true})} />
                                 <br />
-                                <h3>Description: </h3>
+                                <h3>Description </h3>
                                 <input
                                     type="text"
                                     placeholder="Description"
@@ -65,7 +65,7 @@ const CreateFood = ({show, handleClick}) => {
                                 <br />
                                 <br />
                                 <div>
-                                    <h3>Does it affect people with Diabetes:</h3>
+                                    <h3>Does it affect people with Diabetes</h3>
                                     <label>
                                         <input {...register("diabetes", {required: true})} type="radio" value={true} />
                                         Yes
@@ -76,7 +76,7 @@ const CreateFood = ({show, handleClick}) => {
                                     </label>
                                 </div>
                                 <div>
-                                    <h3>Does it affect people with High Cholesterol:</h3>
+                                    <h3>Does it affect people with High Cholesterol</h3>
 
                                     <label>
                                         <input
@@ -96,7 +96,7 @@ const CreateFood = ({show, handleClick}) => {
                                     </label>
                                 </div>
                                 <div>
-                                    <h3>Does it affect people with Hypertension:</h3>
+                                    <h3>Does it affect people with Hypertension</h3>
 
                                     <label>
                                         <input
@@ -116,12 +116,18 @@ const CreateFood = ({show, handleClick}) => {
                                     </label>
                                 </div>
 
-                                <h3>Upload an Image of the food</h3>
-                                <button className="container-btn-file">
-                                    {file ? "Image Uploaded" : "Upload Image"}
-                                    <input className="file" name="text" type="file" onChange={(e) => fileChange(e)} />
-                                </button>
-                                <button type="submit">Create</button>
+                                <div className="buttons">
+                                    <button className="container-btn-file">
+                                        {file ? "Image Uploaded" : "Upload Image"}
+                                        <input
+                                            className="file"
+                                            name="text"
+                                            type="file"
+                                            onChange={(e) => fileChange(e)}
+                                        />
+                                    </button>
+                                    <button type="submit">Create</button>
+                                </div>
                             </form>
                         </div>
                     </div>

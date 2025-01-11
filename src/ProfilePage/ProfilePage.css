@@ -74,6 +74,7 @@ body {
     background-color: #ff6f61;
     color: white;
     cursor: pointer;
+    margin-left: 50%;
     margin-top: 10px;
 }
 @media (max-width: 768px) {

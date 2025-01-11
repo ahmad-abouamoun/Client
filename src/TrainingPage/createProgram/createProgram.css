@@ -11,6 +11,14 @@
     z-index: 5;
 }
 
+.popup-content > input {
+    border-radius: 5px;
+    border: solid black 1px;
+    width: 300px;
+    height: 30px;
+    padding: 5px;
+}
+
 .popup {
     background: #fff;
     border-radius: 10px;
@@ -37,4 +45,8 @@
 
 .popup-content ul li {
     margin-bottom: 8px;
+}
+.buttons {
+    display: flex;
+    gap: 10px;
 }

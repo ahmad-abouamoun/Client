@@ -37,7 +37,7 @@ const CreateProgram = ({show, handleClick}) => {
                             &times;
                         </button>
                         <div className="popup-content">
-                            <h3>Name: </h3>
+                            <h3>Name </h3>
                             <input
                                 type="text"
                                 placeholder="Name"
@@ -48,18 +48,19 @@ const CreateProgram = ({show, handleClick}) => {
                             <br />
                             <br />
 
-                            <h3>Upload an Image For the Program</h3>
-                            <button className="container-btn-file">
-                                {file ? "Image Uploaded" : "Upload Image"}
-                                <input className="file" name="text" type="file" onChange={(e) => fileChange(e)} />
-                            </button>
-                            <button
-                                onClick={() => {
-                                    CreateProgramApi();
-                                }}
-                            >
-                                Create
-                            </button>
+                            <div className="buttons">
+                                <button className="container-btn-file">
+                                    {file ? "Image Uploaded" : "Upload Image"}
+                                    <input className="file" name="text" type="file" onChange={(e) => fileChange(e)} />
+                                </button>
+                                <button
+                                    onClick={() => {
+                                        CreateProgramApi();
+                                    }}
+                                >
+                                    Create
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

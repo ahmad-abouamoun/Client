@@ -76,7 +76,7 @@ const Signup = () => {
                     <p className="message">Signup now and get full access to our app.</p>
                     <label>
                         <input onChange={updateForm} name="name" className="input" type="text" placeholder required />
-                        <span>Firstname</span>
+                        <span>Name</span>
                     </label>
                     <label>
                         <input onChange={updateForm} name="email" className="input" type="text" placeholder required />
@@ -119,17 +119,24 @@ const Signup = () => {
                     <div className="overlay">
                         <div className="questionnaire-content">
                             <h2>Just a couple of questions before creating your account</h2>
-                            <p>Do you have highCholesterol?</p>
-                            <div className="options">
-                                <label>
-                                    <input onChange={updateForm} name="highCholesterol" type="radio" value={true} />
-                                    Yes
-                                </label>
-                                <label>
-                                    <input type="radio" onChange={updateForm} name="highCholesterol" value={false} />
-                                    No
-                                </label>
-                            </div>
+                            <main>
+                                <p>Do you have highCholesterol?</p>
+                                <div className="options">
+                                    <label>
+                                        <input onChange={updateForm} name="highCholesterol" type="radio" value={true} />
+                                        Yes
+                                    </label>
+                                    <label>
+                                        <input
+                                            type="radio"
+                                            onChange={updateForm}
+                                            name="highCholesterol"
+                                            value={false}
+                                        />
+                                        No
+                                    </label>
+                                </div>
+                            </main>
                             <button className="next-button" onClick={() => setNumber(3)}>
                                 Next
                             </button>
@@ -142,17 +149,19 @@ const Signup = () => {
                     <div className="overlay">
                         <div className="questionnaire-content">
                             <h2>Just a couple of questions before creating your account</h2>
-                            <p>Do you have hypertension?</p>
-                            <div className="options">
-                                <label>
-                                    <input onChange={updateForm} name="hypertension" type="radio" value={true} />
-                                    Yes
-                                </label>
-                                <label>
-                                    <input type="radio" onChange={updateForm} name="hypertension" value={false} />
-                                    No
-                                </label>
-                            </div>
+                            <main>
+                                <p>Do you have hypertension?</p>
+                                <div className="options">
+                                    <label>
+                                        <input onChange={updateForm} name="hypertension" type="radio" value={true} />
+                                        Yes
+                                    </label>
+                                    <label>
+                                        <input type="radio" onChange={updateForm} name="hypertension" value={false} />
+                                        No
+                                    </label>
+                                </div>
+                            </main>
                             <button className="next-button" onClick={() => setNumber(4)}>
                                 Next
                             </button>
@@ -165,17 +174,19 @@ const Signup = () => {
                     <div className="overlay">
                         <div className="questionnaire-content">
                             <h2>Just a couple of questions before creating your account</h2>
-                            <p>Do you have Diabetes?</p>
-                            <div className="options">
-                                <label>
-                                    <input onChange={updateForm} name="diabetes" type="radio" value={true} />
-                                    Yes
-                                </label>
-                                <label>
-                                    <input type="radio" onChange={updateForm} name="diabetes" value={false} />
-                                    No
-                                </label>
-                            </div>
+                            <main>
+                                <p>Do you have Diabetes?</p>
+                                <div className="options">
+                                    <label>
+                                        <input onChange={updateForm} name="diabetes" type="radio" value={true} />
+                                        Yes
+                                    </label>
+                                    <label>
+                                        <input type="radio" onChange={updateForm} name="diabetes" value={false} />
+                                        No
+                                    </label>
+                                </div>
+                            </main>
                             <button className="next-button" onClick={() => onSubmit()}>
                                 Next
                             </button>
