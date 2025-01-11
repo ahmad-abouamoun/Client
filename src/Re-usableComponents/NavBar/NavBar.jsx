@@ -102,7 +102,14 @@ const NavBar = () => {
                             >
                                 Book Meeting
                             </li>
-                            <li>Log out</li>
+                            <li
+                                onClick={() => {
+                                    sessionStorage.removeItem("token");
+                                    navigate("/");
+                                }}
+                            >
+                                Log out
+                            </li>
                         </ul>
                     </div>
                 ) : (

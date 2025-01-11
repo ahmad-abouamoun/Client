@@ -9,9 +9,12 @@ import PageNumber from "../Re-usableComponents/PageNumber/PageNumbers";
 import ProgramCard from "../TrainingPage/Card/ProgramCard";
 import FoodPopup from "../Diet/FoodPopup";
 import ProgramPopup from "../TrainingPage/PopUp/ProgramPopup";
+import NavBar from "../Re-usableComponents/NavBar/NavBar";
+import BookingPage from "../BookingPage/BookingPage";
 
 const ProfilePage = () => {
     const token = sessionStorage.getItem("token");
+    const showCalendar = useSelector((state) => state.calendar.calendar);
 
     const [favFood, setFavFood] = useState([]);
     const [favProgram, setFavProgram] = useState([]);
@@ -96,6 +99,8 @@ const ProfilePage = () => {
     return (
         <div>
             <div className="profile-container">
+                <NavBar />
+
                 <div className="profile-overlay">
                     <img src={`http://localhost:8080/userImages/${user.filename}`} alt="" className="profile-picture" />
                     <div className="profile-info">
