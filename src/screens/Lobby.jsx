@@ -1,4 +1,6 @@
 import React, {useState, useCallback, useEffect} from "react";
+import NavBar from "../Re-usableComponents/NavBar/NavBar";
+
 import {useNavigate} from "react-router-dom";
 import {useSocket} from "../context/SocketProvider";
 import {useSelector} from "react-redux";
@@ -36,19 +38,7 @@ const Lobby = () => {
 
     return (
         <div className="view">
-            <div class="lobby">
-                <h1>Lobby</h1>
-                <form onSubmit={handleSubmitForm}>
-                    <label htmlFor="room">Expert Meeting With</label>
-                    <select name="room" id="room" onChange={(e) => setRoom(e.target.value)}>
-                        <option value="101">coach</option>
-                        <option value="102">therapist</option>
-                        <option value="103">nutritionist</option>
-                    </select>
-                    <br />
-                    <button>Join</button>
-                </form>
-            </div>
+            <NavBar />
         </div>
     );
 };
