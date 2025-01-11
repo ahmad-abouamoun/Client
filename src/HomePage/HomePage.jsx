@@ -31,7 +31,7 @@ const HomePage = () => {
                 <div className="backGround" style={{backgroundImage: `url(${images[image]})`}}>
                     <NavBar />
                     {showCalendar && token && (
-                        <div className=" calendar-popup ">
+                        <div className="calendar-popup ">
                             <BookingPage />
                         </div>
                     )}
@@ -39,6 +39,9 @@ const HomePage = () => {
                         <h1>Welcome to Balance Beacon</h1>
                         <p>Book a meeting now with one of our specialists</p>
                     </BlackBox>
+                </div>
+                <div className="section-title">
+                    <h1>Features</h1>
                 </div>
                 <div className="section">
                     <img src={trainingImage} alt="Training 1" className="image" />
