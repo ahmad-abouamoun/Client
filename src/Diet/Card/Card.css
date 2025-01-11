@@ -40,7 +40,7 @@
 }
 
 .learn-more {
-    background-color: #007bff;
+    background-color: #ff6f61;
     color: white;
     border: none;
     padding: 8px 12px;
@@ -49,7 +49,7 @@
 }
 
 .learn-more:hover {
-    background-color: #0056b3;
+    background-color: #fa5d4f;
 }
 .bookmark {
     display: flex;

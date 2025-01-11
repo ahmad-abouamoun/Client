@@ -1,4 +1,4 @@
-import "./Card.css";
+import "./ProgramCard.css";
 import React, {useEffect, useState} from "react";
 import {Bookmark} from "lucide-react";
 import {useDispatch, useSelector} from "react-redux";

@@ -2,7 +2,9 @@
     padding: 10px;
     text-align: left;
 }
-
+.recommended-section > h2 {
+    margin-left: 3%;
+}
 .cards-container {
     display: flex;
     justify-content: start;
@@ -39,5 +41,15 @@
 @media (max-width: 768px) {
     .cards-container::-webkit-scrollbar {
         opacity: 1;
+    }
+    .recommended-section > h2 {
+        margin-left: 8%;
+    }
+    .section-title button {
+        padding: 2px 4px;
+        height: fit-content;
+        width: fit-content;
+        font-size: 1rem;
+        cursor: pointer;
     }
 }
