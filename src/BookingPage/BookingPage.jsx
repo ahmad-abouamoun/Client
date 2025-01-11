@@ -114,20 +114,6 @@ const BookingPage = () => {
             alert("Please fill out all fields.");
         }
     };
-    useEffect(() => {
-        const getMeetings = async () => {
-            const response = await fetch("http://localhost:8080/meetings", {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                    token,
-                },
-            });
-            const data = await response.json();
-            setEvents(data);
-        };
-        getMeetings();
-    }, []);
 
     const handleSlotSelect = (slotInfo) => {
         setSelectedDate(slotInfo.start);
