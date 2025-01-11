@@ -27,10 +27,9 @@ const NavBar = () => {
                             onClick={() => {
                                 if (token) {
                                     dispatch(handleCalendar(false));
-
                                     navigate("/trainingPage");
                                 } else {
-                                    alert("Please Login first to access all our services");
+                                    navigate("/login");
                                 }
                             }}
                         >
@@ -45,7 +44,7 @@ const NavBar = () => {
 
                                     navigate("/dietPage");
                                 } else {
-                                    alert("Please Login first to access all our services");
+                                    navigate("/login");
                                 }
                             }}
                         >
@@ -59,7 +58,7 @@ const NavBar = () => {
                                     dispatch(handleCalendar(false));
                                     navigate("/trainingPage");
                                 } else {
-                                    alert("Please Login first to access all our services");
+                                    navigate("/login");
                                 }
                             }}
                         >
@@ -67,7 +66,18 @@ const NavBar = () => {
                         </span>
                     </li>
                     <li>
-                        <span>Meetings</span>
+                        <span
+                            onClick={() => {
+                                if (token) {
+                                    dispatch(handleCalendar(false));
+                                    navigate("/meeting");
+                                } else {
+                                    navigate("/login");
+                                }
+                            }}
+                        >
+                            Meetings
+                        </span>
                     </li>
                 </ul>
                 {token ? (

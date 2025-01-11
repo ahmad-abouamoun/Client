@@ -54,7 +54,7 @@ const HomePage = () => {
                                 if (token) {
                                     navigate("/trainingPage");
                                 } else {
-                                    alert("Please Login first to access all our services");
+                                    navigate("/login");
                                 }
                             }}
                         >
@@ -76,7 +76,7 @@ const HomePage = () => {
                                 if (token) {
                                     navigate("/dietPage");
                                 } else {
-                                    alert("Please Login first to access all our services");
+                                    navigate("/login");
                                 }
                             }}
                         >
@@ -100,7 +100,7 @@ const HomePage = () => {
                                 if (token) {
                                     navigate("/trainingPage");
                                 } else {
-                                    alert("Please Login first to access all our services");
+                                    navigate("/login");
                                 }
                             }}
                         >
