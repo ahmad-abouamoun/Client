@@ -1,42 +1,40 @@
-import React, {useState, useCallback, useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import NavBar from "../Re-usableComponents/NavBar/NavBar";
 
 import {useNavigate} from "react-router-dom";
 import {useSocket} from "../context/SocketProvider";
 import {useSelector} from "react-redux";
 import "./Lobby.css";
-import {handleCalendar} from "../redux/calendarSlice";
 const Lobby = () => {
     const user = useSelector((state) => state.users.user);
     const email = user.email;
     const token = sessionStorage.getItem("token");
     const [room, setRoom] = useState("101");
-
+    const [meetings, setMeetings] = useState([]);
     const socket = useSocket();
     const navigate = useNavigate();
 
-    const handleSubmitForm = useCallback(
-        (e) => {
-            e.preventDefault();
-            socket.emit("room:join", {email, room});
-        },
-        [email, room, socket]
-    );
-
-    const handleJoinRoom = useCallback(
-        (data) => {
-            const {email, room} = data;
-            navigate(`/room/${room}`);
-        },
-        [navigate]
-    );
+    const handleJoinMeeting = (e) => {
+        e.preventDefault();
+        if (!email || !room) {
+            alert("Please enter your email and room ID to join the meeting.");
+            return;
+        }
+        socket.emit("room:join", {email, room});
+    };
+    const handleJoinRoom = (data) => {
+        const {room} = data;
+        navigate(`/room/${room}`);
+    };
 
     useEffect(() => {
         socket.on("room:join", handleJoinRoom);
+
         return () => {
             socket.off("room:join", handleJoinRoom);
         };
-    }, [socket, handleJoinRoom]);
+    }, [socket]);
+
     useEffect(() => {
         const getMeetings = async () => {
             const response = await fetch("http://localhost:8080/meetings", {
@@ -47,7 +45,7 @@ const Lobby = () => {
                 },
             });
             const data = await response.json();
-            console.log(data);
+            setMeetings(data);
         };
         getMeetings();
     }, []);
@@ -57,7 +55,7 @@ const Lobby = () => {
             <NavBar />
             <div class="lobby">
                 <h1>Lobby</h1>
-                <form onSubmit={handleSubmitForm}>
+                <form onSubmit={handleJoinMeeting}>
                     <label htmlFor="room">Expert Meeting With</label>
                     <select name="room" id="room" onChange={(e) => setRoom(e.target.value)}>
                         <option value="101">coach</option>
