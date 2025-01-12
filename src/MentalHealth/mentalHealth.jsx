@@ -1,4 +1,5 @@
 import {useState} from "react";
+import Message from "./message";
 
 const MentalHealth = () => {
     const [messages, setMessages] = useState([]);
@@ -21,6 +22,31 @@ const MentalHealth = () => {
             sendMessage();
         }
     };
-    return <div></div>;
+    return (
+        <div className="image">
+            <div className="chat-container">
+                <div className="chat-box">
+                    <div className="messages-container">
+                        {messages.map((message, index) => (
+                            <Message key={index} sender={message.sender} text={message.text} />
+                        ))}
+                    </div>
+                    <div className="input-container">
+                        <input
+                            type="text"
+                            value={inputValue}
+                            onChange={(e) => setInputValue(e.target.value)}
+                            onKeyPress={handleKeyPress}
+                            placeholder="Ask me anything!"
+                            className="chat-input"
+                        />
+                        <button onClick={sendMessage} className="btn send-btn">
+                            Send
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
 };
 export default MentalHealth;
