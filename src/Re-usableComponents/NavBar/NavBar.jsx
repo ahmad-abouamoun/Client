@@ -56,7 +56,7 @@ const NavBar = () => {
                             onClick={() => {
                                 if (token) {
                                     dispatch(handleCalendar(false));
-                                    navigate("/trainingPage");
+                                    navigate("/mentalHealth");
                                 } else {
                                     navigate("/login");
                                 }

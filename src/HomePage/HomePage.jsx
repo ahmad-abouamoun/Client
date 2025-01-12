@@ -101,7 +101,7 @@ const HomePage = () => {
                             className="start-link-mental"
                             onClick={() => {
                                 if (token) {
-                                    navigate("/trainingPage");
+                                    navigate("/mentalHealth");
                                 } else {
                                     navigate("/login");
                                 }

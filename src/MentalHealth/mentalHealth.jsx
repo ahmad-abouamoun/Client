@@ -7,15 +7,20 @@ const MentalHealth = () => {
     const [messages, setMessages] = useState([]);
     const [inputValue, setInputValue] = useState("");
 
-    const sendMessage = () => {
+    const sendMessage = async () => {
         if (inputValue.trim()) {
             setMessages((prevMessages) => [...prevMessages, {sender: "User", text: inputValue}]);
+            const response = await fetch("http://localhost:8080/api/therapist", {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                method: "POST",
+                body: JSON.stringify({userMessage: inputValue}),
+            });
+            const responseDate = await response.json();
             setInputValue("");
             setTimeout(() => {
-                setMessages((prevMessages) => [
-                    ...prevMessages,
-                    {sender: "ChatBot", text: "This is a response from the AI."},
-                ]);
+                setMessages((prevMessages) => [...prevMessages, {sender: "ChatBot", text: `${responseDate}`}]);
             }, 1000);
         }
     };
