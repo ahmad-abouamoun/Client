@@ -1,5 +1,7 @@
 import {useState} from "react";
 import Message from "./message";
+import "./mentalHealth.css";
+import NavBar from "../Re-usableComponents/NavBar/NavBar";
 
 const MentalHealth = () => {
     const [messages, setMessages] = useState([]);
@@ -24,6 +26,7 @@ const MentalHealth = () => {
     };
     return (
         <div className="image">
+            <NavBar />
             <div className="chat-container">
                 <div className="chat-box">
                     <div className="messages-container">
