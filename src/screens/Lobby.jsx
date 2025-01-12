@@ -5,6 +5,7 @@ import {useNavigate} from "react-router-dom";
 import {useSocket} from "../context/SocketProvider";
 import {useSelector} from "react-redux";
 import "./Lobby.css";
+import Meeting from "./Meeting";
 const Lobby = () => {
     const user = useSelector((state) => state.users.user);
     const email = user.email;
@@ -22,6 +23,7 @@ const Lobby = () => {
         }
         socket.emit("room:join", {email, room});
     };
+
     const handleJoinRoom = (data) => {
         const {room} = data;
         navigate(`/room/${room}`);
@@ -53,19 +55,7 @@ const Lobby = () => {
     return (
         <div className="view">
             <NavBar />
-            <div class="lobby">
-                <h1>Lobby</h1>
-                <form onSubmit={handleJoinMeeting}>
-                    <label htmlFor="room">Expert Meeting With</label>
-                    <select name="room" id="room" onChange={(e) => setRoom(e.target.value)}>
-                        <option value="101">coach</option>
-                        <option value="102">therapist</option>
-                        <option value="103">nutritionist</option>
-                    </select>
-                    <br />
-                    <button>Join</button>
-                </form>
-            </div>
+            <Meeting />
         </div>
     );
 };
