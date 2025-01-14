@@ -72,6 +72,30 @@ const Model = () => {
         };
     }, []);
 
+    const updateMuscleColors = (cleanData) => {
+        Object.entries(cleanData).forEach(([muscleName, intensity]) => {
+            const muscle = muscleMap.current[muscleName];
+            if (muscle && muscle.material) {
+                const material = muscle.material.clone();
+
+                if (intensity === 0) {
+                    material.color.set(0xffffff);
+                } else if (intensity >= 1 && intensity <= 4) {
+                    material.color.set(0x00ff00);
+                } else if (intensity >= 5 && intensity <= 7) {
+                    material.color.set(0xffff00);
+                } else if (intensity >= 8 && intensity <= 10) {
+                    material.color.set(0xff0000);
+                } else {
+                    material.color.set(0xffffff);
+                }
+
+                muscle.material = material;
+                muscle.material.needsUpdate = true;
+            }
+        });
+    };
+
     const handleTrainingSubmit = async (e) => {
         e.preventDefault();
 
@@ -90,6 +114,7 @@ const Model = () => {
 
             const intensityData = await response.json();
             const cleanData = JSON.parse(intensityData);
+            updateMuscleColors(cleanData);
         } catch (error) {
             console.error("Error fetching intensity data:", error);
         }
