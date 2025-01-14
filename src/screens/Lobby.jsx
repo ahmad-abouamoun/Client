@@ -1,6 +1,5 @@
 import React, {useState, useEffect, useCallback} from "react";
 import NavBar from "../Re-usableComponents/NavBar/NavBar";
-import "./Meeting.css";
 import {format} from "date-fns";
 
 import {useNavigate} from "react-router-dom";

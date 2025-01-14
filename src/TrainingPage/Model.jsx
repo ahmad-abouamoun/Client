@@ -130,6 +130,7 @@ const Model = () => {
                     <label>
                         Enter Your Training Data:
                         <textarea
+                            className="textarea"
                             value={trainingData}
                             onChange={(e) => setTrainingData(e.target.value)}
                             placeholder="Example: Squats: 3 sets, Bench Press: 4 sets"
