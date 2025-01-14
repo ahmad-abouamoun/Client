@@ -1,4 +1,4 @@
-.image {
+.backGroundimage {
     background-image: url("../Assets/dietBackground.jpg");
     background-size: cover;
     background-position: center;
@@ -72,7 +72,7 @@
     background-color: #ff594a;
 }
 
-.message {
+.messages {
     background-color: rgba(241, 241, 241, 0.9);
     padding: 10px;
     border-radius: 10px;

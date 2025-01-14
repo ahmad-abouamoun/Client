@@ -30,7 +30,7 @@ const MentalHealth = () => {
         }
     };
     return (
-        <div className="image">
+        <div className="backGroundimage">
             <NavBar />
             <div className="chat-container">
                 <div className="chat-box">
