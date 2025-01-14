@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useCallback} from "react";
 import NavBar from "../Re-usableComponents/NavBar/NavBar";
 import "./Meeting.css";
+import {format} from "date-fns";
 
 import {useNavigate} from "react-router-dom";
 import {useSocket} from "../context/SocketProvider";
@@ -14,7 +15,6 @@ const Lobby = () => {
     const [meetings, setMeetings] = useState([]);
     const socket = useSocket();
     const navigate = useNavigate();
-
     const handleSubmitForm = useCallback(
         (e) => {
             e.preventDefault();
@@ -48,6 +48,7 @@ const Lobby = () => {
                 },
             });
             const data = await response.json();
+
             setMeetings(data);
         };
         getMeetings();
@@ -61,9 +62,19 @@ const Lobby = () => {
                     <div>
                         <div>
                             <h4>Hello {user.name}</h4>
-                            <span>You have a meeting at {meeting.startDate}</span>
+                            <span>
+                                You have a meeting at {format(meeting.startDate, "do MMMM yyyy, h:mm a")} with the{" "}
+                                {meeting.expert}
+                            </span>
                         </div>
-                        <button className="join-button">Enroll Now</button>
+                        <button
+                            onClick={() => {
+                                setRoom(meeting.room);
+                            }}
+                            className="join-button"
+                        >
+                            Join Room
+                        </button>
                     </div>
                 </form>
             ))}

@@ -13,9 +13,12 @@
 }
 .join-button {
     padding: 8px 16px;
-    background-color: #007bff;
+    background-color: #ff6f61;
     color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+}
+.join-button:hover {
+    background-color: #ff5e50;
 }

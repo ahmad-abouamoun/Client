@@ -10,6 +10,7 @@ import CreateProgram from "./createProgram/createProgram.jsx";
 import {useSelector} from "react-redux";
 import BookingPage from "../BookingPage/BookingPage";
 import Model from "./Model.jsx";
+import Footer from "../Re-usableComponents/Footer/Footer.jsx";
 const TrainingPage = () => {
     const user = useSelector((state) => state.users.user);
     const showCalendar = useSelector((state) => state.calendar.calendar);
@@ -81,6 +82,7 @@ const TrainingPage = () => {
             <CreateProgram show={createProgram} handleClick={setCreateProgram} />
             <ProgramPopup setShowPopup={setShowPopup} showPopup={showPopup} />
             <Model></Model>
+            <Footer />
         </div>
     );
 };

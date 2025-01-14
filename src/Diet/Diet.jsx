@@ -9,6 +9,7 @@ import FoodPopup from "./FoodPopup";
 import CreateFood from "./CreateFood/CreateFood";
 import {useSelector} from "react-redux";
 import BookingPage from "../BookingPage/BookingPage";
+import Footer from "../Re-usableComponents/Footer/Footer";
 
 const DietPage = () => {
     const user = useSelector((state) => state.users.user);
@@ -125,6 +126,7 @@ const DietPage = () => {
             </div>
             <FoodPopup setShowPopup={setShowPopup} showPopup={showPopup} />
             <CreateFood show={showForm} handleClick={setShowForm} />
+            <Footer />
         </div>
     );
 };

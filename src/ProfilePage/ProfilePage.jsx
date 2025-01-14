@@ -11,6 +11,7 @@ import FoodPopup from "../Diet/FoodPopup";
 import ProgramPopup from "../TrainingPage/PopUp/ProgramPopup";
 import NavBar from "../Re-usableComponents/NavBar/NavBar";
 import BookingPage from "../BookingPage/BookingPage";
+import Footer from "../Re-usableComponents/Footer/Footer";
 
 const ProfilePage = () => {
     const token = sessionStorage.getItem("token");
@@ -117,65 +118,6 @@ const ProfilePage = () => {
                         </h2>
                     </div>
                 </div>
-                {showPopup && (
-                    <div className="popup-overlay">
-                        <div className="popup">
-                            <button
-                                className="close-popup"
-                                onClick={() => {
-                                    setShowPopup(false);
-                                }}
-                            >
-                                &times;
-                            </button>
-                            <div className="popup-content">
-                                <h3>Name </h3>
-                                <input type="text" placeholder="Name" name="name" onChange={updateForm} />
-                                <div>
-                                    <h3>Do you have Diabetes</h3>
-                                    <label>
-                                        <input onChange={updateForm} name="diabetes" type="radio" value={true} />
-                                        Yes
-                                    </label>
-                                    <label>
-                                        <input onChange={updateForm} name="diabetes" type="radio" value={false} />
-                                        No
-                                    </label>
-                                </div>
-                                <div>
-                                    <h3>Do you have High Cholesterol</h3>
-
-                                    <label>
-                                        <input onChange={updateForm} name="highCholesterol" type="radio" value={true} />
-                                        Yes
-                                    </label>
-                                    <label>
-                                        <input
-                                            onChange={updateForm}
-                                            name="highCholesterol"
-                                            type="radio"
-                                            value={false}
-                                        />
-                                        No
-                                    </label>
-                                </div>
-                                <div>
-                                    <h3>Do you have Hypertension</h3>
-
-                                    <label>
-                                        <input onChange={updateForm} name="hypertension" type="radio" value={true} />
-                                        Yes
-                                    </label>
-                                    <label>
-                                        <input onChange={updateForm} name="hypertension" type="radio" value={false} />
-                                        No
-                                    </label>
-                                </div>
-                                <button onClick={() => updateUser()}>Save</button>
-                            </div>
-                        </div>
-                    </div>
-                )}
             </div>
             <div className="recommended-section">
                 <h2>Favorited Food</h2>
@@ -198,6 +140,61 @@ const ProfilePage = () => {
                 <PageNumber numItems={favProgramChunks.length} setNumber={setFavProgramNum} />
             </div>
             <ProgramPopup setShowPopup={setShowProgramPopup} showPopup={showProgramPopup} />
+            <Footer />
+            {showPopup && (
+                <div className="popup-overlay">
+                    <div className="popup">
+                        <button
+                            className="close-popup"
+                            onClick={() => {
+                                setShowPopup(false);
+                            }}
+                        >
+                            &times;
+                        </button>
+                        <div className="popup-content">
+                            <h3>Name </h3>
+                            <input type="text" placeholder="Name" name="name" onChange={updateForm} />
+                            <div>
+                                <h3>Do you have Diabetes</h3>
+                                <label>
+                                    <input onChange={updateForm} name="diabetes" type="radio" value={true} />
+                                    Yes
+                                </label>
+                                <label>
+                                    <input onChange={updateForm} name="diabetes" type="radio" value={false} />
+                                    No
+                                </label>
+                            </div>
+                            <div>
+                                <h3>Do you have High Cholesterol</h3>
+
+                                <label>
+                                    <input onChange={updateForm} name="highCholesterol" type="radio" value={true} />
+                                    Yes
+                                </label>
+                                <label>
+                                    <input onChange={updateForm} name="highCholesterol" type="radio" value={false} />
+                                    No
+                                </label>
+                            </div>
+                            <div>
+                                <h3>Do you have Hypertension</h3>
+
+                                <label>
+                                    <input onChange={updateForm} name="hypertension" type="radio" value={true} />
+                                    Yes
+                                </label>
+                                <label>
+                                    <input onChange={updateForm} name="hypertension" type="radio" value={false} />
+                                    No
+                                </label>
+                            </div>
+                            <button onClick={() => updateUser()}>Save</button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

@@ -12,6 +12,7 @@ import BlackBox from "../Re-usableComponents/BlackBox/BlackBox";
 import BookingPage from "../BookingPage/BookingPage";
 import {useNavigate} from "react-router";
 import {useSelector} from "react-redux";
+import Footer from "../Re-usableComponents/Footer/Footer";
 const HomePage = () => {
     const navigate = useNavigate();
     const token = sessionStorage.getItem("token");
@@ -111,6 +112,7 @@ const HomePage = () => {
                         </span>
                     </div>
                 </div>
+                <Footer />
             </div>
         </div>
     );

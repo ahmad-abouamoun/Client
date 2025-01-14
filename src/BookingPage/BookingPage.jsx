@@ -31,9 +31,9 @@ const BookingPage = () => {
     });
 
     const Experts = {
-        nutritionist: "Room 101",
-        therapist: "Room 102",
-        coach: "Room 103",
+        nutritionist: "101",
+        therapist: "102",
+        coach: "103",
     };
 
     const meetingOptions = Object.keys(Experts);
@@ -76,20 +76,14 @@ const BookingPage = () => {
             room: assignedRoom,
         });
     };
-    function formatDateWithOffset(dateString) {
-        const date = new Date(dateString);
 
-        const updatedDate = addHours(date, 2);
-
-        return updatedDate;
-    }
     const handleEventSubmit = async () => {
         if (newEvent.start && newEvent.end && newEvent.type && newEvent.room) {
             const meetingData = {
                 token,
                 title: newEvent.title,
-                startDate: formatDateWithOffset(newEvent.start),
-                endDate: formatDateWithOffset(newEvent.end),
+                startDate: newEvent.start,
+                endDate: newEvent.end,
                 expert: newEvent.type,
                 room: newEvent.room,
             };

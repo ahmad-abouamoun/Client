@@ -2,6 +2,7 @@ import {useState} from "react";
 import Message from "./message";
 import "./mentalHealth.css";
 import NavBar from "../Re-usableComponents/NavBar/NavBar";
+import Footer from "../Re-usableComponents/Footer/Footer";
 
 const MentalHealth = () => {
     const [messages, setMessages] = useState([]);
@@ -54,6 +55,7 @@ const MentalHealth = () => {
                     </div>
                 </div>
             </div>
+            <Footer />
         </div>
     );
 };
