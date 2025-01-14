@@ -72,13 +72,36 @@ const Model = () => {
         };
     }, []);
 
+    const handleTrainingSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await fetch("http://localhost:8080/api/model", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({trainingData}),
+            });
+
+            if (!response.ok) {
+                throw new Error(await response.json());
+            }
+
+            const intensityData = await response.json();
+            const cleanData = JSON.parse(intensityData);
+        } catch (error) {
+            console.error("Error fetching intensity data:", error);
+        }
+    };
+
     return (
         <div>
             <h1>3D Model</h1>
             <div className="canvas-container" ref={canvasRef}></div>
 
             <div className="controls">
-                <form>
+                <form onSubmit={handleTrainingSubmit}>
                     <label>
                         Enter Your Training Data:
                         <textarea
