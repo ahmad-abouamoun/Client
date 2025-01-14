@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {Calendar, dateFnsLocalizer} from "react-big-calendar";
-import {format, parse, startOfWeek, getDay, addMinutes, setHours, setMinutes} from "date-fns";
+import {format, parse, startOfWeek, getDay, addMinutes, setHours, setMinutes, addHours} from "date-fns";
 import {enUS} from "date-fns/locale";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "./BookingPage.css";
@@ -76,14 +76,20 @@ const BookingPage = () => {
             room: assignedRoom,
         });
     };
+    function formatDateWithOffset(dateString) {
+        const date = new Date(dateString);
 
+        const updatedDate = addHours(date, 2);
+
+        return updatedDate;
+    }
     const handleEventSubmit = async () => {
         if (newEvent.start && newEvent.end && newEvent.type && newEvent.room) {
             const meetingData = {
                 token,
                 title: newEvent.title,
-                startDate: newEvent.start,
-                endDate: newEvent.end,
+                startDate: formatDateWithOffset(newEvent.start),
+                endDate: formatDateWithOffset(newEvent.end),
                 expert: newEvent.type,
                 room: newEvent.room,
             };

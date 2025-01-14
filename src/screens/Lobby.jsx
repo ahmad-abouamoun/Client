@@ -59,7 +59,10 @@ const Lobby = () => {
             {meetings.map((meeting) => (
                 <form className="meeting-container" onSubmit={handleSubmitForm}>
                     <div>
-                        <h3>Hello there</h3>
+                        <div>
+                            <h4>Hello {user.name}</h4>
+                            <span>You have a meeting at {meeting.startDate}</span>
+                        </div>
                         <button className="join-button">Enroll Now</button>
                     </div>
                 </form>
