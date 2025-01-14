@@ -1,4 +1,7 @@
 .meeting-container {
+    padding: 20px 20px;
+}
+.meeting-container > div {
     border: 1px solid #ccc;
     border-radius: 8px;
     padding: 16px;
