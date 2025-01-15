@@ -58,7 +58,7 @@ const TrainingPage = () => {
                 </BlackBox>
             </div>
             <div className="section-title">
-                <span>Reccomended Food</span>
+                <span>Trainings Section</span>
                 {user.type === "coach" && (
                     <button
                         onClick={() => {
@@ -70,7 +70,7 @@ const TrainingPage = () => {
                 )}
             </div>
             <div className="recommended-section">
-                <h2>Training Programs</h2>
+                <h2>Exercises Suggestions</h2>
                 <div className="cards-container">
                     {programChunk[programNum - 1]?.map((card) => (
                         <ProgramCard handleShowPopup={handleShowPopup} key={card._id} card={card} />

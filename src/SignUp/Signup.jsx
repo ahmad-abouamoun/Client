@@ -123,6 +123,7 @@ const Signup = () => {
                                 <p>Do you have highCholesterol?</p>
                                 <div className="options">
                                     <label>
+                                        <span>.</span>
                                         <input onChange={updateForm} name="highCholesterol" type="radio" value={true} />
                                         Yes
                                     </label>
@@ -153,6 +154,7 @@ const Signup = () => {
                                 <p>Do you have hypertension?</p>
                                 <div className="options">
                                     <label>
+                                        <span>.</span>
                                         <input onChange={updateForm} name="hypertension" type="radio" value={true} />
                                         Yes
                                     </label>
@@ -178,6 +180,7 @@ const Signup = () => {
                                 <p>Do you have Diabetes?</p>
                                 <div className="options">
                                     <label>
+                                        <span>.</span>
                                         <input onChange={updateForm} name="diabetes" type="radio" value={true} />
                                         Yes
                                     </label>

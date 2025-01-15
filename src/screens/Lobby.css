@@ -5,6 +5,10 @@
     height: 100%;
     min-height: 100vh;
 }
+.view > h2 {
+    padding: 20px 20px 15px 20px;
+    color: #ff6f61;
+}
 .meeting-container {
     padding: 20px 20px;
 }

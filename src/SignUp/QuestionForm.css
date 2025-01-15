@@ -32,9 +32,7 @@ body {
     max-width: 500px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-.questionnaire-content > main {
-    width: fit-content;
-}
+
 h2 {
     font-size: 1.5rem;
     color: #333;
@@ -42,14 +40,15 @@ h2 {
 }
 
 .options label {
-    text-align: start;
     display: block;
     font-size: 1rem;
     color: #444;
     margin: 0.5rem;
     cursor: pointer;
 }
-
+.options label > span {
+    opacity: 0;
+}
 .next-button {
     background-color: #ff5f5f;
     color: white;

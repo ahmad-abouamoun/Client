@@ -24,7 +24,7 @@ const Lobby = () => {
 
     const handleJoinRoom = useCallback(
         (data) => {
-            const {email, room} = data;
+            const {room} = data;
             navigate(`/room/${room}`);
         },
         [navigate]
@@ -56,6 +56,7 @@ const Lobby = () => {
     return (
         <div className="view">
             <NavBar />
+            <h2>User Meetings</h2>
             {meetings.map((meeting) => (
                 <form className="meeting-container" onSubmit={handleSubmitForm}>
                     <div>

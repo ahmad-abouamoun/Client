@@ -25,9 +25,9 @@ function FoodPopup({showPopup, setShowPopup}) {
                             <strong>Healthy for:</strong>
                         </p>
                         <ul>
-                            <li>High Cholesterol Patients: {showPopup.diseases.highCholesterol ? "No" : "Yes"}</li>
-                            <li>Hypertension Patients: {showPopup.diseases.hypertension ? "No" : "Yes"}</li>
-                            <li>Diabetes Patients: {showPopup.diseases.diabetes ? "No" : "Yes"}</li>
+                            <li>High Cholesterol Patients: {showPopup.diseases.highCholesterol ? "❌" : "✅"}</li>
+                            <li>Hypertension Patients: {showPopup.diseases.hypertension ? "❌" : "✅"}</li>
+                            <li>Diabetes Patients: {showPopup.diseases.diabetes ? "❌" : "✅"}</li>
                         </ul>
                         <p>
                             <strong>Description:</strong>

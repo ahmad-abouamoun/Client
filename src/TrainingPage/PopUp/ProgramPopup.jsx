@@ -1,8 +1,5 @@
-import React, {useState} from "react";
-import image1 from "../../Assets/dietBackground.jpg";
 import "./Popup.css";
 function ProgramPopup({showPopup, setShowPopup}) {
-    const [show, setShow] = useState(true);
     return (
         showPopup && (
             <div className="popup-overlay">
