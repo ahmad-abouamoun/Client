@@ -67,7 +67,7 @@ body {
 .popup-content > div > h3 {
     margin-bottom: 10px;
 }
-.popup-content button {
+.popup-content > button {
     width: 150px;
     height: 40px;
     border-radius: 5px;

@@ -2,6 +2,8 @@ import React, {useState} from "react";
 import "./createProgram.css";
 const CreateProgram = ({show, handleClick}) => {
     const [name, setName] = useState("");
+    const [trainingData, setTrainingData] = useState("");
+
     const [file, setFile] = useState(null);
     const token = sessionStorage.getItem("token");
     const fileChange = (e) => {
@@ -17,6 +19,7 @@ const CreateProgram = ({show, handleClick}) => {
         formData.append("file", file);
         formData.append("name", name);
         formData.append("token", token);
+        formData.append("training", trainingData);
 
         const response = await fetch("http://localhost:8080/programs", {
             method: "POST",
@@ -47,7 +50,14 @@ const CreateProgram = ({show, handleClick}) => {
                             />
                             <br />
                             <br />
-
+                            <textarea
+                                className="textarea"
+                                value={trainingData}
+                                onChange={(e) => setTrainingData(e.target.value)}
+                                placeholder="Example: deadLifts, pushups ..."
+                                rows={6}
+                                cols={37.5}
+                            />
                             <div className="buttons">
                                 <button className="container-btn-file">
                                     {file ? "Image Uploaded" : "Upload Image"}
@@ -56,6 +66,7 @@ const CreateProgram = ({show, handleClick}) => {
                                 <button
                                     onClick={() => {
                                         CreateProgramApi();
+                                        handleClick(!show);
                                     }}
                                 >
                                     Create

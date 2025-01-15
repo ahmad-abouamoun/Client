@@ -46,7 +46,7 @@
 .popup-content ul li {
     margin-bottom: 8px;
 }
-.buttons {
+.action-buttons {
     display: flex;
     gap: 10px;
 }

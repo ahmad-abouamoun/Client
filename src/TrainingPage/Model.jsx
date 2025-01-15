@@ -121,9 +121,9 @@ const Model = () => {
     };
 
     return (
-        <div>
+        <div className="canvas-container">
             <h1>3D Model</h1>
-            <div className="canvas-container" ref={canvasRef}></div>
+            <div ref={canvasRef}></div>
 
             <div className="controls">
                 <form onSubmit={handleTrainingSubmit}>

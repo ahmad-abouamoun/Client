@@ -45,7 +45,7 @@
     .recommended-section > h2 {
         margin-left: 8%;
     }
-    .section-title button {
+    .section-title > button {
         padding: 2px 4px;
         height: fit-content;
         width: fit-content;

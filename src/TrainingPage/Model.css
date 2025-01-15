@@ -7,7 +7,14 @@
     gap: 10px;
     align-items: center;
 }
-
+.canvas-container > div {
+    padding: 0 3%;
+    width: 97%;
+    overflow: hidden;
+}
+.canvas-container > h1 {
+    margin-left: 3%;
+}
 .controls form {
     display: flex;
     flex-direction: column;

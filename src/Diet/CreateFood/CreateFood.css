@@ -60,3 +60,14 @@
     display: flex;
     gap: 10px;
 }
+.buttons > button {
+    align-items: space-between;
+    padding: 5px;
+    background-color: #ff6f61;
+    color: #ffff;
+    border-radius: 5px;
+    font-weight: 500;
+    width: 100px;
+    height: 40px;
+    cursor: pointer;
+}

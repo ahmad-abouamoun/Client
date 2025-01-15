@@ -118,7 +118,7 @@ const CreateFood = ({show, handleClick}) => {
 
                                 <div className="buttons">
                                     <button className="container-btn-file">
-                                        {file ? "Image Uploaded" : "Upload Image"}
+                                        <b>{file ? "Image Uploaded" : "Upload Image"}</b>
                                         <input
                                             className="file"
                                             name="text"
@@ -126,7 +126,9 @@ const CreateFood = ({show, handleClick}) => {
                                             onChange={(e) => fileChange(e)}
                                         />
                                     </button>
-                                    <button type="submit">Create</button>
+                                    <button type="submit">
+                                        <b>Create</b>
+                                    </button>
                                 </div>
                             </form>
                         </div>

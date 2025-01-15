@@ -2,7 +2,7 @@ import "./ProgramCard.css";
 import React, {useEffect, useState} from "react";
 import {Bookmark} from "lucide-react";
 import {useDispatch, useSelector} from "react-redux";
-import {addFood, addProgram, removeProgram} from "../../redux/userSlice";
+import {addProgram, removeProgram} from "../../redux/userSlice";
 
 function ProgramCard({card, handleShowPopup}) {
     const dispatch = useDispatch();
