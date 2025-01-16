@@ -114,7 +114,7 @@ const ExperTable = () => {
                     <h2>Create New Expert</h2>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="formGroup">
-                            <label>Name:</label>
+                            <label>Name</label>
                             <input
                                 className="input-create"
                                 type="text"
@@ -123,11 +123,11 @@ const ExperTable = () => {
                             />
                         </div>
                         <div className="formGroup">
-                            <label>Email:</label>
+                            <label>Email</label>
                             <input className="input-create" type="email" {...register("email", {required: true})} />
                         </div>
                         <div className="formGroup">
-                            <label>Password:</label>
+                            <label>Password</label>
                             <input
                                 className="input-create"
                                 type="password"
@@ -135,7 +135,7 @@ const ExperTable = () => {
                             />
                         </div>
                         <div className="formGroup">
-                            <label>Expert type:</label>
+                            <label>Expert type</label>
                             <select name="type" {...register("type", {required: true})}>
                                 <option value="coach">coach</option>
                                 <option value="therapist">therapist</option>
@@ -143,12 +143,9 @@ const ExperTable = () => {
                             </select>
                         </div>
                         <div>
-                            <label>Upload Expert Image:</label>
+                            <label>Upload Expert Image</label>
                             <input type="file" name="courseMaterial" required onChange={(e) => fileChange(e)} />
                         </div>
-                        <button type="submit" className="submitBtn">
-                            Create Expert Account
-                        </button>
                         <button
                             onClick={() => {
                                 setformView(!formView);
@@ -156,6 +153,9 @@ const ExperTable = () => {
                             className="cancelBtn"
                         >
                             Cancel
+                        </button>
+                        <button type="submit" className="submitBtn">
+                            Create Expert
                         </button>
                     </form>
                 </div>

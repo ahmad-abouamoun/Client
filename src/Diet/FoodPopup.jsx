@@ -31,7 +31,6 @@ function FoodPopup({showPopup, setShowPopup}) {
                         </ul>
                         <p>
                             <strong>Description:</strong>
-                            <br />
                             {showPopup.description}
                         </p>
                     </div>

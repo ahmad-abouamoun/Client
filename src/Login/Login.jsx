@@ -37,7 +37,12 @@ const Login = () => {
             const responseData = await response.json();
             dispatch(setUser(responseData.data));
             sessionStorage.setItem("token", responseData.token);
-            navigate("/");
+
+            if (responseData.data.type === "admin") {
+                navigate("/adminPage");
+            } else {
+                navigate("/");
+            }
         } catch (error) {
             alert(error.message);
         }

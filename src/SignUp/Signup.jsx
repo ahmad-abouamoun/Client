@@ -95,7 +95,7 @@ const Signup = () => {
                     </label>
 
                     <button className="container-btn-file">
-                        Upload File
+                        Upload Image
                         <input className="file" name="text" type="file" onChange={(e) => fileChange(e)} />
                     </button>
 

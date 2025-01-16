@@ -24,7 +24,6 @@ function ProgramPopup({showPopup, setShowPopup}) {
                                 <p>{training}</p>
                             ))}
                         </p>
-                        <button>Add Training</button>
                     </div>
                 </div>
             </div>

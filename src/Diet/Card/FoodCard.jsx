@@ -54,6 +54,12 @@ function FoodCard({card, handleShowPopup}) {
             alert("An error occurred. Please try again.");
         }
     };
+    function truncateText(text, maxLength) {
+        if (text.length > maxLength) {
+            return text.slice(0, maxLength) + "...";
+        }
+        return text;
+    }
     return (
         <div>
             <div className="card">
@@ -74,7 +80,7 @@ function FoodCard({card, handleShowPopup}) {
                 />
                 <div className="card-content">
                     <h2 className="card-title">{card.name}</h2>
-                    <p className="card-description">{card.description}</p>
+                    <p className="card-description">{truncateText(card.description, 50)}</p>
                 </div>
                 <div className="card-actions">
                     <button className="learn-more" onClick={() => handleShowPopup(card)}>

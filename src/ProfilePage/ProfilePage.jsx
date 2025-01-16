@@ -16,6 +16,7 @@ import Footer from "../Re-usableComponents/Footer/Footer";
 const ProfilePage = () => {
     const token = sessionStorage.getItem("token");
     const showCalendar = useSelector((state) => state.calendar.calendar);
+    const user = useSelector((state) => state.users.user);
 
     const [favFood, setFavFood] = useState([]);
     const [favProgram, setFavProgram] = useState([]);
@@ -23,7 +24,6 @@ const ProfilePage = () => {
     const [favProgramNum, setFavProgramNum] = useState(1);
 
     const dispatch = useDispatch();
-    const user = useSelector((state) => state.users.user);
     const [showPopup, setShowPopup] = useState(false);
     const [showProgramPopup, setShowProgramPopup] = useState(false);
     const [showFoodPopup, setShowFoodPopup] = useState(false);

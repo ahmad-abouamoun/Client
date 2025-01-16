@@ -14,6 +14,7 @@ const Lobby = () => {
     const [meetings, setMeetings] = useState([]);
     const socket = useSocket();
     const navigate = useNavigate();
+
     const handleSubmitForm = useCallback(
         (e) => {
             e.preventDefault();

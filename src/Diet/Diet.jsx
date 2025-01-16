@@ -62,6 +62,7 @@ const DietPage = () => {
     noColChunks = Chuncks(NoCholesterol);
     noHyChunks = Chuncks(NoHypertension);
     reccomended = Chuncks(Reccomended);
+
     return (
         <div>
             <div className="backGround" style={{backgroundImage: ` url(${image1})`}}>
@@ -76,7 +77,7 @@ const DietPage = () => {
                 </BlackBox>
             </div>
             <div className="section-title">
-                <span>Reccomended Food</span>
+                <span>Food Section</span>
                 {user.type === "nutritionist" && (
                     <button
                         onClick={() => {
@@ -89,7 +90,7 @@ const DietPage = () => {
                 )}
             </div>
             <div className="recommended-section">
-                <h2>food</h2>
+                <h2>Food Reccomendations</h2>
                 <div className="cards-container">
                     {reccomended[reccomendedNum - 1]?.map((card) => (
                         <FoodCard handleShowPopup={handleShowPopup} key={card._id} card={card} />
@@ -98,7 +99,7 @@ const DietPage = () => {
                 <PageNumber numItems={reccomended.length} setNumber={setReccomendedNum} />
             </div>
             <div className="recommended-section">
-                <h2>No Diabetes</h2>
+                <h2>Does not affect Diabetes</h2>
                 <div className="cards-container">
                     {noDiaChunks[noDiaPageNum - 1]?.map((card) => (
                         <FoodCard handleShowPopup={handleShowPopup} key={card._id} card={card} />
@@ -107,7 +108,7 @@ const DietPage = () => {
                 <PageNumber numItems={noDiaChunks.length} setNumber={setnoDiaPageNum} />
             </div>
             <div className="recommended-section">
-                <h2>No Cholesterol</h2>
+                <h2>Does not affect HighCholesterol</h2>
                 <div className="cards-container">
                     {noColChunks[noColPageNum - 1]?.map((card) => (
                         <FoodCard handleShowPopup={handleShowPopup} key={card._id} card={card} />
@@ -116,7 +117,7 @@ const DietPage = () => {
                 <PageNumber numItems={noColChunks.length} setNumber={setNoColPageNum} />
             </div>
             <div className="recommended-section">
-                <h2>No Hypertension</h2>
+                <h2>Does not affect Hypertension</h2>
                 <div className="cards-container">
                     {noHyChunks[noHyPageNum - 1]?.map((card) => (
                         <FoodCard handleShowPopup={handleShowPopup} key={card._id} card={card} />
