@@ -135,9 +135,15 @@ const Model = () => {
                 </button>
 
                 <ul>
-                    <li className="green">Green for low intensity</li>
-                    <li className="yellow">Yellowfor medium intensity</li>
-                    <li className="red">Red for high intensity</li>
+                    <li className="green">
+                        <div></div> Low Intensity
+                    </li>
+                    <li className="yellow">
+                        <div></div>Medium Intensity
+                    </li>
+                    <li className="red">
+                        <div></div> High Intensity
+                    </li>
                 </ul>
                 {show && (
                     <div className="controls">

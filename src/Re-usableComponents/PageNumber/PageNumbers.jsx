@@ -15,7 +15,7 @@ const PageNumber = ({numItems, setNumber}) => {
                     defaultChecked={i === 1}
                     onChange={() => setNumber(i)}
                 />
-                <span>{i}</span>
+                <span className="numbers">{i}</span>
             </label>
         );
     }
