@@ -123,8 +123,15 @@ const Model = () => {
     return (
         <div className="canvas-container">
             <h1>3D Model</h1>
-            <div ref={canvasRef}></div>
-
+            <div className="Model">
+                <div ref={canvasRef}> </div>
+                <button>Hello</button>
+                <ul>
+                    <li className="green">Green for low intensity</li>
+                    <li className="yellow">Yellowfor medium intensity</li>
+                    <li className="red">Red for high intensity</li>
+                </ul>
+            </div>
             <div className="controls">
                 <form onSubmit={handleTrainingSubmit}>
                     <label>

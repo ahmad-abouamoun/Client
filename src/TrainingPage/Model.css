@@ -48,3 +48,38 @@
 .controls button:hover {
     background: #ff5e50;
 }
+.Model {
+    position: relative;
+    top: 0%;
+    z-index: 10;
+}
+
+.Model > button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+.Model > button :hover {
+    background: #ff5e50;
+}
+.Model > ul {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    padding: 10px 15px;
+}
+.green {
+    color: green;
+}
+.yellow {
+    color: yellow;
+}
+.red {
+    color: red;
+}
