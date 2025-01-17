@@ -3,6 +3,9 @@
     padding: 10px;
     border-radius: 8px;
     display: flex;
+    position: absolute;
+    top: 10%;
+    left: 10%;
     flex-direction: column;
     gap: 10px;
     align-items: center;
@@ -13,7 +16,7 @@
     overflow: hidden;
 }
 .canvas-container > h1 {
-    margin-left: 3%;
+    text-align: center;
 }
 .controls form {
     display: flex;

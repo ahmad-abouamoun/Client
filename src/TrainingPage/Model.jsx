@@ -6,6 +6,7 @@ import "./Model.css";
 const Model = () => {
     const canvasRef = useRef(null);
     const [trainingData, setTrainingData] = useState("");
+    const [show, setShow] = useState(false);
     const muscleMap = useRef({});
     const modelRef = useRef(null);
 
@@ -125,28 +126,37 @@ const Model = () => {
             <h1>3D Model</h1>
             <div className="Model">
                 <div ref={canvasRef}> </div>
-                <button>Hello</button>
+                <button
+                    onClick={() => {
+                        setShow(!show);
+                    }}
+                >
+                    Provide Workout
+                </button>
+
                 <ul>
                     <li className="green">Green for low intensity</li>
                     <li className="yellow">Yellowfor medium intensity</li>
                     <li className="red">Red for high intensity</li>
                 </ul>
-            </div>
-            <div className="controls">
-                <form onSubmit={handleTrainingSubmit}>
-                    <label>
-                        Enter Your Training Data:
-                        <textarea
-                            className="textarea"
-                            value={trainingData}
-                            onChange={(e) => setTrainingData(e.target.value)}
-                            placeholder="Example: Squats: 3 sets, Bench Press: 4 sets"
-                            rows={5}
-                            cols={50}
-                        />
-                    </label>
-                    <button type="submit">Apply Training</button>
-                </form>
+                {show && (
+                    <div className="controls">
+                        <form onSubmit={handleTrainingSubmit}>
+                            <label>
+                                Enter Your Training Data:
+                                <textarea
+                                    className="textarea"
+                                    value={trainingData}
+                                    onChange={(e) => setTrainingData(e.target.value)}
+                                    placeholder="Example: Squats: 3 sets, Bench Press: 4 sets"
+                                    rows={5}
+                                    cols={50}
+                                />
+                            </label>
+                            <button type="submit">Apply Training</button>
+                        </form>
+                    </div>
+                )}
             </div>
         </div>
     );
