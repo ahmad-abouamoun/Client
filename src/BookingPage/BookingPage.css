@@ -68,10 +68,27 @@
     top: 10px;
     right: 10px;
     background: none;
+    color: white;
     border: none;
     font-size: 24px;
     cursor: pointer;
 }
+.rbc-header {
+    color: white;
+}
+
+.rbc-date-cell {
+    color: white;
+}
+
+.rbc-day-bg {
+    background-color: transparent;
+}
+
+.rbc-event {
+    color: white;
+}
+
 @media (max-width: 768px) {
     .modal {
         width: 95%;

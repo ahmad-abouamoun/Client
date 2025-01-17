@@ -55,7 +55,6 @@ const MentalHealth = () => {
                     </div>
                 </div>
             </div>
-            <Footer />
         </div>
     );
 };

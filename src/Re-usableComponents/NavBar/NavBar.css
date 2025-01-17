@@ -57,8 +57,9 @@
 .navbar > button {
     height: 30px;
     width: 100px;
-    border-radius: 10px;
+    border-radius: 5px;
     background-color: #ff6f61;
+    color: white;
     cursor: pointer;
 }
 
@@ -72,7 +73,10 @@
 .dropdown-container {
     position: relative;
 }
-
+.dropdown-container > img {
+    height: 45px;
+    width: 45px;
+}
 .dropdown {
     position: absolute;
     top: 100%;

@@ -37,14 +37,7 @@ const AdminPage = () => {
                         </span>
                     </li>
                 </ul>
-                <button
-                    onClick={() => {
-                        sessionStorage.removeItem("token");
-                        navigate("/login");
-                    }}
-                >
-                    Logout
-                </button>
+                <button onClick={()=>{sessionStorage.removeItem("token");navigate("/login")}} >Logout</button>
             </nav>
             <div className="table-container">{output === "users" ? <UserTable /> : <ExperTable />}</div>
         </div>

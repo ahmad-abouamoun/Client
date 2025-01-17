@@ -89,32 +89,33 @@ const ExperTable = () => {
         },
         {
             name: "Actions",
-            cell: (row) => (
-                <button className="ban-button">
-                    <Ban />
-                </button>
-            ),
+            cell: (row) => <button className="ban-button">Delete</button>,
         },
     ];
 
     return (
         <div>
-            <DataTable title="Specialist Management" columns={columnsSpecialists} data={dataExperts} highlightOnHover />
-            <div className="createBtn">
-                <button
-                    onClick={() => {
-                        setformView(!formView);
-                    }}
-                >
-                    Create Expert
-                </button>
+            <div className="table-title">
+                <div>
+                    <h2>Specail Managment</h2>
+                    <div className="createBtn">
+                        <button
+                            onClick={() => {
+                                setformView(!formView);
+                            }}
+                        >
+                            Create Expert
+                        </button>
+                    </div>
+                </div>
+                <DataTable columns={columnsSpecialists} data={dataExperts} highlightOnHover />
             </div>
             {formView && (
                 <div className="createForm">
-                    <h2>Create New Expert</h2>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="formGroup">
                             <label>Name</label>
+                            <br />
                             <input
                                 className="input-create"
                                 type="text"
@@ -124,10 +125,12 @@ const ExperTable = () => {
                         </div>
                         <div className="formGroup">
                             <label>Email</label>
+                            <br />
                             <input className="input-create" type="email" {...register("email", {required: true})} />
                         </div>
                         <div className="formGroup">
                             <label>Password</label>
+                            <br />
                             <input
                                 className="input-create"
                                 type="password"
@@ -136,6 +139,7 @@ const ExperTable = () => {
                         </div>
                         <div className="formGroup">
                             <label>Expert type</label>
+                            <br />
                             <select name="type" {...register("type", {required: true})}>
                                 <option value="coach">coach</option>
                                 <option value="therapist">therapist</option>
@@ -143,20 +147,24 @@ const ExperTable = () => {
                             </select>
                         </div>
                         <div>
-                            <label>Upload Expert Image</label>
-                            <input type="file" name="courseMaterial" required onChange={(e) => fileChange(e)} />
+                            <button className="container-btn-file">
+                                Upload
+                                <input className="file" name="text" type="file" onChange={(e) => fileChange(e)} />
+                            </button>
                         </div>
-                        <button
-                            onClick={() => {
-                                setformView(!formView);
-                            }}
-                            className="cancelBtn"
-                        >
-                            Cancel
-                        </button>
-                        <button type="submit" className="submitBtn">
-                            Create Expert
-                        </button>
+                        <div className="actionBtn">
+                            <button
+                                onClick={() => {
+                                    setformView(!formView);
+                                }}
+                                className="cancelBtn"
+                            >
+                                Cancel
+                            </button>
+                            <button type="submit" className="submitBtn">
+                                Create Expert
+                            </button>
+                        </div>
                     </form>
                 </div>
             )}
