@@ -1,11 +1,11 @@
 import React, {useState, useEffect, useCallback} from "react";
 import NavBar from "../Re-usableComponents/NavBar/NavBar";
 import {format} from "date-fns";
-
 import {useNavigate} from "react-router-dom";
 import {useSocket} from "../context/SocketProvider";
 import {useSelector} from "react-redux";
 import "./Lobby.css";
+
 const Lobby = () => {
     const user = useSelector((state) => state.users.user);
     const email = user.email;

@@ -30,3 +30,17 @@
 .room > main p {
     margin: 0 50px;
 }
+.mute-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.mute-button > button {
+    height: 30px;
+    width: 50px;
+    background-color: #ff6f61;
+    color: White;
+    cursor: pointer;
+    border-radius: 5px;
+}

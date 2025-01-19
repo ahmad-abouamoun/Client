@@ -9,7 +9,7 @@ const Room = () => {
     const [remoteSocketId, setRemoteSocketId] = useState(null);
     const [myStream, setMyStream] = useState();
     const [remoteStream, setRemoteStream] = useState();
-
+    const [mute, setMute] = useState(true);
     const handleUserJoined = useCallback(({email, id}) => {
         console.log(`Email ${email} joined room`);
         setRemoteSocketId(id);
@@ -17,7 +17,7 @@ const Room = () => {
 
     const handleCallUser = useCallback(async () => {
         const stream = await navigator.mediaDevices.getUserMedia({
-            audio: true,
+            audio: mute,
             video: true,
         });
         const offer = await peer.getOffer();
@@ -122,6 +122,25 @@ const Room = () => {
                 {myStream && (
                     <span>
                         <ReactPlayer playing height="400px" width="500px" url={myStream} />
+                        <div className="mute-button">
+                            <button
+                                onClick={() => {
+                                    if (myStream) {
+                                        const audioTrack = myStream.getAudioTracks()[0];
+                                        console.log(audioTrack);
+                                        if (audioTrack) {
+                                            const isMuted = !audioTrack.enabled;
+                                            console.log(isMuted);
+
+                                            audioTrack.enabled = true;
+                                            setMute(isMuted);
+                                        }
+                                    }
+                                }}
+                            >
+                                {mute ? "Unmute" : "Mute"}
+                            </button>
+                        </div>
                     </span>
                 )}
                 {remoteStream && (
