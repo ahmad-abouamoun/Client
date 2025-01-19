@@ -67,6 +67,18 @@ const ExperTable = () => {
 
         getExperts();
     }, []);
+    const DeleteUser = async (id) => {
+        setDataExperts((prevDataExperts) => prevDataExperts.filter((user) => user._id !== id));
+        const response = await fetch(`http://localhost:8080/users/${id}`, {
+            method: "DELETE",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                token: sessionStorage.getItem("token"),
+            }),
+        });
+        const data = await response.json();
+    };
+
     const columnsSpecialists = [
         {
             name: "Name",
@@ -89,7 +101,16 @@ const ExperTable = () => {
         },
         {
             name: "Actions",
-            cell: (row) => <button className="ban-button">Delete</button>,
+            cell: (row) => (
+                <button
+                    onClick={() => {
+                        DeleteUser(row._id);
+                    }}
+                    className="ban-button"
+                >
+                    Delete
+                </button>
+            ),
         },
     ];
 
