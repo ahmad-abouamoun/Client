@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import "./ProfilePage.css";
-import image from "../Assets/dietBackground.jpg";
+import emptyState from "../Assets/emptyState.jpg";
 import useForm from "../hooks/useForm";
 import {useDispatch, useSelector} from "react-redux";
 import {setUser} from "../redux/userSlice";
@@ -122,9 +122,13 @@ const ProfilePage = () => {
             <div className="recommended-section">
                 <h2>Favorited Food</h2>
                 <div className="cards-container">
-                    {favFoodChunks[favFoodNum - 1]?.map((card) => (
-                        <FoodCard handleShowPopup={setShowFoodPopup} key={card._id} card={card} />
-                    ))}
+                    {favFood.length > 0 ? (
+                        favFoodChunks[favFoodNum - 1]?.map((card) => (
+                            <FoodCard handleShowPopup={setShowFoodPopup} key={card._id} card={card} />
+                        ))
+                    ) : (
+                        <img src={emptyState} alt="No Favorite Food" className="empty-state-image" />
+                    )}
                 </div>
                 <PageNumber numItems={favFoodChunks.length} setNumber={setFavFoodNum} />
             </div>
@@ -133,9 +137,13 @@ const ProfilePage = () => {
             <div className="recommended-section">
                 <h2>Favorited Program</h2>
                 <div className="cards-container">
-                    {favProgramChunks[favProgramNum - 1]?.map((card) => (
-                        <ProgramCard handleShowPopup={setShowProgramPopup} key={card._id} card={card} />
-                    ))}
+                    {favProgram.length > 0 ? (
+                        favProgramChunks[favProgramNum - 1]?.map((card) => (
+                            <ProgramCard handleShowPopup={setShowProgramPopup} key={card._id} card={card} />
+                        ))
+                    ) : (
+                        <img src={emptyState} alt="No Favorite Program" className="empty-state-image" />
+                    )}
                 </div>
                 <PageNumber numItems={favProgramChunks.length} setNumber={setFavProgramNum} />
             </div>
