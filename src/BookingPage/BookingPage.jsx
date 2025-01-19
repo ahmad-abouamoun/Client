@@ -95,6 +95,10 @@ const BookingPage = () => {
                     },
                     body: JSON.stringify(meetingData),
                 });
+                if ((await response.status) === 400) {
+                    const error = await response.json();
+                    throw Error(error.message);
+                }
                 const data = await response.json();
                 if (data.status !== "failed") {
                     setEvents([

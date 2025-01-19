@@ -9,7 +9,7 @@
     font-size: medium;
     background-color: #ff6f61;
     width: 100px;
-
+    color: white;
     margin: 5px;
     border-radius: 5px;
 }
@@ -124,4 +124,13 @@
 
 .room-container .input-area button:hover {
     background-color: #ff8a75;
+}
+.roomBackGround {
+    min-height: 105vh;
+    height: auto;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    transition: "background-image 1s ease-in-out";
 }

@@ -1,5 +1,9 @@
 import React, {useEffect, useCallback, useState} from "react";
 import ReactPlayer from "react-player";
+import GymImage from "../Assets/gymBackground.webp";
+import DietImage from "../Assets/dietBackground.jpg";
+import mentalHealthImage from "../Assets/mentalHealthBackground.jpeg";
+
 import peer from "../service/peer";
 import {useSocket} from "../context/SocketProvider";
 import "./Room.css";
@@ -14,7 +18,16 @@ const Room = () => {
     const [showChat, setShowChat] = useState(false);
     const [mute, setMute] = useState(true);
     const [remoteMute, setRemoteMute] = useState(true);
-
+    const pathname = window.location.pathname;
+    const roomId = pathname.split("/")[2];
+    let image;
+    if (roomId === "101") {
+        image = DietImage;
+    } else if (roomId === "102") {
+        image = mentalHealthImage;
+    } else {
+        image = GymImage;
+    }
     const handleUserJoined = useCallback(({email, id}) => {
         console.log(`Email ${email} joined room`);
         setRemoteSocketId(id);
@@ -133,80 +146,82 @@ const Room = () => {
     ]);
 
     return (
-        <div className="room">
-            <div className="details">
-                <h1>Room Page</h1>
-                <h4>{remoteSocketId ? "Connected" : "No one in room"}</h4>
-                {myStream && <button onClick={sendStreams}>Send Stream</button>}
-                {remoteSocketId && <button onClick={handleCallUser}>CALL</button>}
-            </div>
-            <div>
-                {showChat && (
-                    <div className="room-container">
-                        <button
-                            className="close-room-container"
-                            onClick={() => {
-                                setShowChat(false);
-                            }}
-                        >
-                            &times;
-                        </button>
-                        <div className="messages-area">
-                            {messages.map((message, index) => (
-                                <div key={index} className="message">
-                                    <strong>{message.sender}:</strong> {message.text}
-                                </div>
-                            ))}
-                        </div>
-                        <div className="input-area">
-                            <input
-                                type="text"
-                                placeholder="Type a message..."
-                                onChange={(e) => setNewMessage(e.target.value)}
-                            />
-                            <button onClick={handleSendMessage}>Send</button>
-                        </div>
-                    </div>
-                )}
-            </div>
-            <main>
-                {myStream && (
-                    <span>
-                        <ReactPlayer muted={mute} playing height="400px" width="500px" url={myStream} />
-                        <div className="mute-button">
+        <div className="roomBackGround" style={{backgroundImage: `url(${image})`}}>
+            <div className="room">
+                <div className="details">
+                    <h1>Room Page</h1>
+                    <h4>{remoteSocketId ? "Connected" : "No one in room"}</h4>
+                    {myStream && <button onClick={sendStreams}>Send Stream</button>}
+                    {remoteSocketId && <button onClick={handleCallUser}>CALL</button>}
+                </div>
+                <div>
+                    {showChat && (
+                        <div className="room-container">
                             <button
+                                className="close-room-container"
                                 onClick={() => {
-                                    setMute(!mute);
+                                    setShowChat(false);
                                 }}
                             >
-                                {mute ? "Unmute" : "Mute"}
+                                &times;
                             </button>
+                            <div className="messages-area">
+                                {messages.map((message, index) => (
+                                    <div key={index} className="message">
+                                        <strong>{message.sender}:</strong> {message.text}
+                                    </div>
+                                ))}
+                            </div>
+                            <div className="input-area">
+                                <input
+                                    type="text"
+                                    placeholder="Type a message..."
+                                    onChange={(e) => setNewMessage(e.target.value)}
+                                />
+                                <button onClick={handleSendMessage}>Send</button>
+                            </div>
                         </div>
-                        <button
-                            className="chat-btn"
-                            onClick={() => {
-                                setShowChat(true);
-                            }}
-                        >
-                            Messages
-                        </button>
-                    </span>
-                )}
-                {remoteStream && (
-                    <p>
-                        <ReactPlayer playing height="400px" muted={remoteMute} width="500px" url={remoteStream} />
-                        <div className="mute-button">
+                    )}
+                </div>
+                <main>
+                    {myStream && (
+                        <span>
+                            <ReactPlayer muted={mute} playing height="400px" width="500px" url={myStream} />
+                            <div className="mute-button">
+                                <button
+                                    onClick={() => {
+                                        setMute(!mute);
+                                    }}
+                                >
+                                    {mute ? "Unmute" : "Mute"}
+                                </button>
+                            </div>
                             <button
+                                className="chat-btn"
                                 onClick={() => {
-                                    setRemoteMute(!remoteMute);
+                                    setShowChat(true);
                                 }}
                             >
-                                {remoteMute ? "Unmute" : "Mute"}
+                                Messages
                             </button>
-                        </div>
-                    </p>
-                )}
-            </main>
+                        </span>
+                    )}
+                    {remoteStream && (
+                        <p>
+                            <ReactPlayer playing height="400px" muted={remoteMute} width="500px" url={remoteStream} />
+                            <div className="mute-button">
+                                <button
+                                    onClick={() => {
+                                        setRemoteMute(!remoteMute);
+                                    }}
+                                >
+                                    {remoteMute ? "Unmute" : "Mute"}
+                                </button>
+                            </div>
+                        </p>
+                    )}
+                </main>
+            </div>
         </div>
     );
 };
