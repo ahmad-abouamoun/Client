@@ -91,7 +91,7 @@
     margin: 2px;
 }
 .yellow {
-    color: yellow;
+    color: #e5ff00;
     display: flex;
     align-items: center;
 }
@@ -99,7 +99,7 @@
     height: 20px;
     width: 20px;
     border-radius: 50%;
-    background-color: yellow;
+    background-color: #e5ff00;
     margin: 2px;
 }
 .red {

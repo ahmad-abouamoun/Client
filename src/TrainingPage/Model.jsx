@@ -99,7 +99,10 @@ const Model = () => {
 
     const handleTrainingSubmit = async (e) => {
         e.preventDefault();
-
+        if (!trainingData) {
+            alert("please first submit trainings");
+            return;
+        }
         try {
             const response = await fetch("http://localhost:8080/api/model", {
                 method: "POST",
