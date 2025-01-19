@@ -29,7 +29,7 @@ const HomePage = () => {
     return (
         <div>
             <div>
-                <div className="backGround" style={{backgroundImage: `url(${images[image]})`}}>
+                <div className="backGround" style={{backgroundImage: `url(${image1})`}}>
                     <NavBar />
                     {showCalendar && token && (
                         <div className="calendar-popup ">
@@ -37,7 +37,7 @@ const HomePage = () => {
                         </div>
                     )}
                     <BlackBox>
-                        <h1>Welcome to Balance Beacon</h1>
+                        <h1>Welcome to Balance Beam</h1>
                         <p>Book a meeting now with one of our specialists</p>
                     </BlackBox>
                 </div>

@@ -2,21 +2,26 @@ import {useState} from "react";
 import Message from "./message";
 import "./mentalHealth.css";
 import NavBar from "../Re-usableComponents/NavBar/NavBar";
-import Footer from "../Re-usableComponents/Footer/Footer";
 
 const MentalHealth = () => {
     const [messages, setMessages] = useState([]);
     const [inputValue, setInputValue] = useState("");
-
+    const chats = [];
     const sendMessage = async () => {
         if (inputValue.trim()) {
+            if (chats.length <= 5) {
+                chats.push(inputValue);
+            } else {
+                chats.shift();
+                chats.push(inputValue);
+            }
             setMessages((prevMessages) => [...prevMessages, {sender: "User", text: inputValue}]);
             const response = await fetch("http://localhost:8080/api/therapist", {
                 headers: {
                     "Content-Type": "application/json",
                 },
                 method: "POST",
-                body: JSON.stringify({userMessage: inputValue}),
+                body: JSON.stringify({userMessage: inputValue, userMessages: chats}),
             });
             const responseDate = await response.json();
             setInputValue("");
