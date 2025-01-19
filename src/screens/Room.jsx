@@ -6,15 +6,34 @@ import "./Room.css";
 
 const Room = () => {
     const socket = useSocket();
+    const [messages, setMessages] = useState([]);
+    const [newMessage, setNewMessage] = useState("");
     const [remoteSocketId, setRemoteSocketId] = useState(null);
     const [myStream, setMyStream] = useState();
     const [remoteStream, setRemoteStream] = useState();
+    const [showChat, setShowChat] = useState(false);
     const [mute, setMute] = useState(true);
+    const [remoteMute, setRemoteMute] = useState(true);
+
     const handleUserJoined = useCallback(({email, id}) => {
         console.log(`Email ${email} joined room`);
         setRemoteSocketId(id);
     }, []);
+    const handleSendMessage = () => {
+        if (newMessage.trim() === "") return;
 
+        setMessages((prevMessages) => [...prevMessages, {sender: "Me", text: newMessage}]);
+
+        socket.emit("send:message", {
+            to: remoteSocketId,
+            message: newMessage,
+        });
+
+        setNewMessage("");
+    };
+    const handleReceiveMessage = useCallback(({message}) => {
+        setMessages((prevMessages) => [...prevMessages, {sender: "Other", text: message}]);
+    }, []);
     const handleCallUser = useCallback(async () => {
         const stream = await navigator.mediaDevices.getUserMedia({
             audio: mute,
@@ -93,6 +112,7 @@ const Room = () => {
         socket.on("call:accepted", handleCallAccepted);
         socket.on("peer:nego:needed", handleNegoNeedIncomming);
         socket.on("peer:nego:final", handleNegoNeedFinal);
+        socket.on("receive:message", handleReceiveMessage);
 
         return () => {
             socket.off("user:joined", handleUserJoined);
@@ -100,6 +120,7 @@ const Room = () => {
             socket.off("call:accepted", handleCallAccepted);
             socket.off("peer:nego:needed", handleNegoNeedIncomming);
             socket.off("peer:nego:final", handleNegoNeedFinal);
+            socket.off("receive:message", handleReceiveMessage);
         };
     }, [
         socket,
@@ -108,6 +129,7 @@ const Room = () => {
         handleCallAccepted,
         handleNegoNeedIncomming,
         handleNegoNeedFinal,
+        handleReceiveMessage,
     ]);
 
     return (
@@ -118,34 +140,70 @@ const Room = () => {
                 {myStream && <button onClick={sendStreams}>Send Stream</button>}
                 {remoteSocketId && <button onClick={handleCallUser}>CALL</button>}
             </div>
+            <div>
+                {showChat && (
+                    <div className="room-container">
+                        <button
+                            className="close-room-container"
+                            onClick={() => {
+                                setShowChat(false);
+                            }}
+                        >
+                            &times;
+                        </button>
+                        <div className="messages-area">
+                            {messages.map((message, index) => (
+                                <div key={index} className="message">
+                                    <strong>{message.sender}:</strong> {message.text}
+                                </div>
+                            ))}
+                        </div>
+                        <div className="input-area">
+                            <input
+                                type="text"
+                                placeholder="Type a message..."
+                                onChange={(e) => setNewMessage(e.target.value)}
+                            />
+                            <button onClick={handleSendMessage}>Send</button>
+                        </div>
+                    </div>
+                )}
+            </div>
             <main>
                 {myStream && (
                     <span>
-                        <ReactPlayer playing height="400px" width="500px" url={myStream} />
+                        <ReactPlayer muted={mute} playing height="400px" width="500px" url={myStream} />
                         <div className="mute-button">
                             <button
                                 onClick={() => {
-                                    if (myStream) {
-                                        const audioTrack = myStream.getAudioTracks()[0];
-                                        console.log(audioTrack);
-                                        if (audioTrack) {
-                                            const isMuted = !audioTrack.enabled;
-                                            console.log(isMuted);
-
-                                            audioTrack.enabled = true;
-                                            setMute(isMuted);
-                                        }
-                                    }
+                                    setMute(!mute);
                                 }}
                             >
                                 {mute ? "Unmute" : "Mute"}
                             </button>
                         </div>
+                        <button
+                            className="chat-btn"
+                            onClick={() => {
+                                setShowChat(true);
+                            }}
+                        >
+                            Messages
+                        </button>
                     </span>
                 )}
                 {remoteStream && (
                     <p>
-                        <ReactPlayer playing height="400px" width="500px" url={remoteStream} />
+                        <ReactPlayer playing height="400px" muted={remoteMute} width="500px" url={remoteStream} />
+                        <div className="mute-button">
+                            <button
+                                onClick={() => {
+                                    setRemoteMute(!remoteMute);
+                                }}
+                            >
+                                {remoteMute ? "Unmute" : "Mute"}
+                            </button>
+                        </div>
                     </p>
                 )}
             </main>

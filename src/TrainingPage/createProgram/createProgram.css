@@ -18,7 +18,35 @@
     height: 30px;
     padding: 5px;
 }
-
+.training-selection > select {
+    min-width: 40px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.training-selection > button {
+    background-color: #ff6f61;
+    margin-top: 5px;
+    border-radius: 5px;
+    color: white;
+    align-items: center;
+    height: 20px;
+    width: fit-content;
+    padding: 5px;
+}
+.training-list button {
+    background-color: #ff6f61;
+    margin-top: 5px;
+    border-radius: 5px;
+    color: white;
+    align-items: center;
+    height: 20px;
+    width: fit-content;
+    padding: 5px;
+}
+.training-list {
+    height: fit-content;
+    overflow-y: scroll;
+}
 .popup {
     background: #fff;
     border-radius: 10px;

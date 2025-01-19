@@ -20,6 +20,8 @@
 }
 .room > main {
     display: flex;
+    position: absolute;
+    z-index: -2;
     align-content: space-between;
     justify-content: center;
     margin: 0 auto;
@@ -43,4 +45,83 @@
     color: White;
     cursor: pointer;
     border-radius: 5px;
+}
+.chat-btn {
+    background-color: #ff6f61;
+    color: white;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    cursor: pointer;
+    height: 30px;
+    padding: 5px;
+    width: fit-content;
+    border-radius: 5px;
+}
+.room-container {
+    height: 350px;
+    width: 300px;
+    border-radius: 5px;
+    background-color: #ff6f61;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    z-index: 10;
+    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    color: white;
+}
+
+.room-container .close-room-container {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    align-self: flex-end;
+}
+
+.room-container .messages-area {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    padding: 5px;
+    background-color: #ffe5e0;
+    border-radius: 5px;
+    color: black;
+}
+
+.room-container .message {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.room-container .input-area {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.room-container .input-area input {
+    flex: 1;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+
+.room-container .input-area button {
+    background-color: white;
+    color: #ff6f61;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.room-container .input-area button:hover {
+    background-color: #ff8a75;
 }
