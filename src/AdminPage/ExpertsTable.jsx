@@ -118,7 +118,7 @@ const ExperTable = () => {
         <div>
             <div className="table-title">
                 <div>
-                    <h2>Specail Managment</h2>
+                    <h2>Specialists Managment</h2>
                     <div className="createBtn">
                         <button
                             onClick={() => {

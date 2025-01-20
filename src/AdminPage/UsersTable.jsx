@@ -67,7 +67,8 @@ const UserTable = () => {
 
     return (
         <div>
-            <DataTable title="User Management" columns={columnsUsers} data={dataUsers} highlightOnHover />
+            <h2>User Management</h2>
+            <DataTable columns={columnsUsers} data={dataUsers} highlightOnHover />
         </div>
     );
 };
