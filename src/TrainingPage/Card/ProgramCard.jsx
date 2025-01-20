@@ -18,7 +18,7 @@ function ProgramCard({card, handleShowPopup}) {
 
     const addFavProgram = async () => {
         try {
-            const response = await fetch(`http://localhost:8080/users/favProgram`, {
+            const response = await fetch(`http://localhost:8000/users/favProgram`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -37,7 +37,7 @@ function ProgramCard({card, handleShowPopup}) {
     };
     const removeFavProgram = async () => {
         try {
-            const response = await fetch(`http://localhost:8080/users/favProgram`, {
+            const response = await fetch(`http://localhost:8000/users/favProgram`, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
@@ -68,7 +68,7 @@ function ProgramCard({card, handleShowPopup}) {
                     </div>
                     <img
                         className="card-image"
-                        src={`http://localhost:8080/programsImages/${card.filename}`}
+                        src={`http://localhost:8000/programsImages/${card.filename}`}
                         alt="Healthy Eating"
                     />
                 </div>

@@ -29,7 +29,7 @@ const DietPage = () => {
     };
     useEffect(() => {
         const getFood = async () => {
-            const response = await fetch("http://localhost:8080/food", {
+            const response = await fetch("http://localhost:8000/food", {
                 method: "GET",
             });
             const data = await response.json();

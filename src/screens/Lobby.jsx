@@ -40,7 +40,7 @@ const Lobby = () => {
 
     useEffect(() => {
         const getMeetings = async () => {
-            const response = await fetch("http://localhost:8080/meetings", {
+            const response = await fetch("http://localhost:8000/meetings", {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",

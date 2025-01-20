@@ -104,7 +104,7 @@ const Model = () => {
             return;
         }
         try {
-            const response = await fetch("http://localhost:8080/api/model", {
+            const response = await fetch("http://localhost:8000/api/model", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

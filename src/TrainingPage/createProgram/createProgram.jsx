@@ -48,7 +48,7 @@ const CreateProgram = ({show, handleClick}) => {
         formData.append("token", token);
         formData.append("training", trainings.join(","));
 
-        const response = await fetch("http://localhost:8080/programs", {
+        const response = await fetch("http://localhost:8000/programs", {
             method: "POST",
             body: formData,
         });

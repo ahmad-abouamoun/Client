@@ -88,7 +88,7 @@ const BookingPage = () => {
                 room: newEvent.room,
             };
             try {
-                const response = await fetch("http://localhost:8080/meetings", {
+                const response = await fetch("http://localhost:8000/meetings", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",

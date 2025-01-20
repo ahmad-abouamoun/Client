@@ -14,7 +14,7 @@ export const SocketProvider = ({children}) => {
             const token = sessionStorage.getItem("token");
             if (token) {
                 try {
-                    const response = await fetch("http://localhost:8080/users/getUser", {
+                    const response = await fetch("http://localhost:8000/users/getUser", {
                         headers: {
                             token,
                             "Content-Type": "application/json",
@@ -30,7 +30,7 @@ export const SocketProvider = ({children}) => {
         };
         getUser();
     }, []);
-    const socket = useMemo(() => io("localhost:8000"), []);
+    const socket = useMemo(() => io("localhost:8080"), []);
 
     return <SocketContext.Provider value={socket}>{children}</SocketContext.Provider>;
 };

@@ -39,7 +39,7 @@ const Signup = () => {
         formData.append("password", form.password);
         formData.append("diseases", JSON.stringify(diseases));
         try {
-            const response = await fetch("http://localhost:8080/users", {
+            const response = await fetch("http://localhost:8000/users", {
                 method: "POST",
                 body: formData,
             });

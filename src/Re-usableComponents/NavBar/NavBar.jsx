@@ -82,7 +82,7 @@ const NavBar = () => {
                 </ul>
                 {token ? (
                     <div className="dropdown-container">
-                        <img src={`http://localhost:8080/userImages/${user.filename}`} alt="Diet Background" />
+                        <img src={`http://localhost:8000/userImages/${user.filename}`} alt="Diet Background" />
                         <ul className="dropdown">
                             <li
                                 onClick={() => {

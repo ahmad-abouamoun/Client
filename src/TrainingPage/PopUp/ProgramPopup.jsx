@@ -13,7 +13,7 @@ function ProgramPopup({showPopup, setShowPopup}) {
                         &times;
                     </button>
                     <img
-                        src={`http://localhost:8080/programsImages/${showPopup.filename}`}
+                        src={`http://localhost:8000/programsImages/${showPopup.filename}`}
                         alt="Healthy Eating"
                         className="popup-image"
                     />

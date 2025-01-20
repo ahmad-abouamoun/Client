@@ -24,7 +24,7 @@ const TrainingPage = () => {
     };
     useEffect(() => {
         const getPrograms = async () => {
-            const response = await fetch("http://localhost:8080/programs", {
+            const response = await fetch("http://localhost:8000/programs", {
                 method: "GET",
             });
             const data = await response.json();

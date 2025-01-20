@@ -46,7 +46,7 @@ const ProfilePage = () => {
             hypertension: form.hypertension,
         };
         try {
-            const response = await fetch(`http://localhost:8080/users`, {
+            const response = await fetch(`http://localhost:8000/users`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
@@ -66,7 +66,7 @@ const ProfilePage = () => {
     };
     useEffect(() => {
         const getFavProgram = async () => {
-            const response = await fetch("http://localhost:8080/users/favProgram", {
+            const response = await fetch("http://localhost:8000/users/favProgram", {
                 method: "GET",
                 headers: {token},
             });
@@ -77,7 +77,7 @@ const ProfilePage = () => {
     }, []);
     useEffect(() => {
         const getFavProgram = async () => {
-            const response = await fetch("http://localhost:8080/users/favFood", {
+            const response = await fetch("http://localhost:8000/users/favFood", {
                 method: "GET",
                 headers: {token},
             });
@@ -103,7 +103,7 @@ const ProfilePage = () => {
                 <NavBar />
 
                 <div className="profile-overlay">
-                    <img src={`http://localhost:8080/userImages/${user.filename}`} alt="" className="profile-picture" />
+                    <img src={`http://localhost:8000/userImages/${user.filename}`} alt="" className="profile-picture" />
                     <div className="profile-info">
                         <h2>
                             {user.name}

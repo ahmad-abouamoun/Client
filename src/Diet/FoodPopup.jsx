@@ -15,7 +15,7 @@ function FoodPopup({showPopup, setShowPopup}) {
                         &times;
                     </button>
                     <img
-                        src={`http://localhost:8080/foodImages/${showPopup.filename}`}
+                        src={`http://localhost:8000/foodImages/${showPopup.filename}`}
                         alt="Healthy Eating"
                         className="popup-image"
                     />

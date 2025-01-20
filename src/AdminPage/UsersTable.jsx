@@ -10,7 +10,7 @@ const UserTable = () => {
                 return user._id === id ? {...user, banned: true} : user;
             })
         );
-        const response = await fetch(`http://localhost:8080/users/${id}`, {
+        const response = await fetch(`http://localhost:8000/users/${id}`, {
             method: "PUT",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
@@ -23,7 +23,7 @@ const UserTable = () => {
     useEffect(() => {
         const getUsers = async () => {
             try {
-                const response = await fetch("http://localhost:8080/users/", {
+                const response = await fetch("http://localhost:8000/users/", {
                     method: "GET",
                 });
                 const data = await response.json();

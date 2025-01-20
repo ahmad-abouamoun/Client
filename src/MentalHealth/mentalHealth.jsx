@@ -16,7 +16,7 @@ const MentalHealth = () => {
                 chats.push(inputValue);
             }
             setMessages((prevMessages) => [...prevMessages, {sender: "User", text: inputValue}]);
-            const response = await fetch("http://localhost:8080/api/therapist", {
+            const response = await fetch("http://localhost:8000/api/therapist", {
                 headers: {
                     "Content-Type": "application/json",
                 },

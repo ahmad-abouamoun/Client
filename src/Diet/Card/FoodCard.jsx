@@ -18,7 +18,7 @@ function FoodCard({card, handleShowPopup}) {
     const token = sessionStorage.getItem("token");
     const addFavFood = async () => {
         try {
-            const response = await fetch(`http://localhost:8080/users/favFood`, {
+            const response = await fetch(`http://localhost:8000/users/favFood`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -37,7 +37,7 @@ function FoodCard({card, handleShowPopup}) {
     };
     const removeFavFood = async () => {
         try {
-            const response = await fetch(`http://localhost:8080/users/favFood`, {
+            const response = await fetch(`http://localhost:8000/users/favFood`, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
@@ -75,7 +75,7 @@ function FoodCard({card, handleShowPopup}) {
                 </div>
                 <img
                     className="card-image"
-                    src={`http://localhost:8080/foodImages/${card.filename}`}
+                    src={`http://localhost:8000/foodImages/${card.filename}`}
                     alt="Healthy Eating"
                 />
                 <div className="card-content">

@@ -34,7 +34,7 @@ const CreateFood = ({show, handleClick}) => {
         formData.append("name", data.name);
         formData.append("description", data.description);
         formData.append("diseases", stringfiedDiseases);
-        const response = await fetch("http://localhost:8080/food", {
+        const response = await fetch("http://localhost:8000/food", {
             method: "POST",
             body: formData,
         });

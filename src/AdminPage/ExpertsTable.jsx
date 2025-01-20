@@ -39,7 +39,7 @@ const ExperTable = () => {
         formData.append("type", data.type);
         formData.append("diseases", JSON.stringify(diseases));
         try {
-            const response = await fetch("http://localhost:8080/users", {
+            const response = await fetch("http://localhost:8000/users", {
                 method: "POST",
                 body: formData,
             });
@@ -55,7 +55,7 @@ const ExperTable = () => {
     useEffect(() => {
         const getExperts = async () => {
             try {
-                const response = await fetch("http://localhost:8080/users/experts", {
+                const response = await fetch("http://localhost:8000/users/experts", {
                     method: "GET",
                 });
                 const data = await response.json();
@@ -69,7 +69,7 @@ const ExperTable = () => {
     }, []);
     const DeleteUser = async (id) => {
         setDataExperts((prevDataExperts) => prevDataExperts.filter((user) => user._id !== id));
-        const response = await fetch(`http://localhost:8080/users/${id}`, {
+        const response = await fetch(`http://localhost:8000/users/${id}`, {
             method: "DELETE",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
